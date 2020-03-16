@@ -2,12 +2,29 @@
 <html>
 <head>
     <meta charset=utf-8 />
-    <title> INFO30005 :: JavaScript -Workshop #2 </title>
+    <title> INFO30005 :: JavaScript -Workshop #3 </title>
 </head>
 <body>
-    <p id ='text'> Javascrip tDOM :: Changing paragraph style</p>
+    <p id ='text'> Javascrip DOM :: Changing paragraph style</p>
     <div>
         <button id="style" onclick="js_new_style()">New style</button>
+        <script>
+            function js_new_style()
+            {
+                if(document.getElementById("style").innerHTML == "New style")
+                {
+                    text.style.fontSize = "14pt";
+                    text.style.fontFamily = "Comic Sans MS";
+                    text.style.color = "green";
+                    
+                }
+            
+                else
+                {
+
+                }
+            }
+        </script>
     </div>
 </body>
 </html>
