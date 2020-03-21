@@ -25,7 +25,7 @@ function setTiles (){
   var wordLength = word.length;
 
   for(var i = 0; i< wordLength; i++){
-    gameState.correctGuesses[i] = "-";
+    gameState.correctGuesses[i] = "_";
   }
 
   document.getElementById("currentGuess").innerText = "hello";
