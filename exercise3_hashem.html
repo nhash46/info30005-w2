@@ -19,7 +19,7 @@
 <form>
   <label>Enter your guess</label>
   <input type="text" name="guess" id="guess">
-  <button onclick= "validate()">Submit</button>
+  <button onclick= "validate('guess')">Submit</button>
 </form>
 <br></br>
 
@@ -31,11 +31,11 @@ Game board
 <table id="gameboard" border=1>
   <tr>
     <th>Incorrect Guesses</th>
-    <td id="incorrect_guesses">000</td>
+    <td id="incorrect_guesses"></td>
   </tr>
   <tr>
     <th>Remaining Guesses</th>
-    <td id="remaining_guesses">000</td>
+    <td id="remaining_guesses">10</td>
   </tr>
 </table>
 <hr width=20%>
