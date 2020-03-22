@@ -1,5 +1,4 @@
 let word = window.word; //word to be guessed
-let guess = window.guess;
 let gameState = {	
   correctGuesses : [],   // may be use to store info relating to correct guesses, e.g. letters or indexes 
   incorrectGuesses : [], // store incorrect letters
@@ -42,17 +41,22 @@ function setTiles (id){
 */
 
 
-function validate () {
-  guess = document.getElementById('guess').value;
+function validate (id) {
+
+  guess = document.getElementById(id).value;
   if(isNaN(guess) && guess.length == 1){
-    check(guess);
+    alert("guess has been made: " + guess);
+    check(id);
   }
   else{
     alert(guess + " is not a valid input.");
   }
 }
 
-function check (guess) {
+function check (id) {
+
+  guess = document.getElementById(id).value;
+  alert(word);
   // if the letter guessed is in the word
   if(word.includes(guess)){
     // if the letter has already been guessed, ignore
@@ -73,6 +77,7 @@ function check (guess) {
   // else add the letter to incorrectGuesses
   else{
     gameState.incorrectGuesses.push(guess);
+    alert(gameState.incorrectGuesses.join(" "));
   }
 }
 
