@@ -17,10 +17,16 @@ function setWord () {
     alert("ERROR: " + word + " is tooooo long");
     word = window.word;
   }
+
+  // populating correctGuesses array
+  for(var i = 0; i< wordLength; i++){
+    gameState.correctGuesses[i] = "_";
+  }
  
 }
 
-function setTiles (){
+/**
+function setTiles (id){
 
   var wordLength = word.length;
 
@@ -28,23 +34,46 @@ function setTiles (){
     gameState.correctGuesses[i] = "_";
   }
 
-  document.getElementById("currentGuess").innerText = "hello";
+  document.getElementById(id).innerHTML = "hi";
+  alert(document.getElementById(id).value);
+  // wordTiles.innerHTML = gameState.correctGuesses.join(" ");
 
 }
+*/
 
 
 function validate () {
   guess = document.getElementById('guess').value;
-  if(isNaN(guess)){
+  if(isNaN(guess) && guess.length == 1){
     check(guess);
   }
   else{
-    alert(guess + " is not valid input. letters only !");
+    alert(guess + " is not a valid input.");
   }
 }
 
 function check (guess) {
-
+  // if the letter guessed is in the word
+  if(word.includes(guess)){
+    // if the letter has already been guessed, ignore
+    alert(guess + "is in the word!");
+    if(gameState.correctGuesses.includes(guess)){
+      alert("ERROR: '" + guess + "' has already been guessed. Try again");
+    }
+    // otherwise add to correctGuesses
+    else{
+      alert(guess + "will now be added to correct guesses");
+      for(var i = 0; i < word.wordLength; i++ ){
+        if(guess == word[i]){
+          gameState.correctGuesses[i] = guess;
+        }
+      }
+    }
+  }
+  // else add the letter to incorrectGuesses
+  else{
+    gameState.incorrectGuesses.push(guess);
+  }
 }
 
 function updateWordTiles (index) {
