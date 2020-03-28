@@ -1,4 +1,5 @@
 let word = window.word; //word to be guessed
+
 let gameState = {	
   correctGuesses : [],   // may be use to store info relating to correct guesses, e.g. letters or indexes 
   incorrectGuesses : [], // store incorrect letters
