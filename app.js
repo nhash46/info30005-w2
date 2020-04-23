@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 
 // Routes
 const forumRouter = require("./routes/forumRouter");
-const userRouter = required("./routes/userRouter");
+const userRouter = require("./routes/userRouter");
 
 // auther routes handles by forumRouter
 app.use("/forum-posts", forumRouter);
