@@ -11,10 +11,10 @@ app.get("/", (req, res) => {
   });
 
 // Routes
-const forumRouter = require("./routes/forumRouter");
+const router1 = require("./routes/router1");
 
-// auther routes handles by forumRouter
-app.use("/forum-posts", forumRouter);
+// auther routes handles by router1
+app.use("/forum-posts", router1);
   
 // start app and listen for incoming requests on port
 app.listen(process.env.PORT || 3000, () => {
