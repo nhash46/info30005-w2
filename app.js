@@ -12,9 +12,13 @@ app.get("/", (req, res) => {
 
 // Routes
 const forumRouter = require("./routes/forumRouter");
+const userRouter = required("./routes/userRouter");
 
 // auther routes handles by forumRouter
 app.use("/forum-posts", forumRouter);
+
+// user routes handled by authorRouter
+app.use("/user", userRouter);
   
 // start app and listen for incoming requests on port
 app.listen(process.env.PORT || 3000, () => {
