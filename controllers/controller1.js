@@ -1,13 +1,22 @@
-// import the author model
-// i.e. provide the controller a link to the author model
-var authors = require("../models/author");
+const mongoose = require("mongoose");
 
+// import author model
+const Post = mongoose.model("forum_posts");
+
+    
 // function to handle a request to get all authors
-const getAllAuthors = (req, res) => {
-  res.send(authors); // return the list of authors
+const getAllForumPosts = async (req, res) => {
+    
+  try {
+    const all_posts = await Post.find();
+    return res.send(all_posts);
+  } catch (err) {
+    res.status(400);
+    return res.send("Database query failed");
+  }
 };
 
-// function to handle a request to a particular author
+/*// function to handle a request to a particular author
 const getAuthorByID = (req, res) => {
   // search for author in the database via ID
   const author = authors.find(author => author.id === req.params.id);
@@ -50,11 +59,11 @@ const updateAuthor = (req, res) => {
   // return updated author
   res.send(author);
 };
-
+*/
 // remember to export the functions
 module.exports = {
-  getAllAuthors,
-  getAuthorByID,
-  addAuthor,
-  updateAuthor
+  getAllForumPosts,
+  //getAuthorByID,
+  //addAuthor,
+  //updateAuthor
 };

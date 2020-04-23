@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/nhash46/info30005-w2#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.9.10"
   }
 }

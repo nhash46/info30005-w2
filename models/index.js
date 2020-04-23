@@ -13,7 +13,7 @@ mongoose.connect(MONGO_URL || "mongodb://localhost/info30005", {
   useCreateIndex: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
-  dbName: "mylibraryapp"
+  dbName: "spatium"
 });
 
 const db = mongoose.connection;

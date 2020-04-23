@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 const router1 = require("./routes/router1");
 
 // auther routes handles by router1
-app.use("/author-management", router1);
+app.use("/forum_posts", router1);
   
 // start app and listen for incoming requests on port
 app.listen(process.env.PORT || 3000, () => {

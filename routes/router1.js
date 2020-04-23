@@ -6,6 +6,6 @@ const router1 = express.Router();
 const controller1 = require("../controllers/controller1.js");
 
 // empty path = retrieve all authors 
-router1.get("/", controller1.getAllAuthors);
+router1.get("/", controller1.getAllForumPosts);
 
 module.exports = router1;

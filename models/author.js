@@ -1,16 +1,10 @@
-// Some static data, an array of objects representing each author
-const authors = [
-    {
-      id: "10001",
-      first_name: "Jennifer",
-      last_name: "Robbins"
-    },
-    {
-      id: "10002",
-      first_name: "Evan",
-      last_name: "Hahn"
-    }
-  ];
-  
-  module.exports = authors;
-  
+const mongoose = require("mongoose");
+
+const forumPostSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  title: String,
+  body: String
+});
+
+const Post = mongoose.model("forum_posts", forumPostSchema);
+module.exports = Post;
