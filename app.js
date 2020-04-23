@@ -17,7 +17,7 @@ const userRouter = required("./routes/userRouter");
 // auther routes handles by forumRouter
 app.use("/forum-posts", forumRouter);
 
-// user routes handled by authorRouter
+// user routes handled by userRouter
 app.use("/user", userRouter);
   
 // start app and listen for incoming requests on port
