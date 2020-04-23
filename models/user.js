@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const forumPostSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   username: String,
   first_name: String,
