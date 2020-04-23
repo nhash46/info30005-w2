@@ -1,0 +1,23 @@
+{
+  "name": "info30005-w2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhash46/info30005-w2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhash46/info30005-w2/issues"
+  },
+  "homepage": "https://github.com/nhash46/info30005-w2#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
