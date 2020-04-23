@@ -3,6 +3,8 @@ const express = require("express");
 
 const app = express();
 
+require("./models");
+
 // GET home page
 app.get("/", (req, res) => {
     res.send("<H1>Spatium</H1>");
