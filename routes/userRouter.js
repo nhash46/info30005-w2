@@ -13,4 +13,4 @@ userRouter.post("/signup", userController.addUser);
 userRouter.post("/login", userController.logIn);
 */
 
-module.exports = forumRouter;
+module.exports = userRouter;
