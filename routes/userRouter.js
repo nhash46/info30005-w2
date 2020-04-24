@@ -8,6 +8,9 @@ const userController = require("../controllers/userController.js");
 // adding a new user i.e. signing up
 userRouter.post("/signup", userController.addUser);
 
+// viewing all users (**** REMEMBER TO REMOVE BEFORE DELIVERABLE DUE DATE ****)
+userRouter.get("/", userController.getAllUsers);
+
 /*
 // log in
 userRouter.post("/login", userController.logIn);
