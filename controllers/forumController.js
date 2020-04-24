@@ -3,6 +3,21 @@ const mongoose = require("mongoose");
 // import forum model
 const Post = mongoose.model("Forum");
 
+  // function to handle request to add forum
+  const addforum = (req, res) => {
+    // extract info. from body
+    var newPost = new Post({
+      title: req.body.title,
+      body: req.body.body
+    })
+    // add post into db
+    newPost.save(function (err, Post) {
+      if (err) return console.error(err);
+    });
+
+    res.send("Post added!");
+  };
+
     
 // function to handle a request to get all forums
 const getAllForumPosts = async (req, res) => {
@@ -15,6 +30,7 @@ const getAllForumPosts = async (req, res) => {
     return res.send("Database query failed");
   }
 };
+
 
 /*// function to handle a request to a particular forum
 const getforumByID = (req, res) => {
@@ -41,7 +57,7 @@ const addforum = (req, res) => {
   res.send(forums);
 };
 
-// function to modify forum by ID
+// function to modify forum by IDy
 const updateforum = (req, res) => {
   const new_forum = req.body;
 
@@ -63,7 +79,8 @@ const updateforum = (req, res) => {
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
+  addforum
+
   //getforumByID,
-  //addforum,
   //updateforum
 };

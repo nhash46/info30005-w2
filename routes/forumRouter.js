@@ -6,6 +6,9 @@ const forumRouter = express.Router();
 const forumController = require("../controllers/forumController.js");
 
 // empty path = retrieve all authors 
-forumRouter.get("/", forumController.getAllForumPosts);
+forumRouter.get('/', forumController.getAllForumPosts);
+
+//add post 
+forumRouter.post('/',forumController.addforum);
 
 module.exports = forumRouter;
