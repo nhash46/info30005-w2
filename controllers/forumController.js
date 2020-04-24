@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
-// import author model
+// import forum model
 const Post = mongoose.model("Forum");
 
     
-// function to handle a request to get all authors
+// function to handle a request to get all forums
 const getAllForumPosts = async (req, res) => {
     
   try {
@@ -16,54 +16,54 @@ const getAllForumPosts = async (req, res) => {
   }
 };
 
-/*// function to handle a request to a particular author
-const getAuthorByID = (req, res) => {
-  // search for author in the database via ID
-  const author = authors.find(author => author.id === req.params.id);
+/*// function to handle a request to a particular forum
+const getforumByID = (req, res) => {
+  // search for forum in the database via ID
+  const forum = forums.find(forum => forum.id === req.params.id);
 
-  if (author) {
-    // send back the author details
-    res.send(author);
+  if (forum) {
+    // send back the forum details
+    res.send(forum);
   } else {
-    // you can decide what to return if author is not found
+    // you can decide what to return if forum is not found
     // currently, an empty list will be returned
     res.send([]);
   }
 };
 
-// function to handle request to add author
-const addAuthor = (req, res) => {
+// function to handle request to add forum
+const addforum = (req, res) => {
   // extract info. from body
-  const author = req.body;
+  const forum = req.body;
 
-  // add author to array
-  authors.push(author);
-  res.send(authors);
+  // add forum to array
+  forums.push(forum);
+  res.send(forums);
 };
 
-// function to modify author by ID
-const updateAuthor = (req, res) => {
-  const new_author = req.body;
+// function to modify forum by ID
+const updateforum = (req, res) => {
+  const new_forum = req.body;
 
-  // search for author in the database via ID
-  const author = authors.find(author => author.id === req.params.id);
-  if (!author) {
+  // search for forum in the database via ID
+  const forum = forums.find(forum => forum.id === req.params.id);
+  if (!forum) {
 	  // cannot be found
 	  return res.send([]);
   }
 
-  // now merge new_author into the original author object
+  // now merge new_forum into the original forum object
   // it is assumed that user input is well-formed (a dangerous assumption)
-  Object.assign(author, new_author);
+  Object.assign(forum, new_forum);
 
-  // return updated author
-  res.send(author);
+  // return updated forum
+  res.send(forum);
 };
 */
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
-  //getAuthorByID,
-  //addAuthor,
-  //updateAuthor
+  //getforumByID,
+  //addforum,
+  //updateforum
 };
