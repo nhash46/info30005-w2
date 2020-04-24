@@ -16,6 +16,38 @@ const getAllForumPosts = async (req, res) => {
   }
 };
 
+
+//forumRouter.post("/:title", forumController.editComment)
+const editComment = async (req, res) => {
+  await Post.updateOne(
+    {title:req.params.title},
+    {
+      $set:{'comments':req.body}
+    }
+  );
+  
+  
+  /*const new_comment=req.body;
+  //search by ID
+  const forum = forum.find(forum => forum.id === req.params.id);
+  if(!forum){
+    //cannot be found
+    return res.send([])
+  }
+  //now merge with original forum
+  //assumed user well-informed ( a dangerous assumption)
+  Object.assign(forum.comment, new_comment);
+  forum.save(function (err, user) {
+    if (err) return console.error(err);
+  });
+
+  //return updated forum
+  res.send(forum);*/
+
+
+}
+
+
 /*// function to handle a request to a particular forum
 const getforumByID = (req, res) => {
   // search for forum in the database via ID
@@ -63,6 +95,7 @@ const updateforum = (req, res) => {
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
+  editComment,
   //getforumByID,
   //addforum,
   //updateforum
