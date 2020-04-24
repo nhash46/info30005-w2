@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// import user model
+// import author model
 const User = mongoose.model("users");
 
     
@@ -15,7 +15,7 @@ const addUser = async (req, res) => {
       email: req.body.email
     })
   
-    // add user to database
+    // add author to database
     newUser.save(function (err, user) {
       if (err) return console.error(err);
     });
@@ -23,7 +23,7 @@ const addUser = async (req, res) => {
     res.send("Successful signup!");
 };
 
-// function to handle a request to get all users
+// function to handle a request to get all authors
 const getAllUsers = async (req, res) => {
     
     try {
