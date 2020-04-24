@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const Post = mongoose.model("forum_posts");
 
     
-// function to handle a request to get all authors
+// function to handle a request to get all forums
 const getAllForumPosts = async (req, res) => {
     
   try {
