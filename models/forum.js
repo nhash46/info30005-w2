@@ -6,6 +6,6 @@ const forumPostSchema = new mongoose.Schema({
   body: String
 });
 
-const Post = mongoose.model("forum_posts", forumPostSchema, "forum_posts");
+const Post = mongoose.model("Forum", forumPostSchema, "forum_posts");
 
 module.exports = Post;
