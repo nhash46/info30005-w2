@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 // Connect to MongoDB
-CONNECTION_STRING = "mongodb+srv://spatium:<password>@mylibraryapp-p1g0j.mongodb.net/test?retryWrites=true&w=majority";
-MONGO_URL = CONNECTION_STRING.replace("<password>", "spatium");
+CONNECTION_STRING = "mongodb+srv://nhash:<password>@mylibraryapp-n8rlv.mongodb.net/test?retryWrites=true&w=majority";
+MONGO_URL = CONNECTION_STRING.replace("<password>", "1234");
 
 console.log(MONGO_URL);
 
