@@ -17,10 +17,6 @@ const addforum = (req, res) => {
   res.send("Post added!");
 };
 
-
-
-
-
     
 // function to handle a request to get all forums
 const getAllForumPosts = async (req, res) => {
