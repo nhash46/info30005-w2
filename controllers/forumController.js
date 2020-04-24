@@ -8,7 +8,8 @@ const addforum = (req, res) => {
  // extract info. from body
   var newPost = new Post({
     title: req.body.title,
-    body: req.body.body
+    body: req.body.body,
+    comments: []
   })
   // add post into db
   newPost.save(function (err, Post) {
@@ -16,12 +17,7 @@ const addforum = (req, res) => {
   });
   res.send("Post added!");
 };
-
-
-
-
-
-    
+  
 // function to handle a request to get all forums
 const getAllForumPosts = async (req, res) => {
     
@@ -31,6 +27,23 @@ const getAllForumPosts = async (req, res) => {
   } catch (err) {
     res.status(400);
     return res.send("Database query failed");
+  }
+};
+// get pst by ID
+const getforumByID = (req, res) => {
+  console.log(req.params.id);
+
+
+  // search for forum in the database via ID
+  const searchedPost = Post.find(Post => Post._id === req.params.id);
+
+  if (searchedPost) {
+    // send back the forum details
+    res.send(searchedPost);
+  } else {
+    // message to retrun id has not been found 
+    res.status(400)
+    res.send("No post with mentioned ID");
   }
 };
 
@@ -83,6 +96,6 @@ const updateforum = (req, res) => {
 module.exports = {
   getAllForumPosts,
   addforum,
-  //getforumByID
+  getforumByID
   //updateforum
 };

@@ -13,6 +13,6 @@ forumRouter.post('/',forumController.addforum);
 
 
 //search post by id
-//forumRouter.get('/:id',forumController.getforumByID);
+forumRouter.get('/:id',forumController.getforumByID);
 
 module.exports = forumRouter;
