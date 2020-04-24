@@ -3,20 +3,23 @@ const mongoose = require("mongoose");
 // import forum model
 const Post = mongoose.model("Forum");
 
-  // function to handle request to add forum
-  const addforum = (req, res) => {
-    // extract info. from body
-    var newPost = new Post({
-      title: req.body.title,
-      body: req.body.body
-    })
-    // add post into db
-    newPost.save(function (err, Post) {
-      if (err) return console.error(err);
-    });
+// function to handle request to add post
+const addforum = (req, res) => {
+ // extract info. from body
+  var newPost = new Post({
+    title: req.body.title,
+    body: req.body.body
+  })
+  // add post into db
+  newPost.save(function (err, Post) {
+    if (err) return console.error(err);
+  });
+  res.send("Post added!");
+};
 
-    res.send("Post added!");
-  };
+
+
+
 
     
 // function to handle a request to get all forums
@@ -79,8 +82,7 @@ const updateforum = (req, res) => {
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
-  addforum
-
-  //getforumByID,
+  addforum,
+  //getforumByID
   //updateforum
 };

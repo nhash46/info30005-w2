@@ -11,4 +11,8 @@ forumRouter.get('/', forumController.getAllForumPosts);
 //add post 
 forumRouter.post('/',forumController.addforum);
 
+
+//search post by id
+//forumRouter.get('/:id',forumController.getforumByID);
+
 module.exports = forumRouter;
