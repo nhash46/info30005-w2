@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // import author model
-const Post = mongoose.model("forum");
+const Post = mongoose.model("Forum");
 
     
 // function to handle a request to get all authors
