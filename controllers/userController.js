@@ -9,8 +9,10 @@ const addUser = async (req, res) => {
 
     var newUser = new User({
       username: req.body.username,
+      password: req.body.password,
       first_name: req.body.first_name,
-      last_name: req.body.last_name
+      last_name: req.body.last_name,
+      email: req.body.email
     })
   
     // add author to database
