@@ -27,7 +27,7 @@ const addUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
     
     try {
-      const all_users = await User.find();
+      const all_users = await User.find().select(username);
       return res.send(all_users);
     } catch (err) {
       res.status(400);
