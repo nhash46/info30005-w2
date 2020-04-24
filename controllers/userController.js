@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // import author model
-const User = mongoose.model("user");
+const User = mongoose.model("users");
 
     
 // function to add user
