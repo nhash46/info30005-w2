@@ -17,15 +17,15 @@ const getAllForumPosts = async (req, res) => {
 };
 
 
-//forumRouter.post("/:title", forumController.editComment)
 const editComment = async (req, res) => {
-  await Post.updateOne(
+  res.send("Working on this feature");
+  /*await Post.updateOne(
     {title:req.params.title},
     {
       $set:{'comments':req.body}
     }
   );
-  
+  */
   
   /*const new_comment=req.body;
   //search by ID
@@ -45,7 +45,7 @@ const editComment = async (req, res) => {
   res.send(forum);*/
 
 
-}
+};
 
 
 /*// function to handle a request to a particular forum
