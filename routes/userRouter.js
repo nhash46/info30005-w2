@@ -11,9 +11,7 @@ userRouter.post("/signup", userController.addUser);
 // viewing all users (**** REMEMBER TO REMOVE BEFORE DELIVERABLE DUE DATE ****)
 userRouter.get("/", userController.getAllUsers);
 
-/*
-// log in
+// logging in
 userRouter.post("/login", userController.logIn);
-*/
 
 module.exports = userRouter;
