@@ -28,7 +28,7 @@ const getAllUsers = async (req, res) => {
     
     try {
       const all_users = await User.find();
-      return res.send(all_users);
+      return res.send(all_users.username);
     } catch (err) {
       res.status(400);
       return res.send("Database query failed");
