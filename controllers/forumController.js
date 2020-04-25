@@ -3,6 +3,7 @@ const crypto = require("crypto");
 
 // import forum model
 const Post = mongoose.model("Post");
+const Comment = mongoose.model("Comment");
 
 // function to handle request to add post
 const addforum = (req, res) => {
