@@ -62,7 +62,7 @@ const addComment = (req, res) => {
   var newComment = new Comment({
     title : req.body.title,
     content : req.body.content,
-    parentPost : req.params.id
+    parentPost : req.params._id
   })
 
   // add user to database

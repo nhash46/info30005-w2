@@ -12,7 +12,7 @@ forumRouter.get('/', forumController.getAllForumPosts);
 forumRouter.post('/',forumController.addforum);
 
 //commment on particular post
-forumRouter.post('/comment/',forumController.addComment);
+forumRouter.post('/comment/:_id',forumController.addComment);
 
 //search post by id
 forumRouter.get('/:_id',forumController.getforumByID);
