@@ -89,7 +89,7 @@ const getAllComments = async (req, res) => {
 
 
 // gets a comment from a title query
-const getCommentByTitle = (req, res) => {
+const getCommentByTitle = async (req, res) => {
   try{
     const comment = await Comment
   .find({'title': req.params.title})
