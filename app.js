@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // GET home page
 app.get("/", (req, res) => {
-    res.send("<H1>Spatium</H1>");
+    res.send("<H1 style=color:red> Spatium</H1>");
   });
 
 // Routes
