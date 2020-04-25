@@ -35,7 +35,7 @@ const getAllForumPosts = async (req, res) => {
 // function to handle a request to a particular forum
 const getforumByID = async (req, res) => {
   const post = Post
-  .findOne({_id: req.params.id})
+  .findOne({_id: req.params._id})
   .populate('comment')
   .exec(function (err, post) {
     if (err) return console.error(err);
