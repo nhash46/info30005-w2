@@ -7,6 +7,7 @@ const Post = mongoose.model("Forum");
 const addforum = (req, res) => {
  // extract info. from body
   var newPost = new Post({
+    id: req.body.id,
     title: req.body.title,
     body: req.body.body
   })
@@ -31,33 +32,21 @@ const getAllForumPosts = async (req, res) => {
 };
 
 
-/*// function to handle a request to a particular forum
-const getforumByID = (req, res) => {
-  // search for forum in the database via ID
-  const forum = forums.find(forum => forum.id === req.params.id);
+// function to handle a request to a particular forum
+const getforumByID = async (req, res) => {
 
-  if (forum) {
-    // send back the forum details
-    res.send(forum);
-  } else {
-    // you can decide what to return if forum is not found
-    // currently, an empty list will be returned
-    res.send([]);
+  try {
+    const forum = await Forum.find({'id': req.params.id});
+    return res.send(forum);
+  } catch (err) {
+    res.status(400);
+    return res.send("Database query failed");
   }
-};
 
-// function to handle request to add forum
-const addforum = (req, res) => {
-  // extract info. from body
-  const forum = req.body;
-
-  // add forum to array
-  forums.push(forum);
-  res.send(forums);
 };
 
 // function to modify forum by IDy
-const updateforum = (req, res) => {
+const updateForum = (req, res) => {
   const new_forum = req.body;
 
   // search for forum in the database via ID
@@ -74,11 +63,11 @@ const updateforum = (req, res) => {
   // return updated forum
   res.send(forum);
 };
-*/
+
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
   addforum,
-  //getforumByID
-  //updateforum
+  getforumByID,
+  updateForum
 };
