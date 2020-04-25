@@ -34,13 +34,17 @@ const getAllForumPosts = async (req, res) => {
 
 // function to handle a request to a particular forum
 const getforumByID = async (req, res) => {
-  const post = Post
-  .findOne({_id: req.params._id})
-  .populate('comment')
-  .exec(function (err, post) {
-    if (err) return console.error(err);
-  });
-  res.send(post);
+  try{
+    const post = Post
+    .findOne({'_id': req.params._id})
+    .populate('comment')
+    return res.send(post);
+  }
+  catch(err) {
+    res.status(400);
+    return res.send("Database query failed");
+  }
+};
 
   /*db.Post.findOne({_id : req.params.id })
   .populate("comment")
@@ -53,7 +57,6 @@ const getforumByID = async (req, res) => {
     // If an error occurred, send it to the client
     res.json(err);
   });*/
-};
 
 
 // adds a comment to comment collection
