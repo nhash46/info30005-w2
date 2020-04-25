@@ -8,7 +8,6 @@ const Post = mongoose.model("Forum");
 const addforum = (req, res) => {
  // extract info. from body
   var newPost = new Post({
-    id: crypto.randomBytes(16).toString("hex"),
     title: req.body.title,
     body: req.body.body
   })
@@ -37,7 +36,7 @@ const getAllForumPosts = async (req, res) => {
 const getforumByID = async (req, res) => {
 
   try {
-    const forum = await Post.find({'id': req.params.id});
+    const forum = await Post.find({'_id': req.params.id});
     return res.send(forum);
   } catch (err) {
     res.status(400);

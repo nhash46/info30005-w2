@@ -12,9 +12,9 @@ forumRouter.get('/', forumController.getAllForumPosts);
 forumRouter.post('/',forumController.addforum);
 
 //commment on particular post
-forumRouter.post('/:id',forumController.updateForum);
+forumRouter.post('/:_id',forumController.updateForum);
 
 //search post by id
-forumRouter.get('/:id',forumController.getforumByID);
+forumRouter.get('/:_id',forumController.getforumByID);
 
 module.exports = forumRouter;
