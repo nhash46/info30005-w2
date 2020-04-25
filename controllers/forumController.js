@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const crypto = require("crypto");
 
 // import forum model
 const Post = mongoose.model("Forum");
@@ -7,7 +8,7 @@ const Post = mongoose.model("Forum");
 const addforum = (req, res) => {
  // extract info. from body
   var newPost = new Post({
-    id: req.body.id,
+    id: crypto.randomBytes(16).toString("hex"),
     title: req.body.title,
     body: req.body.body
   })
