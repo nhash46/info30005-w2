@@ -8,7 +8,7 @@ const Post = mongoose.model("Forum");
 const addforum = (req, res) => {
  // extract info. from body
   var newPost = new Post({
-    id: crypto.randomBytes(16).toString("hex"),
+    id: crypto.randomBytes(16).toString(4),
     title: req.body.title,
     body: req.body.body
   })
