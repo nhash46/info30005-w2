@@ -27,3 +27,4 @@ db.once("open", async () => {
 
 require("./forum");
 require("./user");
+require("./comment");
