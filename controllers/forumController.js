@@ -75,15 +75,31 @@ const addComment = (req, res) => {
   res.send("Comment created successfully");
 };
 
+// 
+const getAllComments = async (req, res) => {
+    
+  try {
+    const all_comments = await Comment.find();
+    return res.send(all_comments);
+  } catch (err) {
+    res.status(400);
+    return res.send("Database query failed");
+  }
+};
+
+
 // gets a comment from a title query
 const getCommentByTitle = (req, res) => {
-  Comment
-  .findOne({title: req.params.title})
+  try{
+    const comment = await Comment
+  .find({'title': req.params.title})
   .populate('parentPost')
-  .exec(function (err, comment) {
-    if (err) return console.error(err);
-    console.log('The author is %s', comment.parentPost.title);
-  });
+  return res.send(comment);
+  }
+  catch(err) {
+    res.status(400);
+    return res.send("Database query failed");
+  }
 }
 
 // remember to export the functions
@@ -92,5 +108,6 @@ module.exports = {
   addforum,
   getforumByID,
   addComment,
+  getAllComments,
   getCommentByTitle
 };

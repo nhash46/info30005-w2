@@ -17,6 +17,8 @@ forumRouter.post('/comment/:_id',forumController.addComment);
 //search post by id
 forumRouter.get('/:_id',forumController.getforumByID);
 
+forumRouter.get('/comment/', forumController.getAllComments);
+
 forumRouter.get('/comment/:title', forumController.getCommentByTitle);
 
 module.exports = forumRouter;
