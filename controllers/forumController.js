@@ -37,7 +37,7 @@ const getAllForumPosts = async (req, res) => {
 const getforumByID = async (req, res) => {
 
   try {
-    const forum = await Forum.find({'id': req.params.id});
+    const forum = await Post.find({'id': req.params.id});
     return res.send(forum);
   } catch (err) {
     res.status(400);
