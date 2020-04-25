@@ -34,7 +34,6 @@ const getAllForumPosts = async (req, res) => {
 
 // function to handle a request to a particular forum
 const getforumByID = async (req, res) => {
-
   try {
     const forum = await Post.find({'_id': req.params._id});
     return res.send(forum);
@@ -42,26 +41,22 @@ const getforumByID = async (req, res) => {
     res.status(400);
     return res.send("Database query failed");
   }
-
 };
+
 
 // function to modify forum by IDy
 const updateForum = (req, res) => {
-  const new_forum = req.body;
-
-  // search for forum in the database via ID
-  const forum = forums.find(forum => forum.id === req.params.id);
-  if (!forum) {
-	  // cannot be found
-	  return res.send([]);
-  }
-
-  // now merge new_forum into the original forum object
-  // it is assumed that user input is well-formed (a dangerous assumption)
-  Object.assign(forum, new_forum);
-
-  // return updated forum
-  res.send(forum);
+  db.Comment.create(req.body)
+    .then(function(dbComment) {
+      return db.Post.findOneAndUpdate({_id: req.params.id }, { comment: dbComment._id }, { new: true });
+    })
+    .then(function(dbPost) {
+      res.json(dbPost);
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
 };
 
 // remember to export the functions
