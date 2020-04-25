@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const crypto = require("crypto");
 
 // import forum model
-const Post = mongoose.model("Forum");
+const Post = mongoose.model("Post");
 
 // function to handle request to add post
 const addforum = (req, res) => {
@@ -34,7 +34,15 @@ const getAllForumPosts = async (req, res) => {
 
 // function to handle a request to a particular forum
 const getforumByID = async (req, res) => {
-  db.Post.findOne({_id : req.params.id })
+  const post = Post
+  .findOne({_id: req.params.id})
+  .populate('comment')
+  .exec(function (err, post) {
+    if (err) return console.error(err);
+  });
+  res.send(post);
+
+  /*db.Post.findOne({_id : req.params.id })
   .populate("comment")
   .then(function(dbPost) {
 
@@ -44,29 +52,42 @@ const getforumByID = async (req, res) => {
   .catch(function(err) {
     // If an error occurred, send it to the client
     res.json(err);
+  });*/
+};
+
+
+// adds a comment to comment collection
+const addComment = (req, res) => {
+  
+  var newComment = new Comment({
+    title : req.body.title,
+    content : req.body.content,
+    parentPost : req.params.id
+  })
+
+  // add user to database
+  newComment.save(function (err) {
+    if (err) return console.error(err);
   });
+  res.send("Comment created successfully");
 };
 
-
-// function to modify forum by IDy
-const updateForum = (req, res) => {
-  db.Comment.create(req.body)
-    .then(function(dbComment) {
-      return db.Post.findOneAndUpdate({_id: req.params.id }, { comment: dbComment._id }, { new: true });
-    })
-    .then(function(dbPost) {
-      res.json(dbPost);
-    })
-    .catch(function(err) {
-      // If an error occurred, send it to the client
-      res.json(err);
-    });
-};
+// gets a comment from a title query
+const getCommentByTitle = (req, res) => {
+  Comment
+  .findOne({title: req.params.title})
+  .populate('parentPost')
+  .exec(function (err, comment) {
+    if (err) return console.error(err);
+    console.log('The author is %s', comment.parentPost.title);
+  });
+}
 
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
   addforum,
   getforumByID,
-  updateForum
+  addComment,
+  getCommentByTitle
 };

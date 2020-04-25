@@ -28,7 +28,7 @@ app.use("/forum-posts", forumRouter);
 app.use("/user", userRouter);
   
 // start app and listen for incoming requests on port
-app.listen(process.env.PORT || 3000, () => {
+app.listen(3000, () => {
     console.log("The library app is running!");
   });
   

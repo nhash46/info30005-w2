@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
 const commentSchema = new mongoose.Schema({
-    content: String
+    title: String,
+    content: String,
+    parentPost : {type: mongoose.Types.ObjectId}, ref: "Post"
 });
 
 const Comment = mongoose.model("Comment", commentSchema);
