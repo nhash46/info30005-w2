@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const commentSchema = new mongoose.Schema({
-    title: String,
-    content: String,
+    title: {type: String},
+    content: {type: String},
     parentPost : {type: mongoose.Types.ObjectId, ref: "Post"}
 });
 
