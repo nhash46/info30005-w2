@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
+<<<<<<< HEAD
 const uuidv4 = require('uuid/v4');
+=======
+>>>>>>> master
 const crypto = require("crypto");
 
 // import forum model
-const Post = mongoose.model("Forum");
+const Post = mongoose.model("Post");
+const Comment = mongoose.model("Comment");
 
 // function to handle request to add post
 const addforum = (req, res) => {
@@ -20,7 +24,12 @@ const addforum = (req, res) => {
   });
   res.send("Post added!");
 };
+<<<<<<< HEAD
   
+=======
+
+    
+>>>>>>> master
 // function to handle a request to get all forums
 const getAllForumPosts = async (req, res) => {
     
@@ -51,54 +60,88 @@ const getforumByID = (req, res) => {
 };
 
 
-/*// function to handle a request to a particular forum
-const getforumByID = (req, res) => {
-  // search for forum in the database via ID
-  const forum = forums.find(forum => forum.id === req.params.id);
-
-  if (forum) {
-    // send back the forum details
-    res.send(forum);
-  } else {
-    // you can decide what to return if forum is not found
-    // currently, an empty list will be returned
-    res.send([]);
+// function to handle a request to a particular forum
+const getforumByID = async (req, res) => {
+  try{
+    const post = await Post
+    .find({'_id': req.params._id})
+    .populate('comment')
+    return res.send(post);
+  }
+  catch(err) {
+    res.status(400);
+    return res.send("Database query failed");
   }
 };
 
-// function to handle request to add forum
-const addforum = (req, res) => {
-  // extract info. from body
-  const forum = req.body;
+  /*db.Post.findOne({_id : req.params.id })
+  .populate("comment")
+  .then(function(dbPost) {
 
-  // add forum to array
-  forums.push(forum);
-  res.send(forums);
+    // If we were able to successfully find an Post with the given id, send it back to the client
+    res.json(dbPost);
+  })
+  .catch(function(err) {
+    // If an error occurred, send it to the client
+    res.json(err);
+  });*/
+
+
+// adds a comment to comment collection
+const addComment = (req, res) => {
+  
+  var newComment = new Comment({
+    title : req.body.title,
+    content : req.body.content,
+    parentPost : req.params._id
+  })
+
+  // add user to database
+  newComment.save(function (err) {
+    if (err) return console.error(err);
+  });
+  res.send("Comment created successfully");
 };
 
-// function to modify forum by IDy
-const updateforum = (req, res) => {
-  const new_forum = req.body;
-
-  // search for forum in the database via ID
-  const forum = forums.find(forum => forum.id === req.params.id);
-  if (!forum) {
-	  // cannot be found
-	  return res.send([]);
+// 
+const getAllComments = async (req, res) => {
+    
+  try {
+    const all_comments = await Comment.find();
+    return res.send(all_comments);
+  } catch (err) {
+    res.status(400);
+    return res.send("Database query failed");
   }
-
-  // now merge new_forum into the original forum object
-  // it is assumed that user input is well-formed (a dangerous assumption)
-  Object.assign(forum, new_forum);
-
-  // return updated forum
-  res.send(forum);
 };
-*/
+
+
+// gets a comment from a title query
+const getCommentByTitle = async (req, res) => {
+  try{
+    const comment = await Comment
+  .find({'title': req.params.title})
+  .populate('parentPost')
+  return res.send(comment);
+  }
+  catch(err) {
+    res.status(400);
+    return res.send("Database query failed");
+  }
+}
+
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
   addforum,
+<<<<<<< HEAD
   getforumByID
   //updateforum
 };
+=======
+  getforumByID,
+  addComment,
+  getAllComments,
+  getCommentByTitle
+};
+>>>>>>> master
