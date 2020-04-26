@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const uuidv4 = require('uuid/v4');
+const crypto = require("crypto");
 
 // import forum model
 const Post = mongoose.model("Forum");
@@ -7,9 +9,10 @@ const Post = mongoose.model("Forum");
 const addforum = (req, res) => {
  // extract info. from body
   var newPost = new Post({
+    id: crypto.randomBytes(16).toString("hex"),
     title: req.body.title,
     body: req.body.body,
-    comments: []
+    //comments: []
   })
   // add post into db
   newPost.save(function (err, Post) {
@@ -35,7 +38,7 @@ const getforumByID = (req, res) => {
 
 
   // search for forum in the database via ID
-  const searchedPost = Post.find(Post => Post._id === req.params.id);
+  const searchedPost = Post.find({"Post.id" : "req.params.id" });
 
   if (searchedPost) {
     // send back the forum details
