@@ -24,12 +24,8 @@ const addforum = (req, res) => {
   });
   res.send("Post added!");
 };
-<<<<<<< HEAD
-  
-=======
 
     
->>>>>>> master
 // function to handle a request to get all forums
 const getAllForumPosts = async (req, res) => {
     
@@ -134,14 +130,11 @@ const getCommentByTitle = async (req, res) => {
 module.exports = {
   getAllForumPosts,
   addforum,
-<<<<<<< HEAD
   getforumByID
   //updateforum
 };
-=======
-  getforumByID,
-  addComment,
-  getAllComments,
-  getCommentByTitle
-};
->>>>>>> master
+  //getforumByID,
+  //addComment,
+  //getAllComments,
+  //getCommentByTitle
+
