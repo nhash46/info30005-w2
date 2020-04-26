@@ -1,8 +1,4 @@
 const mongoose = require("mongoose");
-<<<<<<< HEAD
-const uuidv4 = require('uuid/v4');
-=======
->>>>>>> master
 const crypto = require("crypto");
 
 // import forum model
@@ -37,7 +33,7 @@ const getAllForumPosts = async (req, res) => {
     return res.send("Database query failed");
   }
 };
-// get pst by ID
+/* // get pst by ID
 const getforumByID = (req, res) => {
   console.log(req.params.id);
 
@@ -54,6 +50,7 @@ const getforumByID = (req, res) => {
     res.send("No post with mentioned ID");
   }
 };
+*/
 
 
 // function to handle a request to a particular forum
