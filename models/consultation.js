@@ -2,12 +2,14 @@ const mongoose = require("mongoose");
 
 const consultationSchema = new mongoose.Schema({
   student: {
-      type: Schema.Types.ObjectId, ref: 'User'
+    type: mongoose.Types.ObjectId, 
+    ref: 'User'
   },
   counsellor: {
-    type: Schema.Types.ObjectId, ref: 'User'
+    type: mongoose.Types.ObjectId, 
+      ref: 'User'
   },
-  date: String,
+  date: Date,
   time: String,
   isOnline: {
       type: Boolean,
