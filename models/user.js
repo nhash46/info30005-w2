@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
+  userType: {
+    type: String,
+    enum: ['student','counsellor'],
+    default: 'student'
+  },
   username: String,
   password: String,
   first_name: String,

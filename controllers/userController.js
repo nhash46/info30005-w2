@@ -8,6 +8,7 @@ const User = mongoose.model("User");
 const addUser = async (req, res) => {
 
     var newUser = new User({
+      userType: req.body.userType,
       username: req.body.username,
       password: req.body.password,
       first_name: req.body.first_name,
@@ -17,10 +18,13 @@ const addUser = async (req, res) => {
   
     // add user to database
     newUser.save(function (err, user) {
-      if (err) return console.error(err);
+      if (err) {
+        res.send("ERROR: user type must be student or counsellor");
+        return console.error(err);
+      } else {
+        res.send("Successful signup!");
+      }
     });
-  
-    res.send("Successful signup!");
 };
 
 // function to handle a request to get all users
