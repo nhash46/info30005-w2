@@ -14,16 +14,24 @@ const addComment = async (req, res) => {
       parentPost : req.params._id
     })
 
-    // need to add this Id to Parent document 'comment' field
+    // need to add this Id to Parent document 'comment' field 
     try{
+     /*   
     const post = await Post.find({'_id': req.params._id});
     post.comment = newComment._id;
     await post.save();
+    */
+
+    const filter = { _id: req.params._id};
+    const update = { comment : newComment._id};
+    let post = await Post.findOneAndUpdate(filter, update, {new : true});
+    console.log(post.comment);
+
     } catch(err){
         res.status(400);
         return res.send("Database query failed");
     }
-   
+
     // add comment to database
     newComment.save(function (err) {
       if (err) return console.error(err);
