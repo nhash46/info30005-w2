@@ -21,8 +21,6 @@ const addComment = (req, res) => {
   // 
   const getAllComments = async (req, res) => {  
     try{
-    console.log('hello');
-    res.send('hello');
     const all_comments = await Comment.find();
     return res.send(all_comments);
     }
