@@ -78,14 +78,16 @@ const addComment = (req, res) => {
 
 // 
 const getAllComments = async (req, res) => {  
-    console.log('hello');
-    res.send('hello');
-    const all_comments = await Comment.find();
-    return res.send(all_comments);
-  /*catch (err) {
+  try{
+  console.log('hello');
+  res.send('hello');
+  const all_comments = await Comment.find();
+  return res.send(all_comments);
+  }
+  catch (err) {
     res.status(400);
-    return res.send("Database query failed");
-  }*/
+    return res.send("Get Fucked");
+  }
 };
 
 
