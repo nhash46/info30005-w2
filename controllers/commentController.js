@@ -19,9 +19,9 @@ const addComment = async (req, res) => {
     const post = await Post.find({'_id': req.params._id});
     post.comment = newComment._id;
     await post.save();
-    }catch(err){
+    } catch(err){
         res.status(400);
-      return res.send("Database query failed");
+        return res.send("Database query failed");
     }
    
     // add comment to database
