@@ -20,13 +20,14 @@ const addforum = (req, res) => {
     
 // function to handle a request to get all forums
 const getAllForumPosts = async (req, res) => {
-  res.send("updated");
-  
-  const all_posts = await Post.find().populate("comments").exec(function(err, forum_posts) {
-    if (err) res.send(err);
-
-    res.json(forum_posts);
-  })
+    
+  try {
+    const all_posts = await Post.find().populate("comments.comment");
+    return res.send(all_posts);
+  } catch (err) {
+    res.status(400);
+    return res.send("Database query failed");
+  }
 };
 
 
