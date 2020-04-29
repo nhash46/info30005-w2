@@ -21,12 +21,14 @@ const addComment = async (req, res) => {
         if (err) return console.error(err);
     });
     */
-
+    try{
     const post = await Post.find({'_id': req.params._id});
     post.comment = newComment._id;
-    post.save(function(err){
-        if (err) return console.error(err);
-    });
+    post.save();
+    }catch(err){
+        res.status(400);
+      return res.send("Database query failed");
+    }
    
     // add comment to database
     newComment.save(function (err) {
