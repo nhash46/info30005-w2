@@ -6,7 +6,7 @@ const Post = mongoose.model("Post");
 const forumController = require("../controllers/forumController.js");
 
 // adds a comment to comment collection
-const addComment = (req, res) => {
+const addComment = async (req, res) => {
   
     var newComment = new Comment({
       title : req.body.title,
