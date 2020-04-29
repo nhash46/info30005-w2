@@ -42,10 +42,20 @@ const getforumByID = async (req, res) => {
   }
 };
 
+var getforumByIDComment = async (req, res) => {
+  try {
+    const post = await Post.find({'_id': req.params._id});
+    return post;
+  } catch (err) {
+    return console.error(err);
+  }
+};
+
 
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
   addforum,
   getforumByID,
+  getforumByIDComment
 };
