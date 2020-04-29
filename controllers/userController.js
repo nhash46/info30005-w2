@@ -43,17 +43,20 @@ const getAllUsers = async (req, res) => {
 // function to handle a request to login
 const logIn = async (req, res) => {
 
-  User.find({"username": req.body.username, "password": req.body.password}, function(err, user){
+  var username = req.body.username;
+  var password = req.body.password;
+
+  User.findOne({username: username, password: password}, function(err, user){
     if(err){
-      return console.error(err.stack);
+      console.log(err);
+      return res.status(500).send();
     }
     if(!user){
-      return res.send("User not found!");
+      return res.status(404).send("username or password is incorrect");
     }
-    else {
-      return res.send("Welcome back " + user.username);
-    }
-  });
+    
+    return res.status(200).send();
+  })
 };
 
   // function to create a new consultation
