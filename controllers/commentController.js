@@ -16,6 +16,9 @@ const addComment = (req, res) => {
     // need to add this Id to Parent document 'comment' field
     var post = forumController.getforumByIDComment(req.params._id);
     post.comment = newComment._id;
+    post.save(function(err){
+        if (err) return console.error(err);
+    });
 
     // add user to database
     newComment.save(function (err) {

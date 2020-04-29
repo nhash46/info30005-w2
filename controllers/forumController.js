@@ -42,6 +42,8 @@ const getforumByID = async (req, res) => {
   }
 };
 
+
+// backend function involved in updating a posts comment field upon adding a Comment. See commentController addComment().
 var getforumByIDComment = async (req, res) => {
   try {
     const post = await Post.find({'_id': req.params._id});
