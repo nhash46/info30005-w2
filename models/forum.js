@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 const forumPostSchema = new mongoose.Schema({
   title: String,
   body: String,
-  comment: {
+  comments: [{
     type: Schema.Types.ObjectId,
     ref: "Comment"
-  }
+  }]
 });
 
 const Post = mongoose.model("Post", forumPostSchema, "forum_posts");
