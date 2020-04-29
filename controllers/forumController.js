@@ -13,7 +13,7 @@ const addforum = (req, res) => {
     body: req.body.body
   })
   // add post into db
-  newPost.save(function (err, Post) {
+  newPost.save(function (err) {
     if (err) return console.error(err);
   });
   res.send("Post added!");
@@ -92,10 +92,11 @@ const getAllComments = async (req, res) => {
 // gets a comment from a title query
 const getCommentByTitle = async (req, res) => {
   try{
-    const comment = await Comment
-  .find({'title': req.params.title})
-  .populate('parentPost')
-  return res.send(comment);
+    const comment = await Comment.find({'title': req.params.title});
+
+    comment.populate('parentPost').execPopulate();
+    
+    return res.send(comment);
   }
   catch(err) {
     res.status(400);
