@@ -43,21 +43,6 @@ const getforumByID = async (req, res) => {
 };
 
 
-// function to modify forum by IDy
-const updateForum = (req, res) => {
-  db.Comment.create(req.body)
-    .then(function(dbComment) {
-      return db.Post.findOneAndUpdate({_id: req.params.id }, { comment: dbComment._id }, { new: true });
-    })
-    .then(function(dbPost) {
-      res.json(dbPost);
-    })
-    .catch(function(err) {
-      // If an error occurred, send it to the client
-      res.json(err);
-    });
-};
-
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
