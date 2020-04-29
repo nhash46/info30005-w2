@@ -1,14 +1,28 @@
 const mongoose = require("mongoose");
 
 // import forum model
-const Post = mongoose.model("Forum");
+const Post = mongoose.model("Post");
+
+// function to handle request to add post
+const addforum = (req, res) => {
+ // extract info. from body
+  var newPost = new Post({
+    title: req.body.title,
+    body: req.body.body
+  })
+  // add post into db
+  newPost.save(function (err) {
+    if (err) return console.error(err);
+  });
+  res.send("Post added!");
+};
 
     
 // function to handle a request to get all forums
 const getAllForumPosts = async (req, res) => {
     
   try {
-    const all_posts = await Post.find();
+    const all_posts = await Post.find().populate("comments");
     return res.send(all_posts);
   } catch (err) {
     res.status(400);
@@ -17,86 +31,36 @@ const getAllForumPosts = async (req, res) => {
 };
 
 
-const editComment = async (req, res) => {
-  res.send("Working on this feature");
-  /*await Post.updateOne(
-    {title:req.params.title},
-    {
-      $set:{'comments':req.body}
-    }
-  );
-  */
-  
-  /*const new_comment=req.body;
-  //search by ID
-  const forum = forum.find(forum => forum.id === req.params.id);
-  if(!forum){
-    //cannot be found
-    return res.send([])
-  }
-  //now merge with original forum
-  //assumed user well-informed ( a dangerous assumption)
-  Object.assign(forum.comment, new_comment);
-  forum.save(function (err, user) {
-    if (err) return console.error(err);
-  });
-
-  //return updated forum
-  res.send(forum);*/
-
-
-};
-
-
-/*// function to handle a request to a particular forum
-const getforumByID = (req, res) => {
-  // search for forum in the database via ID
-  const forum = forums.find(forum => forum.id === req.params.id);
-
-  if (forum) {
-    // send back the forum details
-    res.send(forum);
-  } else {
-    // you can decide what to return if forum is not found
-    // currently, an empty list will be returned
-    res.send([]);
+// function to handle a request to a particular forum
+const getforumByID = async (req, res) => {
+  try {
+    const forum = await Post.find({'_id': req.params._id});
+    return res.send(forum);
+  } catch (err) {
+    res.status(400);
+    return res.send("Database query failed!!!!!!");
   }
 };
 
-// function to handle request to add forum
-const addforum = (req, res) => {
-  // extract info. from body
-  const forum = req.body;
 
-  // add forum to array
-  forums.push(forum);
-  res.send(forums);
+// function to modify forum by IDy
+const updateForum = (req, res) => {
+  db.Comment.create(req.body)
+    .then(function(dbComment) {
+      return db.Post.findOneAndUpdate({_id: req.params.id }, { comment: dbComment._id }, { new: true });
+    })
+    .then(function(dbPost) {
+      res.json(dbPost);
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
 };
 
-// function to modify forum by ID
-const updateforum = (req, res) => {
-  const new_forum = req.body;
-
-  // search for forum in the database via ID
-  const forum = forums.find(forum => forum.id === req.params.id);
-  if (!forum) {
-	  // cannot be found
-	  return res.send([]);
-  }
-
-  // now merge new_forum into the original forum object
-  // it is assumed that user input is well-formed (a dangerous assumption)
-  Object.assign(forum, new_forum);
-
-  // return updated forum
-  res.send(forum);
-};
-*/
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
-  editComment,
-  //getforumByID,
-  //addforum,
-  //updateforum
+  addforum,
+  getforumByID,
 };
