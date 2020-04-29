@@ -11,9 +11,6 @@ forumRouter.get('/', forumController.getAllForumPosts);
 //add post 
 forumRouter.post('/',forumController.addforum);
 
-//commment on particular post
-forumRouter.post('/:_id',forumController.updateForum);
-
 //search post by id
 forumRouter.get('/:_id',forumController.getforumByID);
 

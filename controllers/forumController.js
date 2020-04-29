@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-const crypto = require("crypto");
 
 // import forum model
-const Post = mongoose.model("Forum");
+const Post = mongoose.model("Post");
 
 // function to handle request to add post
 const addforum = (req, res) => {
@@ -12,7 +11,7 @@ const addforum = (req, res) => {
     body: req.body.body
   })
   // add post into db
-  newPost.save(function (err, Post) {
+  newPost.save(function (err) {
     if (err) return console.error(err);
   });
   res.send("Post added!");
@@ -23,7 +22,7 @@ const addforum = (req, res) => {
 const getAllForumPosts = async (req, res) => {
     
   try {
-    const all_posts = await Post.find();
+    const all_posts = await Post.find().populate("comments");
     return res.send(all_posts);
   } catch (err) {
     res.status(400);
@@ -39,7 +38,7 @@ const getforumByID = async (req, res) => {
     return res.send(forum);
   } catch (err) {
     res.status(400);
-    return res.send("Database query failed");
+    return res.send("Database query failed!!!!!!");
   }
 };
 
@@ -64,5 +63,4 @@ module.exports = {
   getAllForumPosts,
   addforum,
   getforumByID,
-  updateForum
 };
