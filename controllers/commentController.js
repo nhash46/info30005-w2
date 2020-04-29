@@ -36,7 +36,7 @@ const addComment = (req, res) => {
     try{
       const comment = await Comment.find({'title': req.params.title});
   
-      comment.populate('parentPost').execPopulate();
+      //comment.populate('parentPost').execPopulate();
   
       return res.send(comment);
     }
