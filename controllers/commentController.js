@@ -26,7 +26,7 @@ const addComment = (req, res) => {
     }
     catch (err) {
       res.status(400);
-      return res.send("Get Fucked");
+      return res.send("Database query failed");
     }
   };
   
