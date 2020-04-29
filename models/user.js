@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  username: String,
+  userType: {
+    type: String,
+    enum: ['student','counsellor'],
+    default: 'student'
+  },
+  username: {type: String, unique: true},
   password: String,
   first_name: String,
   last_name: String,
-  email: String
+  email: {type: String, unique: true}
 });
 
 const User = mongoose.model("User", userSchema, "users");

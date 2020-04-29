@@ -37,27 +37,30 @@ const getAllForumPosts = (req, res) => {
 
 // function to handle a request to a particular forum
 const getforumByID = async (req, res) => {
-  try{
-    const post = await Post.find({'_id': req.params._id}).populate('comments');
-    return res.send(post);
-  }
-  catch(err) {
+  try {
+    const forum = await Post.find({'_id': req.params._id});
+    return res.send(forum);
+  } catch (err) {
     res.status(400);
     return res.send("Database query failed!!!!!!");
   }
 };
 
-  /*db.Post.findOne({_id : req.params.id })
-  .populate("comment")
-  .then(function(dbPost) {
 
-    // If we were able to successfully find an Post with the given id, send it back to the client
-    res.json(dbPost);
-  })
-  .catch(function(err) {
-    // If an error occurred, send it to the client
-    res.json(err);
-  });*/
+// function to modify forum by IDy
+const updateForum = (req, res) => {
+  db.Comment.create(req.body)
+    .then(function(dbComment) {
+      return db.Post.findOneAndUpdate({_id: req.params.id }, { comment: dbComment._id }, { new: true });
+    })
+    .then(function(dbPost) {
+      res.json(dbPost);
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+};
 
 // remember to export the functions
 module.exports = {
