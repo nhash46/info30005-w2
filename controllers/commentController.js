@@ -33,7 +33,6 @@ const addComment = (req, res) => {
 
   // gets a comment from a title query
   const getCommentByTitle = async (req, res) => {
-    res.send("hello");
     try{
       const comment = await Comment.find({'title': req.params.title});
   
