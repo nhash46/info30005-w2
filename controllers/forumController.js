@@ -22,7 +22,7 @@ const addforum = (req, res) => {
 const getAllForumPosts = async (req, res) => {
     
   try {
-    const all_posts = await Post.find().populate("commentss");
+    const all_posts = await Post.find().populate("comments");
     return res.send(all_posts);
   } catch (err) {
     res.status(400);
