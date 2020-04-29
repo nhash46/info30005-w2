@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const crypto = require("crypto");
 
 // import forum model
 const Post = mongoose.model("Post");

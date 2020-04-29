@@ -8,8 +8,8 @@ const commentController = require("../controllers/commentController.js");
 //commment on particular post
 commentRouter.post('/:_id', commentController.addComment);
 
-forumRouter.get('/', commentController.getAllComments);
+commentRouter.get('/', commentController.getAllComments);
 
-forumRouter.get('/:title', commentController.getCommentByTitle);
+commentRouter.get('/:title', commentController.getCommentByTitle);
 
 module.exports = commentRouter;
