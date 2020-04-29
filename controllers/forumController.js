@@ -43,7 +43,7 @@ const getforumByID = async (req, res) => {
   }
   catch(err) {
     res.status(400);
-    return res.send("Database query failed");
+    return res.send("Database query failed!!!!!!");
   }
 };
 
