@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const Comment = mongoose.model("Comment");
+const Post = mongoose.model("Post");
 
 const forumController = require("../controllers/forumController.js");
 
@@ -14,13 +15,20 @@ const addComment = (req, res) => {
     })
 
     // need to add this Id to Parent document 'comment' field
-    var post = forumController.getforumByIDComment(req.params._id);
+    /*var post = forumController.getforumByIDComment(req.params._id);
     post.comment = newComment._id;
     post.save(function(err){
         if (err) return console.error(err);
     });
+    */
 
-    // add user to database
+    const post = await Post.find({'_id': req.params._id});
+    post.comment = newComment._id;
+    post.save(function(err){
+        if (err) return console.error(err);
+    });
+   
+    // add comment to database
     newComment.save(function (err) {
       if (err) return console.error(err);
     });
