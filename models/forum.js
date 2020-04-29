@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const Schema = mongoose.Schema;
+
 const forumPostSchema = new mongoose.Schema({
   _id: Schema.Types.ObjectId,
   title: String,
