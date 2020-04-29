@@ -21,10 +21,10 @@ const addforum = (req, res) => {
 // function to handle a request to get all forums
 const getAllForumPosts = async (req, res) => {
   
-  const all_posts = await Post.find().populate("comments").exec(function(err, forum_posts) {
+  const all_posts = await Post.find().populate("comments").exec(function(err, blah) {
     if (err) res.send(err);
 
-    res.json(forum_posts);
+    res.json(blah);
   })
 };
 
