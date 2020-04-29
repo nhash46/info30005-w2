@@ -19,22 +19,26 @@ const addforum = (req, res) => {
 
     
 // function to handle a request to get all forums
-const getAllForumPosts = async (req, res) => {
+const getAllForumPosts = (req, res) => {
     
-  try {
-    const all_posts = await Post.find().populate("comments");
-    return res.send(all_posts);
+  Post.find().populate("comments").exec(function(err, posts) {
+    if(err) console.log(err);
+
+    else res.send(posts);
+  })
+
+    /*return res.send(all_posts);
   } catch (err) {
     res.status(400);
     return res.send("Database query failed");
-  }
+  }*/
 };
 
 
 // function to handle a request to a particular forum
 const getforumByID = async (req, res) => {
   try{
-    const post = await Post.find({'_id': req.params._id}).populate('comments')
+    const post = await Post.find({'_id': req.params._id}).populate('comments');
     return res.send(post);
   }
   catch(err) {
