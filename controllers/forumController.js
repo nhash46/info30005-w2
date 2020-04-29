@@ -3,7 +3,6 @@ const crypto = require("crypto");
 
 // import forum model
 const Post = mongoose.model("Post");
-const Comment = mongoose.model("Comment");
 
 // function to handle request to add post
 const addforum = (req, res) => {
@@ -59,60 +58,9 @@ const getforumByID = async (req, res) => {
     res.json(err);
   });*/
 
-
-// adds a comment to comment collection
-const addComment = (req, res) => {
-  
-  var newComment = new Comment({
-    title : req.body.title,
-    content : req.body.content,
-    parentPost : req.params._id
-  })
-
-  // add user to database
-  newComment.save(function (err) {
-    if (err) return console.error(err);
-  });
-  res.send("Comment created successfully");
-};
-
-// 
-const getAllComments = async (req, res) => {  
-  try{
-  console.log('hello');
-  res.send('hello');
-  const all_comments = await Comment.find();
-  return res.send(all_comments);
-  }
-  catch (err) {
-    res.status(400);
-    return res.send("Get Fucked");
-  }
-};
-
-
-// gets a comment from a title query
-const getCommentByTitle = async (req, res) => {
-  res.send("hello");
-  try{
-    const comment = await Comment.find({'title': req.params.title});
-
-    comment.populate('parentPost').execPopulate();
-
-    return res.send(comment);
-  }
-  catch(err) {
-    res.status(400);
-    return res.send("Database query failed");
-  }
-};
-
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
   addforum,
   getforumByID,
-  addComment,
-  getAllComments,
-  getCommentByTitle
 };
