@@ -6,11 +6,11 @@ const userSchema = new mongoose.Schema({
     enum: ['student','counsellor'],
     default: 'student'
   },
-  username: String,
+  username: {type: String, unique: true},
   password: String,
   first_name: String,
   last_name: String,
-  email: String
+  email: {type: String, unique: true}
 });
 
 const User = mongoose.model("User", userSchema, "users");
