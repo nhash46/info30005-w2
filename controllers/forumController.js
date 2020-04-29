@@ -91,11 +91,12 @@ const getAllComments = async (req, res) => {
 
 // gets a comment from a title query
 const getCommentByTitle = async (req, res) => {
+  res.send("hello");
   try{
     const comment = await Comment.find({'title': req.params.title});
 
     comment.populate('parentPost').execPopulate();
-    
+
     return res.send(comment);
   }
   catch(err) {
