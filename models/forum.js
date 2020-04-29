@@ -6,7 +6,7 @@ const forumPostSchema = new mongoose.Schema({
   title: String,
   body: String,
   comments : [{
-    type: mongoose.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "Comment"
   }]
 });
