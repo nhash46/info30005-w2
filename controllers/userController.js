@@ -54,8 +54,9 @@ const logIn = async (req, res) => {
     if(!user){
       return res.status(404).send("username or password is incorrect");
     }
-    
-    return res.status(200).send();
+    if(user){
+      return res.status(200).send("Welcome back " + username);
+    }
   })
 };
 
