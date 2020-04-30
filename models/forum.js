@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
+const Schema = mongoose.Schema;
+
 const forumPostSchema = new mongoose.Schema({
-  _id: mongoose.Types.ObjectId,
   title: String,
   body: String,
-  comments : [{
-    type: mongoose.Types.ObjectId,
+  comments: [{
+    type: Schema.Types.ObjectId,
     ref: "Comment"
   }]
 });

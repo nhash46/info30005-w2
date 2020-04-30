@@ -14,4 +14,7 @@ userRouter.get("/", userController.getAllUsers);
 // logging in
 userRouter.post("/login", userController.logIn);
 
+// creating a new consultation
+userRouter.post("/consultations", userController.newConsultation);
+
 module.exports = userRouter;

@@ -20,14 +20,18 @@ app.get("/", (req, res) => {
 // Routes
 const forumRouter = require("./routes/forumRouter");
 const userRouter = require("./routes/userRouter");
+const commentRouter = require("./routes/commentRouter");
 
 // auther routes handles by forumRouter
 app.use("/forum-posts", forumRouter);
 
 // user routes handled by userRouter
 app.use("/user", userRouter);
+
+app.use("/comments", commentRouter);
   
 // start app and listen for incoming requests on port
+// app.listen(process.env.PORT || 3000, () => {
 app.listen(process.env.PORT || 3000, () => {
     console.log("The library app is running!");
   });

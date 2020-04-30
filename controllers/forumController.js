@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-const crypto = require("crypto");
 
 // import forum model
 const Post = mongoose.model("Post");
-const Comment = mongoose.model("Comment");
 
 // function to handle request to add post
 const addforum = (req, res) => {
@@ -15,7 +13,7 @@ const addforum = (req, res) => {
     //comments: []
   })
   // add post into db
-  newPost.save(function (err, Post) {
+  newPost.save(function (err) {
     if (err) return console.error(err);
   });
   res.send("Post added!");
@@ -26,7 +24,7 @@ const addforum = (req, res) => {
 const getAllForumPosts = async (req, res) => {
     
   try {
-    const all_posts = await Post.find();
+    const all_posts = await Post.find().populate("comments");
     return res.send(all_posts);
   } catch (err) {
     res.status(400);
@@ -52,83 +50,35 @@ const getforumByID = (req, res) => {
 };
 */
 
-
 // function to handle a request to a particular forum
 const getforumByID = async (req, res) => {
-  try{
-    const post = await Post
-    .find({'_id': req.params._id})
-    .populate('comment')
-    return res.send(post);
-  }
-  catch(err) {
-    res.status(400);
-    return res.send("Database query failed");
-  }
-};
-
-  /*db.Post.findOne({_id : req.params.id })
-  .populate("comment")
-  .then(function(dbPost) {
-
-    // If we were able to successfully find an Post with the given id, send it back to the client
-    res.json(dbPost);
-  })
-  .catch(function(err) {
-    // If an error occurred, send it to the client
-    res.json(err);
-  });*/
-
-
-// adds a comment to comment collection
-const addComment = (req, res) => {
-  
-  var newComment = new Comment({
-    title : req.body.title,
-    content : req.body.content,
-    parentPost : req.params._id
-  })
-
-  // add user to database
-  newComment.save(function (err) {
-    if (err) return console.error(err);
-  });
-  res.send("Comment created successfully");
-};
-
-// 
-const getAllComments = async (req, res) => {
-    
   try {
-    const all_comments = await Comment.find();
-    return res.send(all_comments);
+    const forum = await Post.find({'_id': req.params._id});
+    return res.send(forum);
   } catch (err) {
     res.status(400);
-    return res.send("Database query failed");
+    return res.send("Database query failed!!!!!!");
   }
 };
 
 
-// gets a comment from a title query
-const getCommentByTitle = async (req, res) => {
-  try{
-    const comment = await Comment
-  .find({'title': req.params.title})
-  .populate('parentPost')
-  return res.send(comment);
+// backend function involved in updating a posts comment field upon adding a Comment. See commentController addComment().
+var getforumByIDComment = async (req, res) => {
+  try {
+    const post = await Post.find({'_id': req.params._id});
+    return post;
+  } catch (err) {
+    return console.error(err);
   }
-  catch(err) {
-    res.status(400);
-    return res.send("Database query failed");
-  }
-}
+};
+
 
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
   addforum,
-  getforumByID
-  //updateforum
+  getforumByID,
+  getforumByIDComment
 };
   //getforumByID,
   //addComment,

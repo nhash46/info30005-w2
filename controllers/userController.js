@@ -2,12 +2,14 @@ const mongoose = require("mongoose");
 
 // import user model
 const User = mongoose.model("User");
+const Consultation = mongoose.model("Consultation");
 
     
 // function to add user
 const addUser = async (req, res) => {
 
     var newUser = new User({
+      userType: req.body.userType,
       username: req.body.username,
       password: req.body.password,
       first_name: req.body.first_name,
@@ -17,10 +19,13 @@ const addUser = async (req, res) => {
   
     // add user to database
     newUser.save(function (err, user) {
-      if (err) return console.error(err);
+      if (err) {
+        res.send("ERROR: user type must be student or counsellor");
+        return console.error(err);
+      } else {
+        res.send("Successful signup!");
+      }
     });
-  
-    res.send("Successful signup!");
 };
 
 // function to handle a request to get all users
@@ -38,28 +43,51 @@ const getAllUsers = async (req, res) => {
 // function to handle a request to login
 const logIn = async (req, res) => {
 
-  User.find({"username": req.body.username, "password": req.body.password}, function(err, user){
-    if(err) 
-        return console.error(err.stack);
+  var username = req.body.username;
+  var password = req.body.password;
 
-    if(!user) 
-        return res.send("User not found!");
+  User.findOne({username: username, password: password}, function(err, user){
+    if(err){
+      console.log(err);
+      return res.status(500).send();
+    }
+    if(!user){
+      return res.status(404).send("username or password is incorrect");
+    }
+    if(user){
+      return res.status(200).send("Welcome back " + username);
+    }
+  })
+};
 
-    else
-        return res.send("Welcome back " + user.username);
+  // function to create a new consultation
+const newConsultation = async (req, res) => {
 
-  });
+  var newConsultation = new Consultation ({
+
+    student: req.body.student,
+    counsellor: req.body.counsellor,
+    date: req.body.date,
+    time: req.body.time,
+    isOnline: req.body.isOnline,
+
+  })
 
   // add user to database
-  newUser.save(function (err, user) {
-    if (err) return console.error(err);
+  newConsultation.save(function (err, consultation) {
+    if (err) {
+      return console.error(err);
+    } 
+    else {
+      res.send("Consulation confirmed for " + newConsultation.date + " at " + newConsultation.time);
+    }
   });
 
-  res.send("Successful signup!");
 };
 
 module.exports = {
   addUser,
   getAllUsers,
-  logIn
+  logIn,
+  newConsultation
 };
