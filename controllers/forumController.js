@@ -13,6 +13,7 @@ const addforum = (req, res) => {
   // add post into db
   newPost.save(function (err) {
     if (err) return console.error(err);
+    res.send("Whoops! Both Title and Content fields are required")
   });
   res.send("Post added!");
 };
