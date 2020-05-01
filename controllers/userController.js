@@ -73,7 +73,7 @@ const newConsultation = async (req, res) => {
 
   })
 
-  // add user to database
+  // add consultation to database
   newConsultation.save(function (err, consultation) {
     if (err) {
       return console.error(err);
@@ -85,9 +85,22 @@ const newConsultation = async (req, res) => {
 
 };
 
+ // 
+ const getAllConsultations = async (req, res) => {  
+  try{
+  const all_consultations = await Consultation.find();
+  return res.send(all_consultations);
+  }
+  catch (err) {
+    res.status(400);
+    return res.send("Database query failed");
+  }
+};
+
 module.exports = {
   addUser,
   getAllUsers,
   logIn,
-  newConsultation
+  newConsultation,
+  getAllConsultations
 };
