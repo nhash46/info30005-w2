@@ -1,7 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require('path');
 
 const app = express();
+
+// load view engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 const db = require("./models");
 console.log(db);

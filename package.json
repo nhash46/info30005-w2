@@ -20,7 +20,8 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "express": "^4.17.1",
-    "mongoose": "^5.9.10"
+    "mongoose": "^5.9.10",
+    "pug": "^2.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
