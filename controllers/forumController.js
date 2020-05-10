@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 // import forum model
 const Forum = mongoose.model("Post");
 
+// import commment model
+const Comment = mongoose.model("Comment");
+
 // function to handle request to add post
 const addforum = (req, res) => {
  // extract info. from body
@@ -51,25 +54,52 @@ const getAllForumPosts = async (req, res) => {
 
 // function to handle a request to a particular forum
 const getforumByID = async (req, res) => {
+
+  Forum.findById(req.params._id, function(err, forum){
+    //Comment.getCommentByParentId(Forum._id, function(err, comments){
+      res.render('view_forum', {
+        forum: forum,
+        //comments: comments
+      });
+    //});
+  });
+  /*
   try {
-    const forum = await Post.find({'_id': req.params._id});
-    return res.send(forum);
+    const forum = await Forum.find({'_id': req.params._id});
+    res.render('view_forum', {
+      forum: forum
+    });
   } catch (err) {
     res.status(400);
     return res.send("Database query failed!!!!!!");
   }
+  */
 };
 
 
 // backend function involved in updating a posts comment field upon adding a Comment. See commentController addComment().
 var getforumByIDComment = async (req, res) => {
+  
   try {
-    const post = await Post.find({'_id': req.params._id});
-    return post;
+    const post = await Forum.find({'_id': req.params._id});
   } catch (err) {
     return console.error(err);
   }
 };
+
+ // gets a comment by parentId
+
+ const getCommentByParentId = async (req, res) => {
+  try{
+    const comment = await Comment.find({'parentPost': req.params._id});
+
+    return res.send(comment);
+  }
+  catch(err) {
+    res.status(400);
+    return res.send("Database query failed");
+  }
+}
 
 
 // remember to export the functions
@@ -78,5 +108,6 @@ module.exports = {
   addforum,
   getforumByID,
   getforumByIDComment,
-  newForumForm
+  newForumForm,
+  getCommentByParentId
 };

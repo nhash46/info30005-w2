@@ -59,8 +59,23 @@ const addComment = async (req, res) => {
     }
   };
 
+  // gets a comment by parentId
+
+  const getCommentByParentId = async (req, res) => {
+    try{
+      const comment = await Comment.find({'parentPost': req.params._id});
+  
+      return res.send(comment);
+    }
+    catch(err) {
+      res.status(400);
+      return res.send("Database query failed");
+    }
+  }
+
   module.exports = {
     addComment,
     getAllComments,
-    getCommentByTitle
+    getCommentByTitle,
+    getCommentByParentId
   };

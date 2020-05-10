@@ -4,4 +4,5 @@ block content
     h1 #{title}
     ul.list-group
         each forum, i in forums
-            li.list-group-item= forum.title
+            li.list-group-item
+                a(href='/forum-posts/'+forum._id)= forum.title
