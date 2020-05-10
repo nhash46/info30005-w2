@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require('path');
 
+const mongoose = require("mongoose");
+
 const app = express();
 
 // load view engine
@@ -11,9 +13,6 @@ app.set('view engine', 'pug');
 const db = require("./models");
 console.log(db);
 
-// Bring in models
-let Forum = require("./models/forum");
-
 // use the body-parser middleware, which parses request bodies into req.body
 // support parsing of json
 app.use(bodyParser.json());
@@ -22,12 +21,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // GET home page
 app.get("/", (req, res) => {
-    res.render("index", {
-      title: 'Spatium'
+  res.render("index", {
+    title: 'Spatium'
     });
-  });
+});
 
 // GET forum page
+
+/*
 app.get("/forum-posts", (req, res) => {
 
   Forum.find({}, function(err, forums){
@@ -41,25 +42,11 @@ app.get("/forum-posts", (req, res) => {
       });
     }
   });
-
-  /*
-  let forums = [
-    {
-      id:1,
-      title: 'Forum One',
-      author:'Naz',
-      body:'This is forum one'
-    },
-    {
-      id:2,
-      title: 'Forum two',
-      author:'Naz',
-      body:'This is forum two'
-    }
-  ];
-  */
   
 });
+*/
+
+// get
 
 // Routes
 const forumRouter = require("./routes/forumRouter");

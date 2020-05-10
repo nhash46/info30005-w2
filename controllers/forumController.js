@@ -1,38 +1,52 @@
 const mongoose = require("mongoose");
 
 // import forum model
-const Post = mongoose.model("Post");
+const Forum = mongoose.model("Post");
 
 // function to handle request to add post
 const addforum = (req, res) => {
  // extract info. from body
-  var newPost = new Post({
+
+  var newPost = new Forum({
     title: req.body.title,
     body: req.body.body
-  })
+  });
+
   // add post into db
   newPost.save(function (err) {
     if (err){
-      return res.send("Whoops! Both title and body fields are required");
+      console.log(err);
     }
     else{
-      return res.send("Post added!");
+      //req.flash('success','Post Added');
+      res.redirect('/forum-posts');
     } 
   });
   
 };
 
+// function that loads form page for adding post
+const newForumForm = (req, res) => {
+  res.render('add_forum', {
+    title:'Create a post'
+  });
+}
+
     
 // function to handle a request to get all forums
 const getAllForumPosts = async (req, res) => {
     
-  try {
-    const all_posts = await Post.find().populate("comments");
-    return res.send(all_posts);
-  } catch (err) {
-    res.status(400);
-    return res.send("Database query failed");
-  }
+  Forum.find({}, function(err, forums){
+
+    if(err){
+      console.log(err);
+    } else {
+      res.render("forum-posts", {
+        title: 'Forums',
+        forums: forums
+      });
+    }
+  });
 };
 
 // function to handle a request to a particular forum
@@ -63,5 +77,6 @@ module.exports = {
   getAllForumPosts,
   addforum,
   getforumByID,
-  getforumByIDComment
+  getforumByIDComment,
+  newForumForm
 };
