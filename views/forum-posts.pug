@@ -6,3 +6,5 @@ block content
         each forum, i in forums
             li.list-group-item
                 a(href='/forum-posts/'+forum._id)= forum.title
+    
+    input.btn.btn-primary(type='submit', value='Create a post', onclick='newForumForm()')

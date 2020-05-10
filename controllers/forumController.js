@@ -101,6 +101,16 @@ var getforumByIDComment = async (req, res) => {
   }
 }
 
+// Load Edit Form
+const editForum = async (req, res) => {
+
+  Forum.findById(req.params._id, function(err, forum){
+    res.render('edit_forum', {
+      title: 'Edit Forum',
+      forum: forum
+    });
+  });
+}
 
 // remember to export the functions
 module.exports = {
@@ -109,5 +119,6 @@ module.exports = {
   getforumByID,
   getforumByIDComment,
   newForumForm,
-  getCommentByParentId
+  getCommentByParentId,
+  editForum
 };
