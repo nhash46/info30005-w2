@@ -40,7 +40,8 @@ app.use("/user", userRouter);
 // comment routes handled by commentRouter
 app.use("/comments", commentRouter);
 
-//
+// Set public folder
+app.use(express.static(path.join(__dirname, 'public')));
   
 // start app and listen for incoming requests on port
 // app.listen(process.env.PORT || 3000, () => {
