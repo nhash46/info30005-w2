@@ -2,6 +2,6 @@ extends layout
 
 block content
     h1 #{title}
-    ul
+    ul.list-group
         each forum, i in forums
-            li= forum.title
+            li.list-group-item= forum.title
