@@ -26,28 +26,6 @@ app.get("/", (req, res) => {
     });
 });
 
-// GET forum page
-
-/*
-app.get("/forum-posts", (req, res) => {
-
-  Forum.find({}, function(err, forums){
-
-    if(err){
-      console.log(err);
-    } else {
-      res.render("forum-posts", {
-        title: 'Forums',
-        forums: forums
-      });
-    }
-  });
-  
-});
-*/
-
-// get
-
 // Routes
 const forumRouter = require("./routes/forumRouter");
 const userRouter = require("./routes/userRouter");
@@ -59,7 +37,10 @@ app.use("/forum-posts", forumRouter);
 // user routes handled by userRouter
 app.use("/user", userRouter);
 
+// comment routes handled by commentRouter
 app.use("/comments", commentRouter);
+
+//
   
 // start app and listen for incoming requests on port
 // app.listen(process.env.PORT || 3000, () => {
