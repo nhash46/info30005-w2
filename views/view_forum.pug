@@ -10,6 +10,4 @@ block content
     h3 Comments
     ul.list-group
         each c in forum.comments
-            li.list-group-item= c.title
-            li.list-group-item= c.content
-            
+            li.list-group-item= c.title, c.content
