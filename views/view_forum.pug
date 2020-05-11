@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1= forum.title
+    br
+    p= forum.body
+    a.btn.btn-default(href='/forum-posts/edit/'+forum._id) Edit
+    a.btn.btn-danger.delete-forum(href='#', data-id=forum._id) Delete
+    hr
+    h3 Comments
