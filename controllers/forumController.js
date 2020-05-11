@@ -124,7 +124,7 @@ const updateForum = (req, res) => {
   let query = {_id:req.params._id}
  
    // add post into db
-  Forum.update(query, forum, function (err) {
+  Forum.updateOne(query, forum, function (err) {
     if (err){
       console.log(err);
     }
