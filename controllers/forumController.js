@@ -56,12 +56,12 @@ const getAllForumPosts = async (req, res) => {
 // function to handle a request to a particular forum
 const getforumByID = async (req, res) => {
 
-  Forum.findById(req.params._id, function(err, forum){
+  Forum.findById(req.params._id).populate('comments').exec(function(err, forum){
     //Comment.getCommentByParentId(Forum._id, function(err, comments){
-      res.render('view_forum', {
-        forum: forum,
-        //comments: comments
-      });
+    res.render('view_forum', {
+      forum: forum,
+      //comments: comments
+    });
     //});
   });
   /*
