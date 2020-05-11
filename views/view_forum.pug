@@ -9,5 +9,6 @@ block content
     hr
     h3 Comments
     each c in forum.comments
-        p= c.title
-        p= c.content
+        .container
+            p= c.title
+            p= c.content
