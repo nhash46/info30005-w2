@@ -8,7 +8,8 @@ block content
     a.btn.btn-danger.delete-forum(href='#', data-id=forum._id) Delete
     hr
     h3 Comments
-    each c in forum.comments
-        .container
-            p= c.title
-            p= c.content
+    ul.list-group
+        each c in forum.comments
+            li.list-group-item= c.title
+            li.list-group-item= c.content
+            
