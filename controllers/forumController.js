@@ -8,8 +8,8 @@ const Comment = mongoose.model("Comment");
 
 // function to handle request to add post
 const addforum = (req, res) => {
- // extract info. from body
 
+ // extract info. from body
   var newPost = new Forum({
     title: req.body.title,
     body: req.body.body
@@ -25,6 +25,7 @@ const addforum = (req, res) => {
       res.redirect('/forum-posts');
     } 
   });
+
   
 };
 
