@@ -2,7 +2,7 @@ extends layout
 
 block content
     h1 #{title}
-    form(method='POST', action='/forum-posts/edit'+forum._id)
+    form(method='POST', action='/forum-posts/edit/'+forum._id)
         #form-group
             label Title:
             input.form-control(name='title', type='text', value=forum.title)

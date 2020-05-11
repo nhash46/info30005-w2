@@ -112,6 +112,29 @@ const editForum = async (req, res) => {
   });
 }
 
+// function to handle request to edit post
+const updateForum = (req, res) => {
+  // extract info. from body
+
+  let forum = {};
+
+  forum.title = req.body.title;
+  forum.body = req.body.body;
+   
+  let query = {_id:req.params._id}
+ 
+   // add post into db
+  Forum.update(query, forum, function (err) {
+    if (err){
+      console.log(err);
+    }
+    else{
+      //req.flash('success','Post Added');
+      res.redirect('/forum-posts');
+    } 
+  });
+}
+
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
@@ -120,5 +143,6 @@ module.exports = {
   getforumByIDComment,
   newForumForm,
   getCommentByParentId,
-  editForum
+  editForum,
+  updateForum
 };
