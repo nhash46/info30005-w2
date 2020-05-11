@@ -23,4 +23,7 @@ forumRouter.get('/edit/:_id' , forumController.editForum);
 //update forum post by id
 forumRouter.post('/edit/:_id' , forumController.updateForum);
 
+// delete forum post by id
+forumRouter.delete('/:_id', forumController.deleteForum);
+
 module.exports = forumRouter;

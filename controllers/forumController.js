@@ -135,6 +135,19 @@ const updateForum = (req, res) => {
   });
 }
 
+// function to handle request to delete post
+const deleteForum = (req, res) => {
+  
+  let query = {_id:req.params._id}
+
+  Forum.remove(query, function(err){
+    if(err){
+      console.log(err);
+    }
+    res.send('Success');
+  });
+}
+
 // remember to export the functions
 module.exports = {
   getAllForumPosts,
@@ -144,5 +157,6 @@ module.exports = {
   newForumForm,
   getCommentByParentId,
   editForum,
-  updateForum
+  updateForum,
+  deleteForum
 };
