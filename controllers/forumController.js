@@ -140,7 +140,7 @@ const deleteForum = (req, res) => {
   
   let query = {_id:req.params._id}
 
-  Forum.remove(query, function(err){
+  Forum.removeOne(query, function(err){
     if(err){
       console.log(err);
     }
