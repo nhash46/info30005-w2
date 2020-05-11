@@ -8,7 +8,6 @@ const app = express();
 const session = require('express-session');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
-const session = require('e');
 
 // load view engine
 app.set('views', path.join(__dirname, 'views'));
