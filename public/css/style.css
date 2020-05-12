@@ -3,7 +3,9 @@
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    border-radius: 25px;
 }
+
 
 .comment:hover {
     background-color: lightblue;
