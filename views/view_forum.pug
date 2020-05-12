@@ -9,8 +9,9 @@ block content
     hr
     h3 Comments
     each c in forum.comments
-        .comment
-            p #[strong #{c.title}]
-            .comment
-                p #{c.content}
+        .panel
+            .panel-default
+                .panel-heading
+                    h3.panel-title #{c.title}
+                .panel-body #{c.content}
 
