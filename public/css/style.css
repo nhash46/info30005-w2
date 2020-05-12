@@ -14,3 +14,7 @@
 .panel-default:hover {
     background-color: orange;
 }
+
+.panel-heading:hover {
+    background-color: red;
+}
