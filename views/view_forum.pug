@@ -10,8 +10,7 @@ block content
     h3 Comments
     each c in forum.comments
         .panel
-            .panel-primary
-                .panel-heading
-                    h3.panel-title #{c.title}
+            .panel-default
+                .panel-heading #{c.title}
                 .panel-body #{c.content}
 
