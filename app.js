@@ -49,9 +49,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Express Session Middleware
 app.use(session({
   secret: 'keyboard cat',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
-  cookie: { secure: true }
 }));
 
 // Express Messages Middleware
