@@ -4,8 +4,10 @@ block content
     br
     form(method='POST', action='/users/signup')
         .form-group
-            label User Type:
-            input.form-control(name='userType')
+            label User Type (select one):
+            select.form-control(name='userType')
+                option student
+                option counsellor
         br
         .form-group
             label Username:
