@@ -46,6 +46,13 @@ const getAllUsers = async (req, res) => {
     }
   };
 
+// function that loads form page for adding post
+const loginPage = (req, res) => {
+    res.render('signin', {
+        title:'Sign In'
+    });
+};
+
 // function to handle a request to login
 const logIn = async (req, res) => {
 
@@ -109,5 +116,6 @@ module.exports = {
   logIn,
   newConsultation,
   getAllConsultations,
-    newUserForm
+    newUserForm,
+    loginPage
 };
