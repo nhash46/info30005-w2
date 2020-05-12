@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const flash = require('connect-flash');
-const {validationResult} = require('express-validator/check');
 
 // import forum model
 const Forum = mongoose.model("Post");
@@ -11,39 +9,30 @@ const Comment = mongoose.model("Comment");
 // function to handle request to add post
 const addforum = (req, res) => {
 
-  let errors = validationResult(req);
+ // extract info. from body
+  var newPost = new Forum({
+    title: req.body.title,
+    body: req.body.body
+  });
 
-  if (!errors.isEmpty()) {
-    console.log(errors);
-    res.render('add_forum',
-    { 
-      title: 'Create a post',
-      errors: errors.mapped()
-    });
-  } else {
-      // extract info. from body
-    var newPost = new Forum({
-      title: req.body.title,
-      body: req.body.body
-    });
+  // add post into db
+  newPost.save(function (err) {
+    if (err){
+      console.log(err);
+    }
+    else{
+      //req.flash('success','Post Added');
+      res.redirect('/forum-posts');
+    } 
+  });
 
-    // add post into db
-    newPost.save(function (err) {
-      if (err){
-        console.log(err);
-      }
-      else{
-        req.flash('success','Post Added');
-        res.redirect('/forum-posts');
-      } 
-    });
-  } 
+  
 };
 
 // function that loads form page for adding post
 const newForumForm = (req, res) => {
   res.render('add_forum', {
-    title:'Create a post',
+    title:'Create a post'
   });
 }
 
@@ -67,25 +56,13 @@ const getAllForumPosts = async (req, res) => {
 // function to handle a request to a particular forum
 const getforumByID = async (req, res) => {
 
-  Forum.findById(req.params._id, function(err, forum){
+  Forum.findById(req.params._id).populate('comments').exec(function(err, forum){
     //Comment.getCommentByParentId(Forum._id, function(err, comments){
-      res.render('view_forum', {
-        forum: forum,
-        //comments: comments
-      });
-    //});
-  });
-  /*
-  try {
-    const forum = await Forum.find({'_id': req.params._id});
     res.render('view_forum', {
-      forum: forum
+      forum: forum,
+      //comments: comments
     });
-  } catch (err) {
-    res.status(400);
-    return res.send("Database query failed!!!!!!");
-  }
-  */
+  });
 };
 
 
@@ -141,7 +118,7 @@ const updateForum = (req, res) => {
       console.log(err);
     }
     else{
-      req.flash('success','Post Updated');
+      req.flash('success','Post updated');
       res.redirect('/forum-posts');
     } 
   });
@@ -156,12 +133,9 @@ const deleteForum = (req, res) => {
     if(err){
       console.log(err);
     }
-    req.flash('success','Post Deleted');
     res.send('Success');
   });
 }
-
-
 
 // remember to export the functions
 module.exports = {
