@@ -29,7 +29,7 @@ const addComment = async (req, res) => {
     newComment.save(function (err) {
       if (err) return console.error(err);
     });
-    location.reload();
+    res.redirect('/forum-posts/'+req.params._id);
   };
   
   // 
