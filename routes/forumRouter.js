@@ -1,5 +1,5 @@
 const express = require("express");
-const {check, validationResult} = require('express-validator');
+const forumValidator = require("../validators/forumValidator.js");
 
 // create router
 const forumRouter = express.Router();
@@ -13,7 +13,7 @@ forumRouter.get('/', forumController.getAllForumPosts);
 forumRouter.get('/submit', forumController.newForumForm);
 
 //add post 
-forumRouter.post('/submit',forumController.addforum);
+forumRouter.post('/submit', forumValidator.addForum, forumController.addforum);
 
 //search post by id
 forumRouter.get('/:_id',forumController.getforumByID);
