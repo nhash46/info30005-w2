@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const flash = require('connect-flash');
+const {validationResult} = require('express-validator/check');
+const bcrypt = require('bcryptjs');
 
 // import user model
 const User = mongoose.model("User");
@@ -12,34 +15,55 @@ const newUserForm = (req, res) => {
 };
     
 // function to add user
-const addUser = async (req, res) => {
+const addUser = (req, res) => {
 
-    var newUser = new User({
-      userType: req.body.userType,
-      username: req.body.username,
-      password: req.body.password,
-      password2: req.body.password2,
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      email: req.body.email
-    })
-  
-    // add user to database
-    newUser.save(function (err, user) {
-      if (err) {
-        res.send("ERROR: user type must be student or counsellor");
-        return console.error(err);
-      } else {
-        res.send("Successful signup!");
-      }
+  var newUser = new User({
+    userType: req.body.userType,
+    username: req.body.username,
+    password: req.body.password,
+    password2: req.body.password2,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email
+  });
+
+  let errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    console.log(errors);
+    res.render('signup',
+      { 
+        newUser:newUser,
+        errors: errors.mapped()
+      });
+  } else {
+    bcrypt.genSalt(10, function(err, salt){
+      bcrypt.hash(newUser.password, salt, function(err, hash){
+        if(err){
+          console.log(err);
+        }
+        newUser.password = hash;
+
+        // add user to database
+        newUser.save(function (err) {
+          if (err) {
+            console.log(err);
+            return;
+          } else {
+            req.flash('success', 'Successful registration! You can now log in');
+            res.redirect('login');
+          }
+        });
+      });
     });
+  }
 };
 
 // function to handle a request to get all users
 const getAllUsers = async (req, res) => {
     
     try {
-      const all_users = await User.find().select('username');
+      const all_users = await User.find();
       return res.send(all_users);
     } catch (err) {
       res.status(400);

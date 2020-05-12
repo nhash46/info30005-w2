@@ -8,6 +8,7 @@ const app = express();
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
+const bcrypt = require('bcryptjs');
 
 // load view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +21,7 @@ console.log(db);
 // support parsing of json
 app.use(bodyParser.json());
 // support parsing of urlencoded bodies (e.g. for forms)
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Express Session Middleware
 app.use(session({
