@@ -10,3 +10,7 @@
 .comment:hover {
     background-color: lightblue;
 }
+
+.jumbotron.text-center {
+    font-family: 'IM Fell Great Primer', serif;
+}
