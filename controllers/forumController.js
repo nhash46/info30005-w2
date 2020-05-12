@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const flash = require('connect-flash');
 
 // import forum model
 const Forum = mongoose.model("Post");
@@ -21,7 +22,7 @@ const addforum = (req, res) => {
       console.log(err);
     }
     else{
-      //req.flash('success','Post Added');
+      req.flash('success','Post Added');
       res.redirect('/forum-posts');
     } 
   });
@@ -130,7 +131,7 @@ const updateForum = (req, res) => {
       console.log(err);
     }
     else{
-      //req.flash('success','Post Added');
+      req.flash('success','Post Updated');
       res.redirect('/forum-posts');
     } 
   });
@@ -145,9 +146,12 @@ const deleteForum = (req, res) => {
     if(err){
       console.log(err);
     }
+    req.flash('success','Post Deleted');
     res.send('Success');
   });
 }
+
+
 
 // remember to export the functions
 module.exports = {

@@ -5,9 +5,9 @@ const path = require('path');
 const mongoose = require("mongoose");
 
 const app = express();
-const session = require('express-session');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
+const session = require('express-session');
 
 // load view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +21,21 @@ console.log(db);
 app.use(bodyParser.json());
 // support parsing of urlencoded bodies (e.g. for forms)
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Express Session Middleware
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
+
+// Express Messages Middleware
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
+
 
 // GET home page
 app.get("/", (req, res) => {
@@ -45,21 +60,6 @@ app.use("/comments", commentRouter);
 
 // Set public folder
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Express Session Middleware
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}));
-
-// Express Messages Middleware
-app.use(require('connect-flash')());
-app.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res);
-  next();
-});
 
 // Express Validator Middleware
 app.use(expressValidator({
