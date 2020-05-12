@@ -14,5 +14,16 @@ block content
                 .panel-heading
                     h3.panel-title #{c.title}
                 .panel-body #{c.content}
-                .panel-footer by 'author_' at 'datetime'  
+                .panel-footer by 'author_' at 'datetime'
+    br
+
+    form(method='POST', action='/comments/'+forum._id)
+        .form-group
+            label Title:
+            input.form-control(name='title', type='text')
+        .form-group
+            label Content
+            input.form-control(name='content')
+
+        input.btn.btn-primary(type='submit', value='Post')
 
