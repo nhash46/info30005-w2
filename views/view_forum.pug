@@ -9,8 +9,8 @@ block content
     hr
     h3 Comments
     each c in forum.comments
-        .container:hover
+        .comment
             p #[strong #{c.title}]
-            .container
+            .comment
                 p #{c.content}
 

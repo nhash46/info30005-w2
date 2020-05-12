@@ -1,0 +1,10 @@
+.comment{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.comment:hover {
+    background-color: #5e5e5e;
+}
