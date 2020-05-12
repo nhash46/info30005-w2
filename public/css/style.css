@@ -10,3 +10,7 @@
 .comment:hover {
     background-color: lightblue;
 }
+
+.panel:hover {
+    background-color: lightgrey;
+}
