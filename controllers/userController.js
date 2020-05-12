@@ -4,6 +4,12 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const Consultation = mongoose.model("Consultation");
 
+// function that loads form page for adding post
+const newUserForm = (req, res) => {
+    res.render('signup', {
+        title:'Sign Up'
+    });
+};
     
 // function to add user
 const addUser = async (req, res) => {
@@ -102,5 +108,6 @@ module.exports = {
   getAllUsers,
   logIn,
   newConsultation,
-  getAllConsultations
+  getAllConsultations,
+    newUserForm
 };

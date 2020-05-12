@@ -5,6 +5,7 @@ const userRouter = express.Router();
 
 const userController = require("../controllers/userController.js");
 
+userRouter.get("/signup", userController.newUserForm);
 // adding a new user i.e. signing up
 userRouter.post("/signup", userController.addUser);
 
