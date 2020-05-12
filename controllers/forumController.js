@@ -64,14 +64,6 @@ const getforumByID = async (req, res) => {
     });
     //});
   });
-  /*
-  try {
-    const forum = await Forum.find({'_id': req.params._id});
-    res.render('view_forum', {
-      forum: forum,
-      //comments: comments
-    });
-  });
 };
 
 
