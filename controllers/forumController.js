@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const flash = require('connect-flash');
+const {validationResult} = require('express-validator/check');
 
 // import forum model
 const Forum = mongoose.model("Post");
@@ -9,30 +11,39 @@ const Comment = mongoose.model("Comment");
 // function to handle request to add post
 const addforum = (req, res) => {
 
- // extract info. from body
-  var newPost = new Forum({
-    title: req.body.title,
-    body: req.body.body
-  });
+  let errors = validationResult(req);
 
-  // add post into db
-  newPost.save(function (err) {
-    if (err){
-      console.log(err);
-    }
-    else{
-      //req.flash('success','Post Added');
-      res.redirect('/forum-posts');
-    } 
-  });
+  if (!errors.isEmpty()) {
+    console.log(errors);
+    res.render('add_forum',
+    { 
+      title: 'Create a post',
+      errors: errors.mapped()
+    });
+  } else {
+      // extract info. from body
+    var newPost = new Forum({
+      title: req.body.title,
+      body: req.body.body
+    });
 
-  
+    // add post into db
+    newPost.save(function (err) {
+      if (err){
+        console.log(err);
+      }
+      else{
+        req.flash('success','Post Added');
+        res.redirect('/forum-posts');
+      } 
+    });
+  } 
 };
 
 // function that loads form page for adding post
 const newForumForm = (req, res) => {
   res.render('add_forum', {
-    title:'Create a post'
+    title:'Create a post',
   });
 }
 
@@ -130,7 +141,7 @@ const updateForum = (req, res) => {
       console.log(err);
     }
     else{
-      //req.flash('success','Post Added');
+      req.flash('success','Post Updated');
       res.redirect('/forum-posts');
     } 
   });
@@ -145,9 +156,12 @@ const deleteForum = (req, res) => {
     if(err){
       console.log(err);
     }
+    req.flash('success','Post Deleted');
     res.send('Success');
   });
 }
+
+
 
 // remember to export the functions
 module.exports = {
