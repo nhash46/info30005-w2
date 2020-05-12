@@ -21,7 +21,7 @@ const addforum = (req, res) => {
       console.log(err);
     }
     else{
-      req.flash('success','Post Added');
+      //req.flash('success','Post Added');
       res.redirect('/forum-posts');
     } 
   });
