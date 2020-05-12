@@ -13,10 +13,12 @@ const addforum = (req, res) => {
 
   let errors = validationResult(req);
 
-  if(errors){
-    res.render('add_forum', {
+  if (!errors.isEmpty()) {
+    console.log(errors);
+    res.render('add_forum',
+    { 
       title: 'Create a post',
-      errors: errors
+      errors: errors.mapped()
     });
   } else {
       // extract info. from body
