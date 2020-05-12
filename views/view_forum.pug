@@ -4,8 +4,8 @@ block content
     h1= forum.title
     br
     p= forum.body
-    a.btn.btn-default(href='/forum-posts/edit/'+forum._id) Edit
-    a.btn.btn-danger.delete-forum(href='#', data-id=forum._id) Delete
+    a.btn.btn-default.btn-sm(href='/forum-posts/edit/'+forum._id) Edit
+    a.btn.btn-danger.btn-sm.delete-forum(href='#', data-id=forum._id) Delete
     hr
     h3 Comments
     each c in forum.comments
