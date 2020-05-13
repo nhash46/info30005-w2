@@ -6,7 +6,6 @@ const Post = mongoose.model("Post");
 const forumController = require("../controllers/forumController.js");
 
 // adds a comment to comment collection
-var i = 0;
 const addComment = async (req, res) => {
   
     var newComment = new Comment({
@@ -30,7 +29,7 @@ const addComment = async (req, res) => {
     newComment.save(function (err) {
       if (err) return console.error(err);
     });
-    res.send("Comment created successfully");
+    res.redirect('/forum-posts/'+req.params._id);
   };
   
   // 
@@ -59,8 +58,23 @@ const addComment = async (req, res) => {
     }
   };
 
+  // gets a comment by parentId
+
+  const getCommentByParentId = async (req, res) => {
+    try{
+      const comment = await Comment.find({'parentPost': req.params._id});
+  
+      return res.send(comment);
+    }
+    catch(err) {
+      res.status(400);
+      return res.send("Database query failed");
+    }
+  }
+
   module.exports = {
     addComment,
     getAllComments,
-    getCommentByTitle
+    getCommentByTitle,
+    getCommentByParentId
   };

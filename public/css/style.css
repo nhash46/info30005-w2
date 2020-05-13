@@ -1,0 +1,16 @@
+.comment{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 15px;
+}
+
+
+.comment:hover {
+    background-color: lightblue;
+}
+
+.jumbotron.text-center {
+    font-family: 'IM Fell Great Primer', serif;
+}
