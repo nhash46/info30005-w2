@@ -46,20 +46,6 @@ app.get("/", (req, res) => {
     });
 });
 
-// Routes
-const forumRouter = require("./routes/forumRouter");
-const userRouter = require("./routes/userRouter");
-const commentRouter = require("./routes/commentRouter");
-
-// auther routes handles by forumRouter
-app.use("/forum-posts", forumRouter);
-
-// user routes handled by userRouter
-app.use("/user", userRouter);
-
-// comment routes handled by commentRouter
-app.use("/comments", commentRouter);
-
 // Set public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -86,10 +72,23 @@ require('./config/passport')(passport);
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-  
+
+// Routes
+const forumRouter = require("./routes/forumRouter");
+const userRouter = require("./routes/userRouter");
+const commentRouter = require("./routes/commentRouter");
+
+// auther routes handles by forumRouter
+app.use("/forum-posts", forumRouter);
+
+// user routes handled by userRouter
+app.use("/user", userRouter);
+
+// comment routes handled by commentRouter
+app.use("/comments", commentRouter);
+
 // start app and listen for incoming requests on port
 // app.listen(process.env.PORT || 3000, () => {
 app.listen(process.env.PORT || 3000, () => {
-    console.log("The library app is running!");
-  });
-  
+  console.log("The library app is running!");
+});

@@ -24,8 +24,12 @@ html
                         li
                             a(href='/user/consultations') Consultations
                     ul.nav.navbar-nav.navbar-right
-                        li
-                            a(href='/user/login') Sign In
+                        if user
+                            li 
+                                a(href='/user/logout') Log out
+                        else
+                            li
+                                a(href='/user/login') Sign In
         .container
             != messages('message', locals)
             if errors

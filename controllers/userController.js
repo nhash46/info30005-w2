@@ -83,7 +83,7 @@ const loginPage = (req, res) => {
 const logIn = async (req, res, next) => {
 
   passport.authenticate('local', {
-    successRedirect:'/user/login',
+    successRedirect:'/forum-posts',
     failureRedirect:'/user/login',
     failureFlash: true
   })(req, res, next);
@@ -144,12 +144,19 @@ const newConsultation = async (req, res) => {
   }
 };
 
+// request user object
+const getUserRequest = async (req, res) => {
+  res.locals.user = req.user || null;
+  next();
+}
+
 module.exports = {
   addUser,
   getAllUsers,
   logIn,
   newConsultation,
   getAllConsultations,
-    newUserForm,
-    loginPage
+  newUserForm,
+  loginPage,
+  getUserRequest
 };
