@@ -38,14 +38,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-
-// GET home page
-app.get("/", (req, res) => {
-  res.render("index", {
-    title: 'Spatium'
-    });
-});
-
 // Set public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -72,6 +64,19 @@ require('./config/passport')(passport);
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+// global user object
+app.get('*', function(req, res, next){
+  res.locals.user = req.user || null;
+  next();
+});
+
+// GET home page
+app.get("/", (req, res) => {
+  res.render("index", {
+    title: 'Spatium'
+    });
+});
 
 // Routes
 const forumRouter = require("./routes/forumRouter");

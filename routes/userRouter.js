@@ -1,5 +1,6 @@
 const express = require("express");
 const userValidator = require("../validators/userValidator.js");
+const passport = require('passport');
 
 // create router
 const userRouter = express.Router();
@@ -15,6 +16,7 @@ userRouter.post("/signup", userValidator.addUser, userController.addUser);
 // viewing all users (**** REMEMBER TO REMOVE BEFORE DELIVERABLE DUE DATE ****)
 userRouter.get("/", userController.getAllUsers);
 
+// log in form
 userRouter.get("/login", userController.loginPage);
 
 // logging in
@@ -25,5 +27,8 @@ userRouter.post("/consultations", userController.newConsultation);
 
 // viewing all consultations
 userRouter.get("/consultations", userController.getAllConsultations);
+
+// logging out
+userRouter.get("/logout", userController.logOutUser);
 
 module.exports = userRouter;

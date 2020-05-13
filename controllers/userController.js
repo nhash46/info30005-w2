@@ -80,10 +80,10 @@ const loginPage = (req, res) => {
 };
 
 // function to handle a request to login
-const logIn = async (req, res, next) => {
+const logIn = (req, res, next) => {
 
   passport.authenticate('local', {
-    successRedirect:'/forum-posts',
+    successRedirect:'/',
     failureRedirect:'/user/login',
     failureFlash: true
   })(req, res, next);
@@ -144,10 +144,11 @@ const newConsultation = async (req, res) => {
   }
 };
 
-// request user object
-const getUserRequest = async (req, res) => {
-  res.locals.user = req.user || null;
-  next();
+// log out the current user
+const logOutUser = (req, res) => {
+  req.logout();
+  req.flash('success', 'You have successfully logged. Come back soon!');
+  res.redirect('/user/login');
 }
 
 module.exports = {
@@ -158,5 +159,5 @@ module.exports = {
   getAllConsultations,
   newUserForm,
   loginPage,
-  getUserRequest
+  logOutUser
 };
