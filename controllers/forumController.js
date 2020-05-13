@@ -8,6 +8,9 @@ const Forum = mongoose.model("Post");
 // import commment model
 const Comment = mongoose.model("Comment");
 
+// import user model
+const User = mongoose.model("User");
+
 // function to handle request to add post
 const addforum = (req, res) => {
 
@@ -24,6 +27,7 @@ const addforum = (req, res) => {
       // extract info. from body
     var newPost = new Forum({
       title: req.body.title,
+      author: req.user._id,
       body: req.body.body
     });
 
@@ -68,12 +72,12 @@ const getAllForumPosts = async (req, res) => {
 const getforumByID = async (req, res) => {
 
   Forum.findById(req.params._id).populate('comments').exec(function(err, forum){
-    //Comment.getCommentByParentId(Forum._id, function(err, comments){
-    res.render('view_forum', {
-      forum: forum,
-      //comments: comments
+    User.findById(forum.author, function(err, user){
+      res.render('view_forum', {
+        forum: forum,
+        author: user.username
+      });
     });
-    //});
   });
 };
 

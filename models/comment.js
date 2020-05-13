@@ -8,7 +8,8 @@ const commentSchema = new mongoose.Schema({
     parentPost : {
         type: Schema.Types.ObjectId, 
         ref: "Post"
-    }
+    },
+    datetime: {type: String}
 });
 
 const Comment = mongoose.model("Comment", commentSchema, "comments");
