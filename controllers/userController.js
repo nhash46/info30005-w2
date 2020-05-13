@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const flash = require('connect-flash');
 const {validationResult} = require('express-validator/check');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 // import user model
 const User = mongoose.model("User");
@@ -79,8 +80,15 @@ const loginPage = (req, res) => {
 };
 
 // function to handle a request to login
-const logIn = async (req, res) => {
+const logIn = async (req, res, next) => {
 
+  passport.authenticate('local', {
+    successRedirect:'/user/login',
+    failureRedirect:'/user/login',
+    failureFlash: true
+  })(req, res, next);
+
+  /*
   var username = req.body.username;
   var password = req.body.password;
 
@@ -96,6 +104,7 @@ const logIn = async (req, res) => {
       return res.status(200).send("Welcome back " + username);
     }
   })
+  */
 };
 
   // function to create a new consultation

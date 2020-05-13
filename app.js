@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require('path');
+const passport = require('passport');
 
 const mongoose = require("mongoose");
 
@@ -79,6 +80,12 @@ app.use(expressValidator({
     };
   }
 }));
+
+// Passport Config
+require('./config/passport')(passport);
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
   
 // start app and listen for incoming requests on port
 // app.listen(process.env.PORT || 3000, () => {
