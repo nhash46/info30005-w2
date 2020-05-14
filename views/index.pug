@@ -7,27 +7,31 @@ block content
         p It's OK to not be OK
         a.btn.btn-primary(href= "/aboutus") Learn More
         
-    #demo.carousel.slide(data-ride='carousel')
-        // Indicators
-        ul.carousel-indicators
-            li.active(data-target='#demo' data-slide-to='0')
-            li(data-target='#demo' data-slide-to='1')
-            li(data-target='#demo' data-slide-to='2')
-        // The slideshow
-        .carousel-inner
-            .carousel-item.active
-                img(src='..https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' alt='Sample1')
-            .carousel-item
-                img(src='..https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg' alt='Sample2')
-            .carousel-item
-                img(src='..https://images.pexels.com/photos/1054289/pexels-photo-1054289.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' alt='Sample3')
-    // Left and right controls
-    a.carousel-control-prev(href='#demo' data-slide='prev')
-        span.carousel-control-prev-icon
-    a.carousel-control-next(href='#demo' data-slide='next')
-        span.carousel-control-next-icon 
-        
-     
+    .slideshow-container
+        // Full-width images with number and caption text
+        .mySlides.fade
+            .numbertext 1 / 3
+            img(src='https://images.theconversation.com/files/194386/original/file-20171113-27576-a1s7xf.jpg?ixlib=rb-1.1.0&rect=19%2C0%2C3268%2C1631&q=45&auto=format&w=1356&h=668&fit=crop' style='width:100%')
+            .text Caption Text
+        .mySlides.fade
+            .numbertext 2 / 3
+            img(src='https://www.incimages.com/uploaded_files/image/970x450/shutterstock_619960997_360000.jpg' style='width:100%')
+            .text Caption Two
+        .mySlides.fade
+            .numbertext 3 / 3
+            img(src='https://www.maroondah.vic.gov.au/files/assets/public/images/communications-engagement/media-releases/mental-health-awareness.jpg' style='width:100%')
+            .text Caption Three
+        // Next and previous buttons
+        a.prev(onclick='plusSlides(-1)') &#x276E;
+        a.next(onclick='plusSlides(1)') &#x276F;
+    br
+    // The dots/circles
+    div(style='text-align:center')
+        span.dot(onclick='currentSlide(1)')
+        span.dot(onclick='currentSlide(2)')
+        span.dot(onclick='currentSlide(3)')
+
+         
     .container  
         .card-deck
             .card.bg-primary
