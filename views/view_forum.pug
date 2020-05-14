@@ -1,12 +1,12 @@
 extends layout
 
 block content
-    h5 posted by #{author} at 'date time'
+    h5 posted by #{forum.author} at 'date time'
     h1= forum.title
     br
     p= forum.body
     if user
-        if user._id == forum.author
+        if user.username == forum.author
             a.btn.btn-default.btn-sm(href='/forum-posts/edit/'+forum._id) Edit
             a.btn.btn-danger.btn-sm.delete-forum(href='#', data-id=forum._id) Delete
     hr
@@ -20,6 +20,7 @@ block content
                             i.far.fa-clock date time
                     .panel-body #{c.content}
                     .panel-footer
+                        // comments need an author so can go #{c.author} and comment.author in href
                         a(href = '/user/profile/'+forum.author)
                             i.glyphicon.glyphicon-user #{author}
                         

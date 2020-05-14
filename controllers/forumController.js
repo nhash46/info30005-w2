@@ -72,11 +72,9 @@ const getAllForumPosts = async (req, res) => {
 const getforumByID = async (req, res) => {
 
   Forum.findById(req.params._id).populate('comments').exec(function(err, forum){
-    User.findById(forum.author, function(err, user){
-      res.render('view_forum', {
-        forum: forum,
-        author: user.username
-      });
+
+    res.render('view_forum', {
+      forum: forum
     });
   });
 };
