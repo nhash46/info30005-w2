@@ -81,6 +81,16 @@ const getforumByID = async (req, res) => {
   });
 };
 
+// access control
+function ensureAuthenticated(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  } else {
+    req.flash('danger', 'Please login');
+    res.redirect('/user/login')
+  }
+}
+
 
 // backend function involved in updating a posts comment field upon adding a Comment. See commentController addComment().
 var getforumByIDComment = async (req, res) => {
@@ -166,5 +176,6 @@ module.exports = {
   getCommentByParentId,
   editForum,
   updateForum,
-  deleteForum
+  deleteForum,
+  ensureAuthenticated
 };
