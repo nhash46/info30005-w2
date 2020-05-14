@@ -5,6 +5,8 @@ html
         link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
         link(rel='stylesheet' href='/css/style.css')
         link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer:ital@1&display=swap")
+        script(src = "https://ajax.googleapis.com.ajax/libs/popper.js/1.12.0/umd/popper.min.js")
+
     body
         nav.navbar.navbar-inverse
             .container
@@ -25,7 +27,7 @@ html
                             a(href='/user/consultations') Consultations
                     ul.nav.navbar-nav.navbar-right
                         li
-                            a(href='/user/login') Sign In
+                            a(href='/user/login') Sign In  
         .container
             != messages('message', locals)
             if errors
