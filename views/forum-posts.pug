@@ -1,6 +1,39 @@
 extends layout
 
 block content
+
+    .header
+        h2 Forum Page
+    .row
+        .leftcolumn
+            each  forum, i in forums 
+                a(href='/forum-posts/'+forum._id) = 
+                    .card
+                        h2 #{forum.title}
+                        h5 by #{forum.author}, Dec 7, 2017
+                        .fakeimg(style='height:200px;') Image
+                        p #{forum.body}
+        .rightcolumn
+            .card
+                h2 About Me
+                .fakeimg(style='height:100px;') Image
+                p.
+                     We have identified two major barriers detering men from seeking help, 
+                     namely; social stigmas attached with mental health, and perhaps as an extension 
+                     of these stigmas, anxiety relating to having a face-to-face consultation with a mental health expert. 
+            .card
+                h3 Popular Post
+                .fakeimg Image
+                br
+                .fakeimg Image
+                br
+                .fakeimg Image
+            .card
+                h3 Follow Me
+                p Some text..
+    .footer
+        h2 Footer
+
     h1 #{title}
     if !user
         h5 Sign in to create a post
