@@ -158,15 +158,26 @@ const updateForum = (req, res) => {
 
 // function to handle request to delete post
 const deleteForum = (req, res) => {
-  
+  // check if user is logged in
+  if(!req.user._id){
+    res.status(500).send();
+  }
   let query = {_id:req.params._id}
 
-  Forum.remove(query, function(err){
-    if(err){
-      console.log(err);
+  // check if user is the author of post
+  Forum.findById(req.params.id, function(err, forum){
+    if(forum.author != req.user._id){
+      res.status(500).send();
+    } 
+    else {
+      Forum.remove(query, function(err){
+        if(err){
+          console.log(err);
+        }
+        req.flash('success','Post Deleted');
+        res.send('Success');
+      });
     }
-    req.flash('success','Post Deleted');
-    res.send('Success');
   });
 }
 
