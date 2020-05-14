@@ -74,17 +74,7 @@ const getAllUsers = async (req, res) => {
 
 
 const getUserByID = async (req, res) => {
-
-    User.findById(req.params._id).exec(function(err, user){
-        if(err){
-            console.log(err);
-            res.status(400);
-        }
-        else {
-            res.render('profile', {
-                name: user.first_name
-            });
-        }
+    res.render('profile', {
     });
 };
 
