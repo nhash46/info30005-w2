@@ -17,6 +17,6 @@ const consultationSchema = new mongoose.Schema({
   }
 });
 
-const Consultation = mongoose.model("Consultation", consultationSchema, "consulations");
+const Consultation = mongoose.model("Consultation", consultationSchema, "consultations");
 
 module.exports = Consultation;

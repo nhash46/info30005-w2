@@ -1,38 +1,70 @@
 const mongoose = require("mongoose");
+const flash = require('connect-flash');
+const {validationResult} = require('express-validator/check');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 // import user model
 const User = mongoose.model("User");
 const Consultation = mongoose.model("Consultation");
 
+// function that loads form page for adding post
+const newUserForm = (req, res) => {
+    res.render('signup', {
+        title:'Sign Up'
+    });
+};
     
 // function to add user
-const addUser = async (req, res) => {
+const addUser = (req, res) => {
 
-    var newUser = new User({
-      userType: req.body.userType,
-      username: req.body.username,
-      password: req.body.password,
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      email: req.body.email
-    })
-  
-    // add user to database
-    newUser.save(function (err, user) {
-      if (err) {
-        res.send("ERROR: user type must be student or counsellor");
-        return console.error(err);
-      } else {
-        res.send("Successful signup!");
-      }
+  var newUser = new User({
+    userType: req.body.userType,
+    username: req.body.username,
+    password: req.body.password,
+    password2: req.body.password2,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email
+  });
+
+  let errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    console.log(errors);
+    res.render('signup',
+      { 
+        newUser:newUser,
+        errors: errors.mapped()
+      });
+  } else {
+    bcrypt.genSalt(10, function(err, salt){
+      bcrypt.hash(newUser.password, salt, function(err, hash){
+        if(err){
+          console.log(err);
+        }
+        newUser.password = hash;
+
+        // add user to database
+        newUser.save(function (err) {
+          if (err) {
+            console.log(err);
+            return;
+          } else {
+            req.flash('success', 'Successful registration! You can now log in');
+            res.redirect('login');
+          }
+        });
+      });
     });
+  }
 };
 
 // function to handle a request to get all users
 const getAllUsers = async (req, res) => {
     
     try {
-      const all_users = await User.find().select('username');
+      const all_users = await User.find();
       return res.send(all_users);
     } catch (err) {
       res.status(400);
@@ -40,20 +72,39 @@ const getAllUsers = async (req, res) => {
     }
   };
 
-// function to handle a request to login
-const logIn = async (req, res) => {
+// function that loads form page for adding post
+const loginPage = (req, res) => {
+    res.render('signin', {
+        title:'Sign In'
+    });
+};
 
-  User.find({"username": req.body.username, "password": req.body.password}, function(err, user){
+// function to handle a request to login
+const logIn = (req, res, next) => {
+
+  passport.authenticate('local', {
+    successRedirect:'/',
+    failureRedirect:'/user/login',
+    failureFlash: true
+  })(req, res, next);
+
+  /*
+  var username = req.body.username;
+  var password = req.body.password;
+
+  User.findOne({username: username, password: password}, function(err, user){
     if(err){
-      return console.error(err.stack);
+      console.log(err);
+      return res.status(500).send();
     }
     if(!user){
-      return res.send("User not found!");
+      return res.status(404).send("username or password is incorrect");
     }
-    else {
-      return res.send("Welcome back " + user.username);
+    if(user){
+      return res.status(200).send("Welcome back " + username);
     }
-  });
+  })
+  */
 };
 
   // function to create a new consultation
@@ -69,7 +120,7 @@ const newConsultation = async (req, res) => {
 
   })
 
-  // add user to database
+  // add consultation to database
   newConsultation.save(function (err, consultation) {
     if (err) {
       return console.error(err);
@@ -81,9 +132,32 @@ const newConsultation = async (req, res) => {
 
 };
 
+ // 
+ const getAllConsultations = async (req, res) => {  
+  try{
+  const all_consultations = await Consultation.find();
+  return res.send(all_consultations);
+  }
+  catch (err) {
+    res.status(400);
+    return res.send("Database query failed");
+  }
+};
+
+// log out the current user
+const logOutUser = (req, res) => {
+  req.logout();
+  req.flash('success', 'You have successfully logged out. Come back soon!');
+  res.redirect('/user/login');
+}
+
 module.exports = {
   addUser,
   getAllUsers,
   logIn,
-  newConsultation
+  newConsultation,
+  getAllConsultations,
+  newUserForm,
+  loginPage,
+  logOutUser
 };

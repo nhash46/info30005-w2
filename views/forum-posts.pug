@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1 #{title}
+    if !user
+        h5 Sign in to create a post
+    ul.list-group
+        each forum, i in forums
+            li.list-group-item
+                a(href='/forum-posts/'+forum._id)= forum.title
+                h5 by #{forum.author}
+    if user
+        input.btn.btn-primary(type='submit', value='Create a post', onclick='move()')
+    script.
+        function move() {
+        window.location.href = '/forum-posts/submit'
+     }

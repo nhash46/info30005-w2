@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const config = require("../config/database")
 
 // Connect to MongoDB
 CONNECTION_STRING = "mongodb+srv://nhash:<password>@mylibraryapp-n8rlv.mongodb.net/test?retryWrites=true&w=majority";
@@ -8,7 +9,7 @@ console.log(MONGO_URL);
 
 
 
-mongoose.connect(MONGO_URL || "mongodb://localhost/info30005", {
+mongoose.connect(MONGO_URL || config.database, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

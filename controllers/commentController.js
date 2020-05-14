@@ -1,21 +1,35 @@
 const mongoose = require("mongoose");
 
 const Comment = mongoose.model("Comment");
+const Post = mongoose.model("Post");
+
+const forumController = require("../controllers/forumController.js");
 
 // adds a comment to comment collection
-const addComment = (req, res) => {
-  
+const addComment = async (req, res) => {
+
     var newComment = new Comment({
       title : req.body.title,
       content : req.body.content,
-      parentPost : req.params._id
+      parentPost : req.params._id,
     })
-  
-    // add user to database
+
+    // need to add this Id to Parent document 'comment' field 
+    try{
+        const filter = { _id: req.params._id};
+        const update = { "$push" : {"comments" : newComment._id}};
+        let post = await Post.findOneAndUpdate(filter, update, {new : true});
+        console.log(post.comment);
+    } catch(err){
+        res.status(400);
+        return res.send("Database query failed");
+    }
+
+    // add comment to database
     newComment.save(function (err) {
       if (err) return console.error(err);
     });
-    res.send("Comment created successfully");
+    res.redirect('/forum-posts/'+req.params._id);
   };
   
   // 
@@ -26,7 +40,7 @@ const addComment = (req, res) => {
     }
     catch (err) {
       res.status(400);
-      return res.send("Get Fucked");
+      return res.send("Database query failed");
     }
   };
   
@@ -44,8 +58,23 @@ const addComment = (req, res) => {
     }
   };
 
+  // gets a comment by parentId
+
+  const getCommentByParentId = async (req, res) => {
+    try{
+      const comment = await Comment.find({'parentPost': req.params._id});
+  
+      return res.send(comment);
+    }
+    catch(err) {
+      res.status(400);
+      return res.send("Database query failed");
+    }
+  }
+
   module.exports = {
     addComment,
     getAllComments,
-    getCommentByTitle
+    getCommentByTitle,
+    getCommentByParentId
   };
