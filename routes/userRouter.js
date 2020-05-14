@@ -32,6 +32,6 @@ userRouter.get("/consultations", userController.getAllConsultations);
 userRouter.get("/logout", userController.logOutUser);
 
 // get user profile
-userRouter.get("/:id", userController.getUserByID);
+userRouter.get("/profile", userController.getUserProfile);
 
 module.exports = userRouter;

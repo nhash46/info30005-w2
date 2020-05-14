@@ -73,7 +73,7 @@ const getAllUsers = async (req, res) => {
   };
 
 
-const getUserByID = async (req, res) => {
+const getUserProfile = async (req, res) => {
     res.render('profile', {
     });
 };
@@ -160,7 +160,7 @@ const logOutUser = (req, res) => {
 module.exports = {
   addUser,
   getAllUsers,
-  getUserByID,
+  getUserProfile,
   logIn,
   newConsultation,
   getAllConsultations,
