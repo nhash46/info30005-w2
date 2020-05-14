@@ -7,11 +7,10 @@ block content
     .row
         .leftcolumn
             each  forum, i in forums 
-                a(href='/forum-posts/'+forum._id) = 
-                    .card
+                a(href='/forum-posts/'+forum._id)
+                    .card.bg-primary
                         h2 #{forum.title}
                         h5 by #{forum.author}, Dec 7, 2017
-                        .fakeimg(style='height:200px;') Image
                         p #{forum.body}
         .rightcolumn
             .card
@@ -31,20 +30,11 @@ block content
             .card
                 h3 Follow Me
                 p Some text..
-    .footer
-        h2 Footer
-
-    h1 #{title}
-    if !user
-        h5 Sign in to create a post
-    ul.list-group
-        each forum, i in forums
-            li.list-group-item
-                a(href='/forum-posts/'+forum._id)= forum.title
-                h5 by #{forum.author}
     if user
         input.btn.btn-primary(type='submit', value='Create a post', onclick='move()')
     script.
         function move() {
         window.location.href = '/forum-posts/submit'
-     }
+     }            
+    .footer
+        h2 Footer
