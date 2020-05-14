@@ -9,7 +9,7 @@ const forumController = require("../controllers/forumController.js");
 const addComment = async (req, res) => {
 
     var newComment = new Comment({
-      title : req.body.title,
+      author : req.user.username,
       content : req.body.content,
       parentPost : req.params._id,
     })

@@ -20,9 +20,9 @@ block content
                             i.far.fa-clock date time
                     .panel-body #{c.content}
                     .panel-footer
-                        // comments need an author so can go #{c.author} and comment.author in href
-                        a(href = '/user/profile/'+forum.author)
-                            i.glyphicon.glyphicon-user #{author}
+                        // comments need an author so can go #{c.author} and c.author in href
+                        a(href = '/user/profile/'+c.author)
+                            i.glyphicon.glyphicon-user #{c.author}
                         
     script(src='https://kit.fontawesome.com/d7fc33007f.js', crossorigin='anonymous')
 
