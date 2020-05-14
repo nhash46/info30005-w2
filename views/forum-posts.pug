@@ -1,17 +1,21 @@
 extends layout
 
 block content
-    h1 #{title}
-    if !user
-        h5 Sign in to create a post
-    ul.list-group
-        each forum, i in forums
-            li.list-group-item
-                a(href='/forum-posts/'+forum._id)= forum.title
-                h5 by #{forum.author}
-    if user
-        input.btn.btn-primary(type='submit', value='Create a post', onclick='move()')
-    script.
-        function move() {
-        window.location.href = '/forum-posts/submit'
-     }
+    .header
+        h1 #{title}
+    .row
+        .leftcolumn
+            each forum, i in forums
+                .card
+                    a(href='/forum-posts/'+forum._id)= forum.title
+                    h5 by #{forum.author}
+        .rightcolumn
+            .card
+                if user
+                    input.btn.btn-primary(type='submit', value='Create a post', onclick='move()')
+                else
+                    h5 Sign in to create a post
+                script.
+                    function move() {
+                        window.location.href = '/forum-posts/submit'
+                    }
