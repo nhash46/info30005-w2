@@ -147,7 +147,7 @@ const newConsultation = async (req, res) => {
 // log out the current user
 const logOutUser = (req, res) => {
   req.logout();
-  req.flash('success', 'You have successfully logged. Come back soon!');
+  req.flash('success', 'You have successfully logged out. Come back soon!');
   res.redirect('/user/login');
 }
 

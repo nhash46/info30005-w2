@@ -120,10 +120,16 @@ var getforumByIDComment = async (req, res) => {
 const editForum = async (req, res) => {
 
   Forum.findById(req.params._id, function(err, forum){
-    res.render('edit_forum', {
-      title: 'Edit Forum',
-      forum: forum
-    });
+    if(forum.author != req.user._id){
+      req.flash('danger', 'Not authorised to edit this post');
+      res.redirect('/forum-posts');
+    }
+    else {
+      res.render('edit_forum', {
+        title: 'Edit Forum',
+        forum: forum
+      });
+    }
   });
 }
 
