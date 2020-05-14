@@ -78,7 +78,7 @@ const getUserByID = async (req, res) => {
     User.findById(req.params._id).exec(function(err, user){
 
         res.render('profile', {
-            user: user
+            name: user.first_name
         });
     });
 };
