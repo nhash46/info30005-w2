@@ -83,3 +83,10 @@ nav.navbar {
         padding: 0;
     }
 }
+
+/* add_forum view */
+
+.forumcontainer{
+    padding-left: 20%;
+    padding-right: 20%;
+}

@@ -1,35 +1,36 @@
 extends layout
 
 block content
-    h5 posted by #{forum.author} at 'date time'
-    h1= forum.title
-    br
-    p= forum.body
-    if user
-        if user.username == forum.author
-            a.btn.btn-default.btn-sm(href='/forum-posts/edit/'+forum._id) Edit
-            a.btn.btn-danger.btn-sm.delete-forum(href='#', data-id=forum._id) Delete
-    hr
     .container
-        h3 Comments
-        each c in forum.comments
-            .panel
-                .panel-default
-                    .panel-heading
-                        h3.panel-title 
-                            i.far.fa-clock date time
-                    .panel-body #{c.content}
-                    .panel-footer
-                        // comments need an author so can go #{c.author} and c.author in href
-                        a(href = '/user/profile/'+c.author)
-                            i.glyphicon.glyphicon-user #{c.author}
-                        
-    script(src='https://kit.fontawesome.com/d7fc33007f.js', crossorigin='anonymous')
+        h5 posted by #{forum.author} at 'date time'
+        h1= forum.title
+        br
+        p= forum.body
+        if user
+            if user.username == forum.author
+                a.btn.btn-default.btn-sm(href='/forum-posts/edit/'+forum._id) Edit
+                a.btn.btn-danger.btn-sm.delete-forum(href='#', data-id=forum._id) Delete
+        hr
+        .container
+            h3 Comments
+            each c in forum.comments
+                .panel
+                    .panel-default
+                        .panel-heading
+                            h3.panel-title 
+                                i.far.fa-clock date time
+                        .panel-body #{c.content}
+                        .panel-footer
+                            // comments need an author so can go #{c.author} and c.author in href
+                            a(href = '/user/profile/'+c.author)
+                                i.glyphicon.glyphicon-user #{c.author}
+                            
+        script(src='https://kit.fontawesome.com/d7fc33007f.js', crossorigin='anonymous')
+        
+        form(method='POST', action='/comments/'+forum._id)
+            .form-group
+                label Comment as #{user.username}:
+                input.form-control(name='content')
 
-    form(method='POST', action='/comments/'+forum._id)
-        .form-group
-            label Comments
-            input.form-control(name='content')
-
-        input.btn.btn-primary(type='submit', value='Post')
+            input.btn.btn-primary(type='submit', value='Post')
 
