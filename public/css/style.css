@@ -6,7 +6,15 @@
     border-radius: 15px;
 }
 
+nav.navbar {
+    margin-bottom: 0px;
+}
 
+.pagecontent{
+    font-family: Arial;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+}
 
 
 .comment:hover {
@@ -49,7 +57,7 @@
 }
 
 .card {
-    background-color: #aaa;
+    background-color: rgb(224, 224, 224);
     padding: 20px;
     margin-top: 20px;
 }
@@ -62,7 +70,7 @@
 .footer {
     padding: 20px;
     text-align: center;
-    background: #ddd;
+    background: rgb(255, 255, 255);
     margin-top: 20px;
 }
 

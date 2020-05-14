@@ -3,6 +3,8 @@ extends layout
 block content
     .header
         h1 #{title}
+        if !user
+            h5 Sign in to create a post
     .row
         .leftcolumn
             each forum, i in forums
@@ -13,8 +15,7 @@ block content
             .card
                 if user
                     input.btn.btn-primary(type='submit', value='Create a post', onclick='move()')
-                else
-                    h5 Sign in to create a post
+                
                 script.
                     function move() {
                         window.location.href = '/forum-posts/submit'
