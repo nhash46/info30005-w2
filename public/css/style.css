@@ -59,6 +59,7 @@ nav.navbar {
 }
 
 .card {
+    border-radius: 15px;
     background-color: rgb(224, 224, 224);
     padding: 20px;
     margin-top: 20px;
