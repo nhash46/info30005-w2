@@ -27,7 +27,7 @@ const addforum = (req, res) => {
       // extract info. from body
     var newPost = new Forum({
       title: req.body.title,
-      author: req.user._id,
+      author: req.user.username,
       body: req.body.body
     });
 
@@ -90,11 +90,9 @@ const getforumByID = (req, res) => {
 const getforumByID = async (req, res) => {
 
   Forum.findById(req.params._id).populate('comments').exec(function(err, forum){
-    User.findById(forum.author, function(err, user){
-      res.render('view_forum', {
-        forum: forum,
-        author: user.username
-      });
+
+    res.render('view_forum', {
+      forum: forum
     });
   });
 };

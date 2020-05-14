@@ -78,6 +78,10 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get("/aboutus", (req, res) => {
+  res.render("aboutus");
+});
+
 // Routes
 const forumRouter = require("./routes/forumRouter");
 const userRouter = require("./routes/userRouter");

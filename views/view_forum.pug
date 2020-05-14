@@ -1,12 +1,12 @@
 extends layout
 
 block content
-    h5 posted by #{author} at 'date time'
+    h5 posted by #{forum.author} at 'date time'
     h1= forum.title
     br
     p= forum.body
     if user
-        if user._id == forum.author
+        if user.username == forum.author
             a.btn.btn-default.btn-sm(href='/forum-posts/edit/'+forum._id) Edit
             a.btn.btn-danger.btn-sm.delete-forum(href='#', data-id=forum._id) Delete
     hr
@@ -20,15 +20,13 @@ block content
                             i.far.fa-clock date time
                     .panel-body #{c.content}
                     .panel-footer
-                        a(href = '/user/'+forum.author) 
-                            i.glyphicon.glyphicon-user #{author}
+                        // comments need an author so can go #{c.author} and c.author in href
+                        a(href = '/user/profile/'+c.author)
+                            i.glyphicon.glyphicon-user #{c.author}
                         
     script(src='https://kit.fontawesome.com/d7fc33007f.js', crossorigin='anonymous')
 
     form(method='POST', action='/comments/'+forum._id)
-        .form-group
-            label Title:
-            input.form-control(name='title', type='text')
         .form-group
             label Content
             input.form-control(name='content')

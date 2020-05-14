@@ -27,12 +27,14 @@ html
                             a(href='/user/consultations') Consultations
                     ul.nav.navbar-nav.navbar-right
                         if user
+                            li
+                                a(href='/user/profile') Profile
                             li 
                                 a(href='/user/logout') Logout
                         else
                             li
                                 a(href='/user/login') Sign In
-        .container
+        .pagecontent
             != messages('message', locals)
             if errors
                 each error, i in errors
