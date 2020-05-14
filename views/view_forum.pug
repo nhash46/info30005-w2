@@ -27,10 +27,11 @@ block content
                             
         script(src='https://kit.fontawesome.com/d7fc33007f.js', crossorigin='anonymous')
         
-        form(method='POST', action='/comments/'+forum._id)
-            .form-group
-                label Comment as #{user.username}:
-                input.form-control(name='content')
+        if user
+            form(method='POST', action='/comments/'+forum._id)
+                .form-group
+                    label Comment as #{user.username}:
+                    input.form-control(name='content')
 
-            input.btn.btn-primary(type='submit', value='Post')
+                input.btn.btn-primary(type='submit', value='Post')
 
