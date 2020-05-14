@@ -27,7 +27,7 @@ const addforum = (req, res) => {
       // extract info. from body
     var newPost = new Forum({
       title: req.body.title,
-      author: req.user._id,
+      author: req.user.username,
       body: req.body.body
     });
 
