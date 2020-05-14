@@ -16,6 +16,9 @@ userRouter.post("/signup", userValidator.addUser, userController.addUser);
 // viewing all users (**** REMEMBER TO REMOVE BEFORE DELIVERABLE DUE DATE ****)
 userRouter.get("/", userController.getAllUsers);
 
+// get user profile
+userRouter.get("/:id", userController.getUSerByID);
+
 // log in form
 userRouter.get("/login", userController.loginPage);
 

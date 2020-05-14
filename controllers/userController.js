@@ -72,6 +72,17 @@ const getAllUsers = async (req, res) => {
     }
   };
 
+
+const getUserByID = async (req, res) => {
+
+    User.findById(req.params._id).exec(function(err, user){
+
+        res.render('profile', {
+            user: user
+        });
+    });
+};
+
 // function that loads form page for adding post
 const loginPage = (req, res) => {
     res.render('signin', {
@@ -154,6 +165,7 @@ const logOutUser = (req, res) => {
 module.exports = {
   addUser,
   getAllUsers,
+  getUserByID,
   logIn,
   newConsultation,
   getAllConsultations,
