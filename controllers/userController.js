@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const flash = require('connect-flash');
 const {validationResult} = require('express-validator/check');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 // import user model
 const User = mongoose.model("User");
@@ -79,8 +80,15 @@ const loginPage = (req, res) => {
 };
 
 // function to handle a request to login
-const logIn = async (req, res) => {
+const logIn = (req, res, next) => {
 
+  passport.authenticate('local', {
+    successRedirect:'/',
+    failureRedirect:'/user/login',
+    failureFlash: true
+  })(req, res, next);
+
+  /*
   var username = req.body.username;
   var password = req.body.password;
 
@@ -96,6 +104,7 @@ const logIn = async (req, res) => {
       return res.status(200).send("Welcome back " + username);
     }
   })
+  */
 };
 
   // function to create a new consultation
@@ -135,12 +144,20 @@ const newConsultation = async (req, res) => {
   }
 };
 
+// log out the current user
+const logOutUser = (req, res) => {
+  req.logout();
+  req.flash('success', 'You have successfully logged out. Come back soon!');
+  res.redirect('/user/login');
+}
+
 module.exports = {
   addUser,
   getAllUsers,
   logIn,
   newConsultation,
   getAllConsultations,
-    newUserForm,
-    loginPage
+  newUserForm,
+  loginPage,
+  logOutUser
 };

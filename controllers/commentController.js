@@ -7,11 +7,11 @@ const forumController = require("../controllers/forumController.js");
 
 // adds a comment to comment collection
 const addComment = async (req, res) => {
-  
+
     var newComment = new Comment({
       title : req.body.title,
       content : req.body.content,
-      parentPost : req.params._id
+      parentPost : req.params._id,
     })
 
     // need to add this Id to Parent document 'comment' field 

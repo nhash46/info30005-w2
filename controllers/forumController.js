@@ -8,6 +8,9 @@ const Forum = mongoose.model("Post");
 // import commment model
 const Comment = mongoose.model("Comment");
 
+// import user model
+const User = mongoose.model("User");
+
 // function to handle request to add post
 const addforum = (req, res) => {
 
@@ -24,6 +27,7 @@ const addforum = (req, res) => {
       // extract info. from body
     var newPost = new Forum({
       title: req.body.title,
+      author: req.user._id,
       body: req.body.body
     });
 
@@ -86,14 +90,24 @@ const getforumByID = (req, res) => {
 const getforumByID = async (req, res) => {
 
   Forum.findById(req.params._id).populate('comments').exec(function(err, forum){
-    //Comment.getCommentByParentId(Forum._id, function(err, comments){
-    res.render('view_forum', {
-      forum: forum,
-      //comments: comments
+    User.findById(forum.author, function(err, user){
+      res.render('view_forum', {
+        forum: forum,
+        author: user.username
+      });
     });
-    //});
   });
 };
+
+// access control
+function ensureAuthenticated(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  } else {
+    req.flash('danger', 'Please login');
+    res.redirect('/user/login')
+  }
+}
 
 
 // backend function involved in updating a posts comment field upon adding a Comment. See commentController addComment().
@@ -124,10 +138,16 @@ var getforumByIDComment = async (req, res) => {
 const editForum = async (req, res) => {
 
   Forum.findById(req.params._id, function(err, forum){
-    res.render('edit_forum', {
-      title: 'Edit Forum',
-      forum: forum
-    });
+    if(forum.author != req.user._id){
+      req.flash('danger', 'Not authorised to edit this post');
+      res.redirect('/forum-posts');
+    }
+    else {
+      res.render('edit_forum', {
+        title: 'Edit Forum',
+        forum: forum
+      });
+    }
   });
 }
 
@@ -156,15 +176,26 @@ const updateForum = (req, res) => {
 
 // function to handle request to delete post
 const deleteForum = (req, res) => {
-  
+  // check if user is logged in
+  if(!req.user._id){
+    res.status(500).send();
+  }
   let query = {_id:req.params._id}
 
-  Forum.remove(query, function(err){
-    if(err){
-      console.log(err);
+  // check if user is the author of post
+  Forum.findById(req.params.id, function(err, forum){
+    if(forum.author != req.user._id){
+      res.status(500).send();
+    } 
+    else {
+      Forum.remove(query, function(err){
+        if(err){
+          console.log(err);
+        }
+        req.flash('success','Post Deleted');
+        res.send('Success');
+      });
     }
-    req.flash('success','Post Deleted');
-    res.send('Success');
   });
 }
 
@@ -180,7 +211,8 @@ module.exports = {
   getCommentByParentId,
   editForum,
   updateForum,
-  deleteForum
+  deleteForum,
+  ensureAuthenticated
 };
   //getforumByID,
   //addComment,

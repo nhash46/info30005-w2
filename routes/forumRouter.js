@@ -10,7 +10,7 @@ const forumController = require("../controllers/forumController.js");
 forumRouter.get('/', forumController.getAllForumPosts);
 
 // form page for new post
-forumRouter.get('/submit', forumController.newForumForm);
+forumRouter.get('/submit', forumController.ensureAuthenticated, forumController.newForumForm);
 
 //add post 
 forumRouter.post('/submit', forumValidator.addForum, forumController.addforum);
@@ -19,7 +19,7 @@ forumRouter.post('/submit', forumValidator.addForum, forumController.addforum);
 forumRouter.get('/:_id',forumController.getforumByID);
 
 //edit form post by id
-forumRouter.get('/edit/:_id' , forumController.editForum);
+forumRouter.get('/edit/:_id', forumController.ensureAuthenticated, forumController.editForum);
 
 //update forum post by id
 forumRouter.post('/edit/:_id' , forumController.updateForum);
