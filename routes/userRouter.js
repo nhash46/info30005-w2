@@ -17,7 +17,7 @@ userRouter.post("/signup", userValidator.addUser, userController.addUser);
 userRouter.get("/", userController.getAllUsers);
 
 // get user profile
-userRouter.get("/:id", userController.getUSerByID);
+userRouter.get("/:id", userController.getUserByID);
 
 // log in form
 userRouter.get("/login", userController.loginPage);
