@@ -30,6 +30,30 @@ block content
         span.dot(onclick='currentSlide(1)')
         span.dot(onclick='currentSlide(2)')
         span.dot(onclick='currentSlide(3)')
+    script.
+        var slideIndex = 1;
+        showSlides(slideIndex);
+        function plusSlides(n) {
+        showSlides(slideIndex += n);
+        }
+        function currentSlide(n) {
+        showSlides(slideIndex = n);
+        }
+        function showSlides(n) {
+        var i;
+        var slides = getElementsByClassName("mySlides");
+        var dots = getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        }    
 
          
     .container  
@@ -69,4 +93,4 @@ block content
                     .card-body
                         h4.card-title Tom Doe
                         p.card-text Psychologist. 
-                        a.btn.btn-primary.stretched-link(href='#') See Profile 
+                        a.btn.btn-primary.stretched-link(href='#') See Profile                  
