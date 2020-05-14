@@ -78,6 +78,10 @@ const getUserProfile = async (req, res) => {
     });
 };
 
+const getUserProfileByID = async (req, res) => {
+    res.send("Yet to be implemented");
+};
+
 // function that loads form page for adding post
 const loginPage = (req, res) => {
     res.render('signin', {
@@ -161,6 +165,7 @@ module.exports = {
   addUser,
   getAllUsers,
   getUserProfile,
+  getUserProfileByID,
   logIn,
   newConsultation,
   getAllConsultations,
