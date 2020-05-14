@@ -19,9 +19,6 @@ userRouter.get("/", userController.getAllUsers);
 // log in form
 userRouter.get("/login", userController.loginPage);
 
-// get user profile
-userRouter.get("/:id", userController.getUserByID);
-
 // logging in
 userRouter.post("/login", userController.logIn);
 
@@ -33,5 +30,8 @@ userRouter.get("/consultations", userController.getAllConsultations);
 
 // logging out
 userRouter.get("/logout", userController.logOutUser);
+
+// get user profile
+userRouter.get("/:id", userController.getUserByID);
 
 module.exports = userRouter;
