@@ -90,3 +90,8 @@ nav.navbar {
     padding-left: 20%;
     padding-right: 20%;
 }
+
+.active-cyan-2 input.form-control[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #4dd0e1;
+    box-shadow: 0 1px 0 0 #4dd0e1;
+  }
