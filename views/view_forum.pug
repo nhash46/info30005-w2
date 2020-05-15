@@ -2,7 +2,9 @@ extends layout
 
 block content
     .container
-        h5 posted by #{forum.author} at 'date time'
+        h5 Posted by 
+            a(href = '/user/profile/'+forum.author) #{forum.author} 
+        h5 at #{forum.date.toDateString()} #{forum.date.toLocaleTimeString()}
         h1= forum.title
         br
         p= forum.body
