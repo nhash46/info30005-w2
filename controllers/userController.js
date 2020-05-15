@@ -6,6 +6,7 @@ const passport = require('passport');
 
 // import user model
 const User = mongoose.model("User");
+const Forum = mongoose.model("Post")
 const Consultation = mongoose.model("Consultation");
 
 // function that loads form page for adding post
@@ -79,7 +80,16 @@ const getUserProfile = async (req, res) => {
 };
 
 const getUserProfileByID = async (req, res) => {
-    res.send("Yet to be implemented");
+  Forum.find({author:req.params.id}, function(err, forums){
+    if(err){
+      console.log(err);
+    } else {
+      res.render("forum-posts", {
+        title: req.params.id + "'s Forums",
+        forums: forums
+      });
+    }
+  });
 };
 
 // function that loads form page for adding post
