@@ -10,7 +10,7 @@ block content
                 a(href='/forum-posts/'+forum._id)
                     .card.bg-primary
                         h2 #{forum.title}
-                        h5 by #{forum.author}, Dec 7, 2017
+                        h5 by #{forum.author}, #{forum.date.toDateString()}
                         p #{forum.body}
         .rightcolumn
             .card

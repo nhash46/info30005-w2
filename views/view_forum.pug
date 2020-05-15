@@ -18,7 +18,7 @@ block content
                     .panel-default
                         .panel-heading
                             h3.panel-title 
-                                i.far.fa-clock date time
+                                i.far.fa-clock #{c.date.toDateString()}  #{c.date.toLocaleTimeString()}
                         .panel-body #{c.content}
                         .panel-footer
                             // comments need an author so can go #{c.author} and c.author in href
