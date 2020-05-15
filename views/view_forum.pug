@@ -2,7 +2,9 @@ extends layout
 
 block content
     .container
-        h5 posted by #{forum.author} at 'date time'
+        h5 Posted by 
+            a(href = '/user/profile/'+forum.author) #{forum.author} 
+        h5 at #{forum.date.toDateString()} #{forum.date.toLocaleTimeString()}
         h1= forum.title
         br
         p= forum.body
@@ -18,7 +20,7 @@ block content
                     .panel-default
                         .panel-heading
                             h3.panel-title 
-                                i.far.fa-clock date time
+                                i.far.fa-clock #{c.date.toDateString()}  #{c.date.toLocaleTimeString()}
                         .panel-body #{c.content}
                         .panel-footer
                             // comments need an author so can go #{c.author} and c.author in href

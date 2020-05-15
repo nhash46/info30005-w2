@@ -9,7 +9,7 @@ const commentSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId, 
         ref: "Post"
     },
-    datetime: {type: String}
+    date: {type:Date, default: Date.now}
 });
 
 const Comment = mongoose.model("Comment", commentSchema, "comments");

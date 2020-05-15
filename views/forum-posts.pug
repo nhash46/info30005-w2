@@ -3,14 +3,14 @@ extends layout
 block content
 
     .header
-        h2 Forum Page
+        h2 #{title}
     .row
         .leftcolumn
             each  forum, i in forums 
                 a(href='/forum-posts/'+forum._id)
                     .card.bg-primary
                         h2 #{forum.title}
-                        i.glyphicon.glyphicon-user #{' ' + forum.author + ', datetime '}
+                        h5 posted by #{forum.author} #{forum.date.toDateString()}
                         p #{forum.body}
         .rightcolumn
             .card
