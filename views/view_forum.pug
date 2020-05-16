@@ -18,14 +18,12 @@ block content
             each c in forum.comments
                 .panel
                     .panel-default
-                        .panel-heading
-                            h3.panel-title 
-                                i.far.fa-clock #{' ' + c.date.toDateString()}
                         .panel-body #{c.content}
                         .panel-footer
-                            // comments need an author so can go #{c.author} and c.author in href
-                            a(href = '/user/profile/'+c.author)
-                                i.glyphicon.glyphicon-user #{' ' + c.author}
+                            p by #[a(href = '/user/profile/'+c.author) #[i.glyphicon.glyphicon-user] #{' ' + c.author} ]
+                                span at #[i.far.fa-clock #{' ' + c.date.toDateString()}  #{c.date.toLocaleTimeString()}]
+
+
                             
         script(src='https://kit.fontawesome.com/d7fc33007f.js', crossorigin='anonymous')
         
