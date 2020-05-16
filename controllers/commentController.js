@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
+const flash = require('connect-flash');
 
 const Comment = mongoose.model("Comment");
 const Post = mongoose.model("Post");
-
-const forumController = require("../controllers/forumController.js");
 
 // adds a comment to comment collection
 const addComment = async (req, res) => {
@@ -72,9 +71,88 @@ const addComment = async (req, res) => {
     }
   }
 
+  // Load Edit Form
+  const editComment = async (req, res) => {
+
+    Comment.findById(req.params._id, function(err, comment){
+      if(comment.author != req.user.username){
+        req.flash('danger', 'Not authorised to edit this comment');
+        res.redirect('/forum-posts/'+comment.parentPost);
+      }
+      else {
+        res.render('edit_comment', {
+          title: 'Edit Comment',
+          comment: comment 
+        });
+      }
+    });
+  }
+
+  // function to handle request to edit post
+  const updateComment = (req, res) => {
+    // extract info. from body
+
+    let comment = {};
+
+    comment.content = req.body.content;
+    
+    let query = {_id:req.params._id}
+  
+    // add post into db
+    Comment.updateOne(query, comment, function (err) {
+      if (err){
+        console.log(err);
+      }
+      else{
+        req.flash('success','Comment Edited');
+        res.redirect('/forum-posts/'+comment.parentPost);
+      } 
+    });
+  }
+
+  // function to handle request to delete comment
+  const deleteComment = (req, res) => {
+    // check if user is logged in
+    if(!req.user._id){
+      res.status(500).send();
+    }
+    let query = {_id:req.params._id}
+
+    // check if user is the author of comment
+    Comment.findById(req.params.id, function(err, comment){
+      if(comment.author != req.user.username){
+        res.status(500).send();
+      } 
+      else {
+        Comment.remove(query, function(err){
+          if(err){
+            console.log(err);
+          }
+          req.flash('success','Comment Deleted');
+          res.send('Success');
+        });
+      }
+    });
+  }
+
+  // access control
+  function ensureAuthenticated(req, res, next){
+    if(req.isAuthenticated()){
+      return next();
+    } else {
+      req.flash('danger', 'Please login');
+      res.redirect('/user/login')
+    }
+  }
+
+
   module.exports = {
     addComment,
     getAllComments,
     getCommentByTitle,
-    getCommentByParentId
+    getCommentByParentId,
+    editComment,
+    updateComment,
+    deleteComment,
+    ensureAuthenticated
   };

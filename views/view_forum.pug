@@ -4,14 +4,14 @@ block content
     .container
         h5 Posted by 
             a(href = '/user/profile/'+forum.author) #{forum.author} 
-        h5 at #{forum.date.toDateString()}
+        h6 on #{forum.date.toDateString()}
         h1= forum.title
         br
         p= forum.body
         if user
             if user.username == forum.author
-                a.btn.btn-default.btn-sm(href='/forum-posts/edit/'+forum._id) Edit
-                a.btn.btn-danger.btn-sm.delete-forum(href='#', data-id=forum._id) Delete
+                a.btn.btn-default.btn-sm(href='/forum-posts/edit/'+forum._id) edit
+                a.btn.btn-danger.btn-sm.delete-forum(href='#', data-id=forum._id) delete
         hr
         .container
             h3 Comments
@@ -25,8 +25,12 @@ block content
                         .panel-footer
                             // comments need an author so can go #{c.author} and c.author in href
                             a(href = '/user/profile/'+c.author)
-                                i.glyphicon.glyphicon-user #{' ' + c.author}
-                            
+                                i.glyphicon.glyphicon-user #{' ' + c.author + '    '}
+
+                            if user
+                                if c.author == user.username
+                                    a.btn.btn-link.btn-sm(href='/comments', data-id=c._id) edit
+
         script(src='https://kit.fontawesome.com/d7fc33007f.js', crossorigin='anonymous')
         
         if user
