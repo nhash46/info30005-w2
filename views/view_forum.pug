@@ -23,9 +23,9 @@ block content
                                 i.far.fa-clock #{' ' + c.date.toDateString()}  #{c.date.toLocaleTimeString()}
                         .panel-body #{c.content}
                         .panel-footer
-                            p by #[span #[a(href = '/user/profile/'+c.author) #[i.glyphicon.glyphicon-user]]]
+                            p by #[span #[a(href = '/user/profile/'+c.author) #[i.glyphicon.glyphicon-user]] #[p.test-font #{' ' + c.author}]]
                                 //i.glyphicon.glyphicon-user
-                                p.test-font #{' ' + c.author}
+                                //p.test-font #{' ' + c.author}
 
 
                             
