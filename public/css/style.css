@@ -153,4 +153,8 @@ nav.navbar {
 .button:hover {
   background-color: #000;
 }
+
+far.fa-clock{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
   
