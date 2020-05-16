@@ -155,6 +155,10 @@ nav.navbar {
 }
 
 far.fa-clock{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Arial;
+}
+
+glyphicon.glyphicon-user{
+    font-family: Arial;
 }
   
