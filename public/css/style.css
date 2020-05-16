@@ -158,11 +158,11 @@ nav.navbar {
     font-size: small;
 }
 
-.glyphicon.glyphicon-user{
+/*.glyphicon.glyphicon-user{
     float: left;
-}
+}*/
 
 .test-font {
     font-family: "Comic Sans MS";
-    float: left;
+    /*float: left;*/
 }
