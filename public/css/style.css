@@ -157,3 +157,7 @@ nav.navbar {
 .far.fa-clock{
     font-size: small;
 }
+
+.test-font {
+    font-family: "Comic Sans MS";
+}
