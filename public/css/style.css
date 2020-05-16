@@ -11,6 +11,11 @@ nav.navbar {
     background-color:#0A455C;
 }
 
+#logo{
+  position: absolute;
+  bottom: 30px;
+  left: 95px;
+}
 nav.navbar.navbar-inverse li a {
   color:white;
 }
