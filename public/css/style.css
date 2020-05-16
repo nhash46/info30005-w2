@@ -164,7 +164,6 @@ nav.navbar {
 
 .test-font {
     font-family: "Comic Sans MS";
-    display: inline;
-    vertical-align: top;
     /*float: left;*/
 }
+
