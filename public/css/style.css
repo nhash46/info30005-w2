@@ -206,3 +206,42 @@ input[type=text] {
 input[type=text]:focus {
   width: 100%;
 }
+
+/* FOOOTER BUTTONS AND ICONS */
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-youtube {
+  background: red;
+  color: white;
+}
+.fa-pinterest {
+  background: rgba(255, 0, 0, 0.712);
+  color: white;
+}
+.fa-reddit {
+  background: orange;
+  color: white;
+}
+
+.btn.btn-danger {
+  background-color: red;
+  width: 250px;
+  /* height: 250px; */
+  border-radius: 20px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.btn.btn-danger:hover {
+  background-color: gold;
+}
