@@ -153,4 +153,7 @@ nav.navbar {
 .button:hover {
   background-color: #000;
 }
-  
+
+.far.fa-clock{
+    font-size: xx-small;
+}
