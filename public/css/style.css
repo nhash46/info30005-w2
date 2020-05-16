@@ -11,6 +11,10 @@ nav.navbar {
     background-color:#0A455C;
 }
 
+#forum-title{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+}
 
 .pagecontent{
     font-family: Arial;
@@ -76,7 +80,13 @@ nav.navbar {
 #forum-link{
   border-radius: 0px 0px 15px 15px;
   background-color: #C1C8E4;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+#heading-font{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .header {
     padding: 30px;
     font-size: 40px;

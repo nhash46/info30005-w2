@@ -9,7 +9,8 @@ block content
             each  forum, i in forums
                 .panel
                     .panel-body#forum-card
-                        h2 #{forum.title}
+                        #forum-title
+                            h2 #{forum.title}
                         h6 posted by #{forum.author}, #{forum.date.toDateString()}
                         p #{forum.body}
                     .panel-footer#forum-link
@@ -31,15 +32,17 @@ block content
                         window.location.href = '/forum-posts/submit'
                     }
             .card#about-us
-                .text-secondary    
-                    h2 About Us
+                .text-secondary
+                    #heading-font    
+                        h2 About Us
                     .fakeimg(style='height:100px;') Image
                     p.
                         We have identified two major barriers detering men from seeking help, 
                         namely; social stigmas attached with mental health, and perhaps as an extension 
                         of these stigmas, anxiety relating to having a face-to-face consultation with a mental health expert. 
             .card#popular
-                h3 Popular Post
+                #heading-font
+                    h3 Popular Post
                 .fakeimg Image
                 br
                 .fakeimg Image

@@ -5,7 +5,8 @@ block content
         h5 Posted by 
             a(href = '/user/profile/'+forum.author) #{forum.author} 
         h5 at #{forum.date.toDateString()}
-        h1= forum.title
+        #forum-title
+            h1= forum.title
         br
         p= forum.body
         if user
