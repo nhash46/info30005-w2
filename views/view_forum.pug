@@ -15,12 +15,13 @@ block content
                 a.btn.btn-danger.btn-sm.delete-forum(href='#', data-id=forum._id) Delete
         hr
         .container
-            h3 Comments
+            #forum-title
+                h3 Comments
             each c in forum.comments
                 .panel
                     .panel-default
-                        .panel-body #{c.content}
-                        .panel-footer
+                        .panel-body#comment-top #{c.content}
+                        .panel-footer#comment-bottom
                             p #[a(href = '/user/profile/'+c.author) #[i.glyphicon.glyphicon-user] #{' ' + c.author} ]
                                 span #[i.far.fa-clock #{' ' + c.date.toDateString()}]
 

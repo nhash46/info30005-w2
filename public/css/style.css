@@ -221,3 +221,11 @@ nav.navbar.navbar-inverse li a:hover {
   background-color: #FFB829;
   color: white;
 }
+
+#comment-top{
+  border-radius: 15px 15px 0px 0px ;
+}
+
+#comment-bottom{
+  border-radius: 0px 0px 15px 15px ;
+}
