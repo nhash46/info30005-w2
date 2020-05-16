@@ -8,6 +8,26 @@
 
 nav.navbar {
     margin-bottom: 0px;
+    background-color:#0A455C;
+}
+
+nav.navbar.navbar-inverse li a {
+  color:white;
+}
+nav.navbar.navbar-inverse li a:hover {
+  color:grey;
+}
+
+.navbar-inverse .navbar-brand {
+  color: white;
+}
+.navbar-inverse .navbar-brand:hover {
+  color: grey;
+}
+
+#forum-title{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
 }
 
 .pagecontent{
@@ -60,10 +80,27 @@ nav.navbar {
 
 .card {
     border-radius: 15px;
-    background-color: rgb(224, 224, 224);
     padding: 20px;
     margin-top: 20px;
+    
 }
+
+#forum-card{
+  border-radius: 15px 15px 0px 0px ;
+  background-color: #5680E9;
+  color: white;
+}
+
+#forum-link{
+  border-radius: 0px 0px 15px 15px;
+  background-color: #C1C8E4;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#heading-font{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .header {
     padding: 30px;
     font-size: 40px;
@@ -154,5 +191,28 @@ nav.navbar {
   background-color: #000;
 }
 
+.far.fa-clock{
+    font-size: medium;
+}
 
 
+#discussion-header{
+  font-family: "Arial Black", sans-serif;
+}
+
+
+
+#search{
+  background-color: #84CEEB;
+  color: white;
+}
+
+#about-us{
+  background-color: #5AB9EA;
+  color: white;
+}
+
+#popular{
+  background-color: #FFB829;
+  color: white;
+}

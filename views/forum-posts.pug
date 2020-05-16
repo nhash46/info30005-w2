@@ -2,18 +2,23 @@ extends layout
 
 block content
 
-    .header
-        h2 #{title}
+    .header#discussion-header
+        h1 Forums
     .row
         .leftcolumn
-            each  forum, i in forums 
-                a(href='/forum-posts/'+forum._id)
-                    .card.bg-primary
-                        h2 #{forum.title}
-                        h5 by #{forum.author}, #{forum.date.toDateString()}
+            each  forum, i in forums
+                .panel
+                    .panel-body#forum-card
+                        #forum-title
+                            h2 #{forum.title}
+                        h6 posted by #{forum.author}, #{forum.date.toDateString()}
                         p #{forum.body}
+                    .panel-footer#forum-link
+                        a(href='/forum-posts/'+forum._id)
+                            h4 click here to view
+                    
         .rightcolumn
-            .card
+            .card#search
                 if user
                     input.btn.btn-primary(type='submit', value='Create a post', onclick='move()')
 
@@ -26,26 +31,24 @@ block content
                     function move() {
                         window.location.href = '/forum-posts/submit'
                     }
-            .card
-                 .text-secondary    
-                    h2 About Us
+            .card#about-us
+                .text-secondary
+                    #heading-font    
+                        h2 About Us
                     .fakeimg(style='height:100px;') Image
                     p.
                         We have identified two major barriers detering men from seeking help, 
                         namely; social stigmas attached with mental health, and perhaps as an extension 
                         of these stigmas, anxiety relating to having a face-to-face consultation with a mental health expert. 
-            .card
-                h3 Popular Post
+            .card#popular
+                #heading-font
+                    h3 Popular Post
                 .fakeimg Image
                 br
                 .fakeimg Image
                 br
                 .fakeimg Image
-            .card
-                h3 Follow Me
-                p Some text..
-    if user
-        input.btn.btn-primary(type='submit', value='Create a post', onclick='move()')
+
     script.
         function move() {
         window.location.href = '/forum-posts/submit'

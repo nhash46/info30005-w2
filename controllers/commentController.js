@@ -12,6 +12,7 @@ const addComment = async (req, res) => {
       author : req.user.username,
       content : req.body.content,
       parentPost : req.params._id,
+      date: Date.now()
     })
 
     // need to add this Id to Parent document 'comment' field 

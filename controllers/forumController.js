@@ -28,7 +28,8 @@ const addforum = (req, res) => {
     var newPost = new Forum({
       title: req.body.title,
       author: req.user.username,
-      body: req.body.body
+      body: req.body.body,
+      date: Date.now()
     });
 
     // add post into db
