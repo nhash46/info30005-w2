@@ -155,15 +155,7 @@ nav.navbar {
 }
 
 .far.fa-clock{
-    font-size: small;
+    font-size: medium;
 }
 
-/*.glyphicon.glyphicon-user{
-    float: left;
-}*/
-
-.test-font {
-    font-family: "Comic Sans MS";
-    /*float: left;*/
-}
 
