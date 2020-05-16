@@ -24,11 +24,10 @@ block content
                         .panel-body #{c.content}
                         .panel-footer
                             p by
-                                span
-                                    a(href = '/user/profile/'+c.author)
-                                        i.glyphicon.glyphicon-user
-                                            span
-                                                p.test-font #{' ' + c.author}
+                                a(href = '/user/profile/'+c.author)
+                                    i.glyphicon.glyphicon-user
+                                        span
+                                            p.test-font #{' ' + c.author}
 
 
                             
