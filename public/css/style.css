@@ -8,7 +8,9 @@
 
 nav.navbar {
     margin-bottom: 0px;
+    background-color:#0A455C;
 }
+
 
 .pagecontent{
     font-family: Arial;
@@ -174,6 +176,19 @@ nav.navbar {
   font-family: "Arial Black", sans-serif;
 }
 
-a:link {
+
+
+#search{
+  background-color: #84CEEB;
+  color: white;
+}
+
+#about-us{
+  background-color: #5AB9EA;
+  color: white;
+}
+
+#popular{
+  background-color: #FFB829;
   color: white;
 }

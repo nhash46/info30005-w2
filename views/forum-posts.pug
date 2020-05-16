@@ -14,10 +14,10 @@ block content
                         p #{forum.body}
                     .panel-footer#forum-link
                         a(href='/forum-posts/'+forum._id)
-                            h4 (click here to view)
+                            h4 click here to view
                     
         .rightcolumn
-            .card#right-column
+            .card#search
                 if user
                     input.btn.btn-primary(type='submit', value='Create a post', onclick='move()')
 
@@ -30,7 +30,7 @@ block content
                     function move() {
                         window.location.href = '/forum-posts/submit'
                     }
-            .card#right-column
+            .card#about-us
                 .text-secondary    
                     h2 About Us
                     .fakeimg(style='height:100px;') Image
@@ -38,16 +38,14 @@ block content
                         We have identified two major barriers detering men from seeking help, 
                         namely; social stigmas attached with mental health, and perhaps as an extension 
                         of these stigmas, anxiety relating to having a face-to-face consultation with a mental health expert. 
-            .card#right-column
+            .card#popular
                 h3 Popular Post
                 .fakeimg Image
                 br
                 .fakeimg Image
                 br
                 .fakeimg Image
-            .card#right-column
-                h3 Follow Me
-                p Some text..
+
     script.
         function move() {
         window.location.href = '/forum-posts/submit'
