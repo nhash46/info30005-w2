@@ -156,6 +156,7 @@ nav.navbar {
 
 .far.fa-clock{
     font-size: small;
+    float: left;
 }
 
 .test-font {
