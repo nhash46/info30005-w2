@@ -23,8 +23,8 @@ block content
                                 i.far.fa-clock #{' ' + c.date.toDateString()}  #{c.date.toLocaleTimeString()}
                         .panel-body #{c.content}
                         .panel-footer
-                            p by #[a(href = '/user/profile/'+c.author) #[i.glyphicon.glyphicon-user] #{' ' + c.author}]
-                                span and this
+                            p by #[a(href = '/user/profile/'+c.author) #[i.glyphicon.glyphicon-user] #{' ' + c.author} ]
+                                span at #[i.far.fa-clock #{' ' + c.date.toDateString()}  #{c.date.toLocaleTimeString()}]
 
 
                             
