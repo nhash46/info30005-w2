@@ -60,9 +60,20 @@ nav.navbar {
 
 .card {
     border-radius: 15px;
-    background-color: rgb(224, 224, 224);
     padding: 20px;
     margin-top: 20px;
+    
+}
+
+#forum-card{
+  border-radius: 15px 15px 0px 0px ;
+  background-color: #5680E9;
+  color: white;
+}
+
+#forum-link{
+  border-radius: 0px 0px 15px 15px;
+  background-color: #C1C8E4;
 }
 .header {
     padding: 30px;
@@ -159,3 +170,10 @@ nav.navbar {
 }
 
 
+#discussion-header{
+  font-family: "Arial Black", sans-serif;
+}
+
+a:link {
+  color: white;
+}

@@ -20,8 +20,8 @@ block content
                     .panel-default
                         .panel-body #{c.content}
                         .panel-footer
-                            p by #[a(href = '/user/profile/'+c.author) #[i.glyphicon.glyphicon-user] #{' ' + c.author} ]
-                                span at #[i.far.fa-clock #{' ' + c.date.toDateString()}  #{c.date.toLocaleTimeString()}]
+                            p #[a(href = '/user/profile/'+c.author) #[i.glyphicon.glyphicon-user] #{' ' + c.author} ]
+                                span #[i.far.fa-clock #{' ' + c.date.toDateString()}]
 
 
                             
@@ -34,4 +34,8 @@ block content
                     input.form-control(name='content')
 
                 input.btn.btn-primary(type='submit', value='Post')
+        
+        if (!user)
+            h5 Sign in to join the discussion!
+
 
