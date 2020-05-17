@@ -164,8 +164,8 @@ const deleteForum = (req, res) => {
   let query = {_id:req.params._id}
 
   // check if user is the author of post
-  Forum.findById(req.params.id, function(err, forum){
-    if(forum.author != req.user._id){
+  Forum.findById(query, function(err, forum){
+    if(forum.author != req.user.username){
       res.status(500).send();
     } 
     else {
