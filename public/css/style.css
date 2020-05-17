@@ -277,8 +277,3 @@ nav.navbar.navbar-inverse li a:hover {
 .btn.btn-footer:hover {
   background-color: gold;
 }
-
-#logo {
-    max-height: 100%;
-    width: auto;
-}
