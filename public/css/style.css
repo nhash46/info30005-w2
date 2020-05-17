@@ -275,8 +275,3 @@ nav.navbar.navbar-inverse li a:hover {
 .btn.btn-danger:hover {
   background-color: gold;
 }
-
-#logo {
-    max-height: 100%;
-    width: auto;
-}
