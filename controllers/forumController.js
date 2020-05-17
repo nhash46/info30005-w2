@@ -62,7 +62,7 @@ const getAllForumPosts = async (req, res) => {
       console.log(err);
     } else {
       res.render("forum-posts", {
-        title: 'Forum Page',
+        title: 'Forums',
         forums: forums
       });
     }
