@@ -204,9 +204,10 @@ nav.navbar.navbar-inverse li a:hover {
 
 
 
-#search{
+#createpost{
   background-color: #84CEEB;
   color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #about-us{
