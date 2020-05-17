@@ -277,5 +277,6 @@ nav.navbar.navbar-inverse li a:hover {
 }
 
 #logo {
-    vertical-align: top;
+    max-height: 100%;
+    width: auto;
 }
