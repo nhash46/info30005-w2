@@ -112,6 +112,7 @@ nav.navbar.navbar-inverse li a:hover {
   text-align: center;
   background: #0A455C;
   color: white;
+  width: 100%;
   margin-top: 20px;
 }
 
