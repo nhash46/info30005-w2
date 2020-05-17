@@ -34,6 +34,7 @@ userRouter.get("/logout", userController.logOutUser);
 // get user profile
 userRouter.get("/profile", userController.getUserProfile);
 
+// get all posts made by particular user
 userRouter.get("/profile/:id", userController.getUserProfileByID);
 
 module.exports = userRouter;

@@ -1,3 +1,4 @@
+// deletes post
 $(document).ready(function(){
     $('.delete-forum').on('click', function(e){
         $target = $(e.target);

@@ -73,12 +73,13 @@ const getAllUsers = async (req, res) => {
     }
   };
 
-
+// function that renders the user profile
 const getUserProfile = async (req, res) => {
     res.render('profile', {
     });
 };
 
+// function that retrieves posts made by a specified user
 const getUserProfileByID = async (req, res) => {
   Forum.find({author:req.params.id}, function(err, forums){
     if(err){
@@ -152,7 +153,7 @@ const newConsultation = async (req, res) => {
 
 };
 
- // 
+ // function that loads all consultations
  const getAllConsultations = async (req, res) => {  
   try{
   const all_consultations = await Consultation.find();
