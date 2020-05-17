@@ -11,11 +11,6 @@ nav.navbar {
     background-color:#0A455C;
 }
 
-#logo{
-  position: absolute;
-  bottom: 30px;
-  left: 95px;
-}
 nav.navbar.navbar-inverse li a {
   color:white;
 }
@@ -280,4 +275,9 @@ nav.navbar.navbar-inverse li a:hover {
 }
 .btn.btn-danger:hover {
   background-color: gold;
+}
+
+#logo {
+    max-height: 100%;
+    width: auto;
 }
