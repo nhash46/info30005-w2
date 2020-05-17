@@ -4,7 +4,7 @@ block content
     .container
         h5 Posted by 
             a(href = '/user/profile/'+forum.author) #{forum.author} 
-        h5 at #{forum.date.toDateString()}
+        h5 on #{forum.date.toDateString()}
         #forum-title
             h1= forum.title
         br
