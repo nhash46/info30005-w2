@@ -14,16 +14,21 @@ block content
     
     .row
         .leftcolumn
-            each  forum, i in forums
-                .panel
-                    .panel-body#forum-card
-                        #forum-title
-                            h2 #{forum.title}
-                        h6 posted by #{forum.author}, #{forum.date.toDateString()}
-                        p #{forum.body}
-                    .panel-footer#forum-link
-                        a(href='/forum-posts/'+forum._id)
-                            h4 click here to view
+            if noMatch
+                .card#noMatch
+                    h5 Sorry, there were no community results for "#{searchQuery}". Try search again!
+                    
+            if !noMatch
+                each  forum, i in forums
+                    .panel
+                        .panel-body#forum-card
+                            #forum-title
+                                h2 #{forum.title}
+                            h6 posted by #{forum.author}, #{forum.date.toDateString()}
+                            p #{forum.body}
+                        .panel-footer#forum-link
+                            a(href='/forum-posts/'+forum._id)
+                                h4 click here to view
                     
         .rightcolumn
             .card#signin-createpost

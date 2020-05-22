@@ -72,6 +72,7 @@ const getAllForumPosts = async (req, res) => {
 // function to search for forums upon query
 const showForums = (req, res) => {
     const searchQuery = null;
+    var noMatch = null;
     if(req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
         // Get all forums from DB
@@ -80,14 +81,15 @@ const showForums = (req, res) => {
                console.log(err);
            } else {
               if(allForums.length < 1) {
-                  req.flash("error", "No forums found");
-                  return res.redirect("/forum-posts");
+                  noMatch = true; 
+
               }
               res.render("forum-posts",
               {
                 title: 'Forums',
                 searchQuery: req.query.search,
-                forums:allForums, 
+                forums: allForums,
+                noMatch: noMatch
               });
            }
         });
@@ -100,7 +102,8 @@ const showForums = (req, res) => {
               res.render("forum-posts",
               {
                 title: 'Forums',
-                forums: allForums
+                forums: allForums,
+                noMatch: noMatch
               });
            }
         });
