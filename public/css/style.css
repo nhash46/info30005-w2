@@ -306,3 +306,20 @@ nav.navbar.navbar-inverse li a:hover {
   margin-right: auto;
   width: 75%;
 }
+
+#slogan{
+  float: right;
+}
+
+#header-title{
+  float: right;
+}
+
+.module-border-wrap {
+  background: linear-gradient(to right, #55ACEE, purple, red, gold);
+  padding: 10px 0px 10px 0px;
+}
+
+.border-container{
+  padding: 5px;
+}
