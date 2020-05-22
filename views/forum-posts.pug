@@ -25,7 +25,7 @@ block content
                         input.btn.btn-primary(type='submit', value='Sign in to create a post!', onclick='signIn()')
 
             .card#search
-                form.form-inlne(action="/forum-posts/search" method="GET")
+                form.form-inlne(action="/forum-posts" method="GET")
                     div.form-group
                         input.form-control#normalfont(name='search', type='text', placeholder= 'Forum search...' class='form-control')
                         input.btn.btn-primary(type='submit', value='Search')
