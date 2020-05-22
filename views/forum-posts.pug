@@ -3,7 +3,15 @@ extends layout
 block content
 
     .header#discussion-header
-        h1 #{title}
+        if !searchQuery
+            h1 #{title}
+        if searchQuery
+            .search-header
+                if searchQuery
+                    h4 showing search results for: 
+                    #discussion-header    
+                        h1 '#{searchQuery}'
+    
     .row
         .leftcolumn
             each  forum, i in forums
