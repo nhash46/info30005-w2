@@ -75,18 +75,18 @@ const showForums = (req, res) => {
     if(req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
         // Get all forums from DB
-        Forum.find({name: regex}, function(err, allForums){
+        Forum.find({title: regex}, function(err, allForums){
            if(err){
                console.log(err);
            } else {
               if(allForums.length < 1) {
-                  noMatch = "No forums found! please try again.";
+                  req.flash("error", "No forums found");
+                  return res.redirect("/forum-posts");
               }
               res.render("forum-posts",
               {
                 title: 'Forums',
                 forums:allForums, 
-                noMatch: noMatch
               });
            }
         });
