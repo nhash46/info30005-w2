@@ -69,6 +69,44 @@ const getAllForumPosts = async (req, res) => {
   });
 };
 
+// function to search for forums upon query
+const showForums = (req, res) => {
+  var noMatch = null;
+    if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        // Get all forums from DB
+        Forum.find({name: regex}, function(err, allForums){
+           if(err){
+               console.log(err);
+           } else {
+              if(allForums.length < 1) {
+                  noMatch = "No forums found! please try again.";
+              }
+              res.render("forum-posts",
+              {
+                title: 'Forums',
+                forums:allForums, 
+                noMatch: noMatch
+              });
+           }
+        });
+    } else {
+        // Get all campgrounds from DB
+        Forum.find({}, function(err, allForums){
+           if(err){
+               console.log(err);
+           } else {
+              res.render("forum-posts",
+              {
+                title: 'Forums',
+                forums:allForums, 
+                noMatch: noMatch
+              });
+           }
+        });
+    }
+}
+
 // function to handle a request to a particular forum
 const getforumByID = async (req, res) => {
 
@@ -180,35 +218,6 @@ const deleteForum = (req, res) => {
   });
 }
 
-// function to search for forums upon query
-
-const search = (req, res) => {
-  var noMatch = null;
-    if(req.query.search) {
-        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-        // Get all forums from DB
-        Forum.find({name: regex}, function(err, allForums){
-           if(err){
-               console.log(err);
-           } else {
-              if(allForums.length < 1) {
-                  noMatch = "No forums found! please try again.";
-              }
-              res.render("forum-search",{forums:allForums, noMatch: noMatch});
-           }
-        });
-    } else {
-        // Get all campgrounds from DB
-        Forum.find({}, function(err, allForums){
-           if(err){
-               console.log(err);
-           } else {
-              res.render("forum-search",{forums:allForums, noMatch: noMatch});
-           }
-        });
-    }
-}
-
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
@@ -225,5 +234,5 @@ module.exports = {
   updateForum,
   deleteForum,
   ensureAuthenticated,
-  search
+  showForums
 };

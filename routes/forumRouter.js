@@ -6,8 +6,9 @@ const forumRouter = express.Router();
 
 const forumController = require("../controllers/forumController.js");
 
-// empty path = retrieve all authors 
-forumRouter.get('/', forumController.getAllForumPosts);
+// route that retrieves all forums if there is no query
+// upon query, searches for specific forums
+forumRouter.get('/', forumController.showForum);
 
 // form page for new post
 forumRouter.get('/submit', forumController.ensureAuthenticated, forumController.newForumForm);
