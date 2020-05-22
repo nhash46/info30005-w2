@@ -180,7 +180,38 @@ const deleteForum = (req, res) => {
   });
 }
 
+// function to search for forums upon query
 
+const search = (req, res) => {
+  var noMatch = null;
+    if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        // Get all forums from DB
+        Forum.find({name: regex}, function(err, allForums){
+           if(err){
+               console.log(err);
+           } else {
+              if(allForums.length < 1) {
+                  noMatch = "No forums found! please try again.";
+              }
+              res.render("forum-search",{forums:allForums, noMatch: noMatch});
+           }
+        });
+    } else {
+        // Get all campgrounds from DB
+        Forum.find({}, function(err, allForums){
+           if(err){
+               console.log(err);
+           } else {
+              res.render("forum-search",{forums:allForums, noMatch: noMatch});
+           }
+        });
+    }
+}
+
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 // remember to export the functions
 module.exports = {
@@ -193,5 +224,6 @@ module.exports = {
   editForum,
   updateForum,
   deleteForum,
-  ensureAuthenticated
+  ensureAuthenticated,
+  search
 };

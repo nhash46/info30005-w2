@@ -18,12 +18,17 @@ block content
                             h4 click here to view
                     
         .rightcolumn
-            .card#search
+            .card#signin-createpost
                 if user
                     input.btn.btn-primary(type='submit', value='Create a post', onclick='createPost()')
                 if !user
-                     input.btn.btn-primary(type='submit', value='Sign in to create a post!', onclick='signIn()')
+                        input.btn.btn-primary(type='submit', value='Sign in to create a post!', onclick='signIn()')
 
+            .card#search
+                form.form-inlne(action="/forum-posts/search" method="GET")
+                    div.form-group
+                        input.form-control#normalfont(name='search', type='text', placeholder= 'Forum search...' class='form-control')
+                        input.btn.btn-primary(type='submit', value='Search')
 
                 script.
                     function createPost() {
