@@ -73,9 +73,87 @@ const addComment = async (req, res) => {
     }
   }
 
+  // access control
+  const ensureAuthenticated = (req, res, next) => {
+    if(req.isAuthenticated()){
+           Comment.findById(req.params._id, function(err, foundComment){
+              if(err){
+                  res.redirect("back");
+              }  else {
+                  // checks if user is author of comment
+               if(foundComment.author == req.user.username) {
+                   next();
+               } else {
+                   req.flash("error", "You don't have permission to do that");
+                   res.redirect("back");
+               }
+              }
+           });
+       } else {
+           req.flash("error", "You need to be logged in to do that");
+           res.redirect("back");
+       }
+   }
+
+   // function to find comment to be edited
+   const editComment = (req, res) =>{
+    Comment.findById(req.params._id, function(err, foundComment){
+      if(err){
+          res.redirect("back");
+      } else {
+        res.redirect("forum-posts/" + foundComment.parentPost)
+      }
+   });
+  };
+
+  // function to save update to comments
+  const updateComment = (req, res) =>{
+    Comment.findByIdAndUpdate(req.params._id, req.body.content, function(err, updatedComment){
+      if(err){
+          res.redirect("back");
+      } else {
+          res.redirect("/forum-posts/" + updateComment.parentPost, 
+          {
+            beingEdited: false
+          }
+        );
+      }
+   });
+  };
+
+  // function to handle request to delete comment
+const deleteComment = (req, res) => {
+  // check if user is logged in
+  if(!req.user._id){
+    res.status(500).send();
+  }
+  let query = {_id:req.params._id}
+
+  // check if user is the author of post
+  Comment.findById(query, function(err, comment){
+    if(comment.author != req.user.username){
+      res.status(500).send();
+    } 
+    else {
+      Comment.remove(query, function(err){
+        if(err){
+          console.log(err);
+        }
+        req.flash('success','Comment deleted');
+        res.send('Success');
+      });
+    }
+  });
+}
+
+
   module.exports = {
     addComment,
     getAllComments,
     getCommentByTitle,
-    getCommentByParentId
+    getCommentByParentId,
+    ensureAuthenticated,
+    editComment,
+    updateComment,
+    deleteComment
   };
