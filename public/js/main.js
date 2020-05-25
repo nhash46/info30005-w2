@@ -36,3 +36,23 @@ $(document).ready(function(){
         });
     });
 });
+
+// edits comment
+$(document).ready(function(){
+    $('.edit-comment').on('click', function(e){
+        $target = $(e.target);
+        const forum_id = $target.attr('forum-id');
+        const comment_id =$target.attr('comment-id');
+        $.ajax({
+            type: 'GET',
+            url: '/comments/'+comment_id,
+            success: function(response){
+                alert('Deleting Comment');
+                window.location.href='/forum-posts/'+forum_id;
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    });
+});

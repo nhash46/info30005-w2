@@ -26,8 +26,8 @@ block content
                                 span #[i.far.fa-clock #{' ' + c.date.toDateString()}]
                                 if user
                                     if user.username == c.author
-                                        a.btn.btn-danger.btn-sm.delete-comment(href='#', forum-id=c.parentPost, comment-id=c._id) Delete
-                                        a.btn.btn-primary(href='#') edit
+                                        a.btn.btn-danger.btn-sm.delete-comment(href='#', forum-id=c.parentPost, comment-id=c._id) delete
+                                        a.btn.btn-primary.btn-sm.edit-comment(href='#', forum-id=c.parentPost, comment-id=c._id) edit
 
                             
         script(src='https://kit.fontawesome.com/d7fc33007f.js', crossorigin='anonymous')
