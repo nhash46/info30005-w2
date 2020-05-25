@@ -23,7 +23,6 @@ const addUser = (req, res) => {
     userType: req.body.userType,
     username: req.body.username,
     password: req.body.password,
-    password2: req.body.password2,
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     email: req.body.email
