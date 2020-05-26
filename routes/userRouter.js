@@ -13,6 +13,9 @@ userRouter.get("/signup", userController.newUserForm);
 // adding a new user i.e. signing up
 userRouter.post("/signup", userValidator.addUser, userController.addUser);
 
+// viewing all users (**** REMEMBER TO REMOVE BEFORE DELIVERABLE DUE DATE ****)
+userRouter.get("/", userController.getAllUsers);
+
 // log in form
 userRouter.get("/login", userController.loginPage);
 
