@@ -61,7 +61,7 @@ const addUser = (req, res) => {
 };
 
 // function to handle a request to get all users
-const getAllUsers = async (req, res) => {
+/*const getAllUsers = async (req, res) => {
     
     try {
       const all_users = await User.find();
@@ -71,7 +71,7 @@ const getAllUsers = async (req, res) => {
       return res.send("Database query failed");
     }
   };
-
+*/
 // function that renders the user profile
 const getUserProfile = async (req, res) => {
     res.render('profile', {
