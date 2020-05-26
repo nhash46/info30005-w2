@@ -64,10 +64,16 @@ const addUser = (req, res) => {
 const editProfile = async (req, res) => {
 
   User.findById(req.params._id, function(err, user){
-    res.render('edit-profile', {
-      title: 'Edit Profile',
-      user: user
-    });
+    if(user._id != req.user._id){
+      req.flash('danger', 'Not authorised to edit this profile');
+      res.redirect('/');
+    }
+    else {
+      res.render('edit-profile', {
+        title: 'Edit Profile',
+        user: user
+      });
+    }
   });
 }
 
