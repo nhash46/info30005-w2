@@ -62,13 +62,8 @@ const addUser = (req, res) => {
 
 // Load Edit Form
 const editProfile = async (req, res) => {
-
-  User.findById(req.params._id, function(err, user){
-    res.render('edit-profile', {
-      title: 'Edit Profile',
-      user: user
-    });
-
+  res.render('edit-profile', {
+    title: 'Edit Profile',
   });
 }
 
