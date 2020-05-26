@@ -9,4 +9,16 @@ block content
                 label First Name
                 input.form-control(name='first_name', type='text', value=user.first_name)
             br
+            #form-group
+                label Last Name
+                input.form-control(name='last_name', type='text', value=user.last_name)
+            br
+            #form-group
+                label Email
+                input.form-control(name='email', type='text', value=user.email)
+            br
+            #form-group
+                label Password
+                input.form-control(name='password', type='text', value=user.password)
+            br
             input.btn.btn-primary(type='submit', value='Submit')
