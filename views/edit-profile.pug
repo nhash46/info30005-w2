@@ -7,6 +7,6 @@ block content
         form(method='POST', action='/user/profile/edit/')
             #form-group
                 label First Name
-                input.form-control(name='first_name', type='text', value=#{user.first_name})
+                input.form-control(name='first_name', type='text', value=user.first_name)
             br
             input.btn.btn-primary(type='submit', value='Submit')
