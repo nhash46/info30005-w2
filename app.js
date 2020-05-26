@@ -2,14 +2,18 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require('path');
 const passport = require('passport');
-
 const mongoose = require("mongoose");
-
 const app = express();
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
+const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+  windowMs: 15*60*1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+});
 
 // load view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -30,6 +34,9 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
+// apply limiter to all requests
+app.use(limiter);
 
 // Express Messages Middleware
 app.use(require('connect-flash')());
