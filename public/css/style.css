@@ -47,10 +47,6 @@ nav.navbar.navbar-inverse li a:hover {
     background-color: lightblue;
 }
 
-.jumbotron.text-center {
-    font-family: 'IM Fell Great Primer', serif;
-}
-
 .alert-error{
     color: #a94442;
     background-color: #f2dede;
