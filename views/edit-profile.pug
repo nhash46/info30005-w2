@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    .main.container
+        .row
+            .col-md-6.col-md-offset-3
+                h1.display-4.m-b-2#forum-title Edit Profile
+                br
+                form(method='POST', action='/user/profile/edit/' + user._id)
+                    .form-group
+                        label First Name:
+                        input.text-capitalize.form-control(name='first_name', type='text', value=user.first_name)
+                    br
+                    .form-group
+                        label Last Name:
+                        input.text-capitalize.form-control(name='last_name', type='text', value=user.last_name)
+                    br
+                    .form-group
+                        label Email Address:
+                        input.form-control(name='email', type='text', value=user.email)
+                    br
+                    br
+                    input.btn.btn-primary(type='submit', value='Submit')

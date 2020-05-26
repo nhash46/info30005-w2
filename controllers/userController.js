@@ -60,6 +60,47 @@ const addUser = (req, res) => {
   }
 };
 
+// Load Edit Form
+const editProfile = async (req, res) => {
+
+  User.findById(req.params._id, function(err, user){
+    if(user._id != req.user._id){
+      req.flash('danger', 'Not authorised to edit this profile');
+      res.redirect('/forum-posts');
+    }
+    else {
+      res.render('edit-profile', {
+        title: 'Edit Profile',
+        user: user
+      });
+    }
+  });
+}
+
+// function to handle request to edit profile
+const updateProfile = (req, res) => {
+  // extract info. from body
+
+  let user = {};
+
+  user.email = req.body.email;
+  user.first_name = req.body.first_name;
+  user.last_name = req.body.last_name;
+
+  let query = {_id:req.params._id}
+
+
+  User.updateOne(query, user, function (err) {
+    if (err){
+      console.log(err);
+    }
+    else{
+      req.flash('success','Profile Updated');
+      res.redirect('/user/profile');
+    }
+  });
+}
+
 // function to handle a request to get all users
 const getAllUsers = async (req, res) => {
     
@@ -181,5 +222,7 @@ module.exports = {
   getAllConsultations,
   newUserForm,
   loginPage,
-  logOutUser
+  logOutUser,
+  updateProfile,
+  editProfile
 };
