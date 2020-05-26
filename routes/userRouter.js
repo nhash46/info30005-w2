@@ -26,7 +26,10 @@ userRouter.post("/login", userController.logIn);
 userRouter.post("/consultations", userController.newConsultation);
 
 // viewing all consultations
-userRouter.get("/consultations", userController.getAllConsultations);
+userRouter.get("/consultations", userController.getConsultations);
+
+// booking page
+userRouter.get("/consultations/booking", userController.getConsultationForm)
 
 // logging out
 userRouter.get("/logout", userController.logOutUser);

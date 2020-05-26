@@ -195,6 +195,16 @@ const newConsultation = async (req, res) => {
   }
 };
 
+ const getConsultations = (req, res) => {
+   res.render("consultations", {
+   });
+ }
+
+ const getConsultationForm = (req, res) => {
+   res.render("consultation-form", {
+   });
+ }
+
 // log out the current user
 const logOutUser = (req, res) => {
   req.logout();
@@ -214,5 +224,7 @@ module.exports = {
   loginPage,
   logOutUser,
   updateProfile,
-  editProfile
+  editProfile,
+  getConsultations,
+  getConsultationForm
 };
