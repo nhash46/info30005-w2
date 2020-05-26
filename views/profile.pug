@@ -5,6 +5,6 @@ block content
     .container
         .jumbotron
             h2 Welcome #{user.first_name}
+            a.btn.btn-primary.btn-sm(href='/user/profile/edit/'+user._id) Edit Profile
     .container
         .p Here we will implement some stuff
-        a.btn.btn-primary.btn-sm(href='/user/profile/edit') Edit Profile

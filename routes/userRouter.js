@@ -35,7 +35,7 @@ userRouter.get("/logout", userController.logOutUser);
 userRouter.get("/profile", userController.getUserProfile);
 
 // get edit profile page
-userRouter.get("/profile/edit", userController.editProfile);
+userRouter.get("/profile/edit/:id", userController.editProfile);
 
 // edit user profile
 userRouter.post("/profile/edit/:id", userController.updateProfile);
