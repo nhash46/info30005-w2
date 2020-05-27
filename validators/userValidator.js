@@ -26,14 +26,14 @@ exports.addUser =
 
 exports.changePassword =
     [
-        check('password').isLength({min:1}).trim().withMessage('Password required')
+        check('password').isLength({min:1}).trim().withMessage('Password required'),
         // validates password are matching
-        /*check('new_password2').custom((value,{req, loc, path}) => {
+        check('password2').custom((value,{req, loc, path}) => {
             if (value !== req.body.password) {
                 // throw error if passwords do not match
                 throw new Error("Passwords do not match");
             } else {
                 return value;
             }
-        })*/
+        })
     ]
