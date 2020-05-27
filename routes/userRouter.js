@@ -47,7 +47,7 @@ userRouter.post("/profile/edit/:_id", userController.updateProfile);
 userRouter.get("/change-password", userController.getChangePassword);
 
 // function to set new password
-userRouter.post("/change-password", userController.ChangePassword);
+userRouter.post("/change-password", userValidator.changePassword, userController.changePassword);
 
 // get all posts made by particular user
 userRouter.get("/profile/:id", userController.getUserProfileByID);

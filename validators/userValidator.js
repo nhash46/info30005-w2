@@ -23,3 +23,16 @@ exports.addUser =
     
     
 ];
+
+exports.changePassword =
+    [
+        // validates password are matching
+        check('new_password2').custom((value,{req, loc, path}) => {
+            if (value !== req.body.password) {
+                // throw error if passwords do not match
+                throw new Error("Passwords do not match");
+            } else {
+                return value;
+            }
+        })
+    ]

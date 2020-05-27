@@ -99,7 +99,53 @@ const getChangePassword = (req, res) => {
 }
 
 const changePassword = (req, res) => {
-    
+
+  let user = {};
+
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    console.log(errors);
+    res.render('change-password',
+        {
+          user:user,
+          errors: errors.mapped()
+        });
+  }
+  // If the new passwords are valid, check if the old password is correct
+  else {
+    bcrypt.genSalt(10, function(err, salt){
+      bcrypt.hash(req.body.password, salt, function(err, hash){
+        if(err){
+          console.log(err);
+        }
+        // if the entered password matches the of the current password
+        if(locals.user.password === hash) {
+
+          // hash the new password
+          bcrypt.genSalt(10, function(err, new_salt) {
+            bcrypt.hash(req.body.password, new_salt, function (err, new_hash) {
+              if (err) {
+                console.log(err);
+              }
+              user.password = new_hash;
+
+              // update user
+              let query = {_id: req.params._id};
+
+              User.updateOne(query, user, function (err) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  req.flash('success', 'Profile Updated');
+                  res.redirect('/user/profile');
+                }
+              });
+            });
+          });
+        }
+      });
+    });
+  }
 }
 
 // function to handle a request to get all users
