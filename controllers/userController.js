@@ -91,6 +91,17 @@ const updateProfile = (req, res) => {
   });
 }
 
+// function to get change password pages
+const getChangePassword = (req, res) => {
+  res.render("change-password", {
+    title : "Change Password"
+  });
+}
+
+const changePassword = (req, res) => {
+    
+}
+
 // function to handle a request to get all users
 const getAllUsers = async (req, res) => {
     
@@ -226,5 +237,7 @@ module.exports = {
   updateProfile,
   editProfile,
   getConsultations,
-  getConsultationForm
+  getConsultationForm,
+  getChangePassword,
+  changePassword
 };
