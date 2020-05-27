@@ -112,10 +112,7 @@ const addComment = async (req, res) => {
       if(err){
           res.redirect("back");
       } else {
-          res.redirect("/forum-posts/" + updateComment.parentPost, 
-          {
-            beingEdited: false
-          }
+          res.redirect("/forum-posts/" + updatedComment.parentPost
         );
       }
    });

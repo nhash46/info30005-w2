@@ -319,3 +319,8 @@ nav.navbar.navbar-inverse li a:hover {
 .border-container{
   padding: 5px;
 }
+
+#edit-comment-form{
+  display: none;
+  
+}
