@@ -107,19 +107,31 @@ const addComment = async (req, res) => {
   };
 
   // function to save update to comments
-  const updateComment = (req, res) =>{
-    Comment.findByIdAndUpdate(req.params._id, req.body.content, function(err, updatedComment){
-      if(err){
-          res.redirect("back");
-      } else {
-          res.redirect("/forum-posts/" + updateComment.parentPost, 
-          {
-            beingEdited: false
-          }
-        );
-      }
-   });
-  };
+  const updateComment = async (req, res) => {
+    // extract info. from body
+
+    let comment = {};
+
+    comment.content = req.body.content;
+    comment._id = req.params._id;
+  
+    try{
+      const filter = { _id: comment.parentPost};
+      const update = { "$push" : {"comments" : comment._id}};
+      let post = await Post.findOneAndUpdate(filter, update, {new : true});
+      console.log(post.comment);
+    } catch(err){
+      console.log(err);
+      res.status(400);
+      return res.send("Database query failed");
+    }
+
+    // add comment to database
+    foundComment.save(function (err) {
+    if (err) return console.error(err);
+    });
+    res.redirect('/forum-posts/'+req.params._id);
+  }
 
   // function to handle request to delete comment
 const deleteComment = (req, res) => {

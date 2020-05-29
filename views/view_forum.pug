@@ -21,13 +21,16 @@ block content
                 .panel
                     .panel-default
                         .panel-body#comment-top #{c.content}
+                            form.edit-comment-form(method='POST', action='/comments/edit/'+c._id)
+                                input(name='content', value= c.content)#updated-comment
+                                input.btn.btn-primary.btn-sm.save-comment(type='submit', value='save')
                         .panel-footer#comment-bottom
                             p #[a(href = '/user/profile/'+c.author) #[i.glyphicon.glyphicon-user] #{' ' + c.author} ]
-                                span #[i.far.fa-clock #{' ' + c.date.toDateString()}]
+                                span #[ #{' | ' + c.date.toDateString()}]
                                 if user
                                     if user.username == c.author
                                         a.btn.btn-danger.btn-sm.delete-comment(href='#', forum-id=c.parentPost, comment-id=c._id) delete
-                                        a.btn.btn-primary.btn-sm.edit-comment(href='#', forum-id=c.parentPost, comment-id=c._id) edit
+                                        a.btn.btn-primary.btn-sm.edit-comment(type= 'button', comment-id = c._id, all-comments = forum.comments) edit
 
                             
         script(src='https://kit.fontawesome.com/d7fc33007f.js', crossorigin='anonymous')

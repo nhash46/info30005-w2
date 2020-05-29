@@ -330,3 +330,25 @@ nav.navbar.navbar-inverse li a:hover {
   height:700px !important;
   width:100%;
 }
+
+#edit-comment-form{
+  display: none;
+}
+
+.delete-comment{
+  float: right;
+}
+
+.edit-comment{
+  float: right;
+}
+
+.save-comment{
+  float: right;
+}
+
+#updated-comment{
+  width: 80%;
+  word-wrap: break-word;
+  
+}
