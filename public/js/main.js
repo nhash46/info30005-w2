@@ -38,7 +38,23 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+    $(".edit-comment-form").hide();
     $('.edit-comment').on('click', function(e){
-        $("#edit-comment-form").toggle();
+        e.stopPropagation();
+        /**
+        $target = $(e.target);
+        const comment_id = $target.attr('comment-id');
+        const comments = $target.attr('all-comments');
+        console.log(comments);
+        console.log(comment_id);
+        for (c in comments){
+            console.log(c);
+            if (c == comment_id){
+                console.log('found it');
+                $("#edit-comment-form").toggle('slow');
+            }
+        }
+         */
+        $(".edit-comment-form").toggle('slow');
     });
 });

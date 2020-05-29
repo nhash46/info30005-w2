@@ -15,7 +15,7 @@ commentRouter.get('/', commentController.getAllComments);
 commentRouter.get('/:_id/edit', commentController.ensureAuthenticated, commentController.editComment);
 
 // update comment
-commentRouter.post("/:_id", commentController.ensureAuthenticated, commentController.updateComment);
+commentRouter.post("/edit/:_id", commentController.ensureAuthenticated, commentController.updateComment);
 
 // delete comment by id
 commentRouter.delete('/:_id', commentController.deleteComment);
