@@ -319,3 +319,14 @@ nav.navbar.navbar-inverse li a:hover {
 .border-container{
   padding: 5px;
 }
+
+/* Carousel Image Size*/
+.carousel{
+  width:100%;
+  height: 700px;
+}
+.item img{
+  object-fit:cover;
+  height:700px !important;
+  width:100%;
+}
