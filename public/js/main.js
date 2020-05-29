@@ -55,6 +55,6 @@ $(document).ready(function(){
             }
         }
          */
-        $(".edit-comment-form").toggle('slow');
+        $(this).siblings().toggle('slow');
     });
 });
