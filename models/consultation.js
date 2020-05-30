@@ -11,10 +11,7 @@ const consultationSchema = new mongoose.Schema({
   },
   date: Date,
   time: String,
-  isOnline: {
-      type: Boolean,
-      default: true
-  }
+  venue: String
 });
 
 const Consultation = mongoose.model("Consultation", consultationSchema, "consultations");

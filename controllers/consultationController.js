@@ -65,22 +65,22 @@ const newConsultation = (req, res, next) => {
   } else {
       // extract info. from body
     var newConsultation = new Consultation({
-      student: req.user._id,
-      counsellor: req.body.counsellor,
+      student: req.user.username,
+      counsellor: 'UniMelbCounsellor',
       date: req.body.date,
       time: req.body.time,
-      isOnline: req.body.isOnline
+      venue: req.body.venue
     });
 
-    // add post into db
+    // add consultation into db
     newConsultation.save(function (err) {
       if (err){
         console.log(err);
         res.status(400);
       }
       else{
-        req.flash('success','Consultation Booked');
-        res.redirect('/consultations');
+        req.flash('success','You have successfully booked a consultation');
+        res.redirect('/consultations/manage');
       } 
     });
   } 
