@@ -79,8 +79,16 @@ const newConsultation = (req, res, next) => {
   } 
 };
 
+// function that loads form page for new consultation
+const loadConsultationForm = (req, res) => {
+  res.render('consultation-form', {
+    title:'Request a consultation',
+  });
+}
+
 module.exports = {
     getAllConsultations,
     getUserConsultations,
-    newConsultation
+    newConsultation,
+    loadConsultationForm
 };
