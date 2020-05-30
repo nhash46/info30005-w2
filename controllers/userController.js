@@ -219,26 +219,29 @@ const logIn = (req, res, next) => {
 const newConsultation = async (req, res) => {
 
   var newConsultation = new Consultation ({
-
-    student: req.body.student,
-    counsellor: req.body.counsellor,
     date: req.body.date,
     time: req.body.time,
-    isOnline: req.body.isOnline,
-
   })
-
-  // add consultation to database
-  newConsultation.save(function (err, consultation) {
-    if (err) {
-      return console.error(err);
-    } 
-    else {
-      res.send("Consulation confirmed for " + newConsultation.date + " at " + newConsultation.time);
-    }
-  });
-
-};
+  /**let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    console.log(errors);
+    res.render('consultation-form',
+      { 
+        errors: errors.mapped()
+      });
+  } else {*/
+  newConsultation.isOnline = req.body.isOnline=='Online';
+    // add consultation to database
+    /**newConsultation.save(function (err, consultation) {
+      if (err) {
+        return console.error(err);
+      } 
+      else {
+        res.send("Consulation confirmed for " + newConsultation.date + " at " + newConsultation.time);
+      }
+    });*/
+  console.log(newConsultation)
+}
 
  // function that loads all consultations
  const getAllConsultations = async (req, res) => {  
