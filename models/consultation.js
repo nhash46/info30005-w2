@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const consultationSchema = new mongoose.Schema({
   student: {
-    type: String, 
-    required: true
+    type: mongoose.Types.ObjectId, 
+    ref: 'User'
   },
   counsellor: {
-    type: String, 
-    required: true
+    type: mongoose.Types.ObjectId, 
+      ref: 'User'
   },
   date: Date,
   time: String,

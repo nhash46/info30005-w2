@@ -12,7 +12,4 @@ consultationRouter.get('/', consultationController.getUserConsultations);
 // route that creates a new consultation
 consultationRouter.post('/', consultationController.newConsultation);
 
-// route that cancels consultations
-consultationRouter.delete('/:_id', consultationController.cancelConsultation);
-
 module.exports = consultationRouter;

@@ -96,7 +96,7 @@ app.get("/aboutus", (req, res) => {
 const forumRouter = require("./routes/forumRouter");
 const userRouter = require("./routes/userRouter");
 const commentRouter = require("./routes/commentRouter");
-const consultationRouter = require("./routes/consultationRouter")
+const consultationRouter = require("./routes/commentRouter")
 
 // auther routes handles by forumRouter
 app.use("/forum-posts", forumRouter);

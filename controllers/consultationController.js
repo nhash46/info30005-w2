@@ -15,7 +15,7 @@ const User = mongoose.model("User");
 const Consultation = mongoose.model("Consultation");
 
 // function to retrieve all appointments
-const getAllConsultations = async (req, res) => {
+const getAllConsultations = (req, res, next) => {
 
     Consultation.find({}, function(err, consultations){
         if(err){
@@ -31,8 +31,7 @@ const getAllConsultations = async (req, res) => {
 
 // function that retrieves user appointments
 const getUserConsultations = async (req, res) => {
-
-    Consultation.find({$or: [ { student: req.user.username }, { counsellor: req.user.username } ]}, function(err, consultations){
+    Consultation.find({$or: [ { student: req.user._id }, { counsellor: req.user._id } ]}, function(err, consultations){
       if(err){
         console.log(err);
       } else {
@@ -45,7 +44,7 @@ const getUserConsultations = async (req, res) => {
   };
 
 // function that creates a new consultation
-const newConsultation = (req, res) => {
+const newConsultation = (req, res, next) => {
 
     let errors = validationResult(req);
 
@@ -80,34 +79,8 @@ const newConsultation = (req, res) => {
   } 
 };
 
-// function to handle request to cancel consultation
-const cancelConsultation = (req, res) => {
-    // check if user is logged in
-    if(!req.user._id){
-      res.status(500).send();
-    }
-    let query = {_id:req.user._id}
-  
-    // check if user is the author of post
-    Consultation.findById(query, function(err, forum){
-      if(consultation.student != req.user.username || consultation.counsellor != req.user.username){
-        res.status(500).send();
-      } 
-      else {
-        Consultation.remove(query, function(err){
-          if(err){
-            console.log(err);
-          }
-          req.flash('success','Consultation Cancelled');
-          res.send('Success');
-        });
-      }
-    });
-  }
-
 module.exports = {
     getAllConsultations,
     getUserConsultations,
-    newConsultation,
-    cancelConsultation
+    newConsultation
 };
