@@ -35,13 +35,20 @@ const getUserConsultations = async (req, res) => {
       if(err){
         console.log(err);
       } else {
-        res.render("consultations", {
+        res.render("consultations-manage", {
           title: 'My Consultations',
           consultations: consultations
         });
       }
     });
   };
+
+// function that loads the consultation home
+const loadConsultationHome = (req, res) => {
+  res.render('consultations', {
+    title:'Book a consultation!',
+  });
+}
 
 // function that creates a new consultation
 const newConsultation = (req, res, next) => {
@@ -90,5 +97,6 @@ module.exports = {
     getAllConsultations,
     getUserConsultations,
     newConsultation,
-    loadConsultationForm
+    loadConsultationForm,
+    loadConsultationHome
 };
