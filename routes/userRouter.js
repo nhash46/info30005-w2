@@ -25,12 +25,6 @@ userRouter.post("/login", userController.logIn);
 // creating a new consultation
 userRouter.post("/consultations", userController.newConsultation);
 
-// viewing all consultations
-userRouter.get("/consultations", userController.getConsultations);
-
-// booking page
-userRouter.get("/consultations/booking", userController.getConsultationForm)
-
 // logging out
 userRouter.get("/logout", userController.logOutUser);
 

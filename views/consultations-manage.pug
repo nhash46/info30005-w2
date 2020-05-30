@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    .jumbotron.text-center
+
+    .container 
+        h1 My Consultations
+        if user
+            each consultation, i in consultations
+                .panel
+                    .panel-body#forum-card
+                        p #{consultation._id}
+                        p Counsellor: #{consultation.counsellor}
+                        p Date: #{consultation.date}
+                        p Time: #{consultation.time}
+                        p Online: #{consultation.isOnline}
+        
