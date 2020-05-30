@@ -9,6 +9,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const rateLimit = require('express-rate-limit');
+const cors = require('cors');
 
 const limiter = rateLimit({
   windowMs: 15*60*1000, // 15 minutes
@@ -47,6 +48,8 @@ app.use(function (req, res, next) {
 
 // Set public folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cors());
 
 // Express Validator Middleware
 app.use(expressValidator({
@@ -93,6 +96,7 @@ app.get("/aboutus", (req, res) => {
 const forumRouter = require("./routes/forumRouter");
 const userRouter = require("./routes/userRouter");
 const commentRouter = require("./routes/commentRouter");
+const consultationRouter = require("./routes/commentRouter")
 
 // auther routes handles by forumRouter
 app.use("/forum-posts", forumRouter);
@@ -102,6 +106,9 @@ app.use("/user", userRouter);
 
 // comment routes handled by commentRouter
 app.use("/comments", commentRouter);
+
+// consultation routes handled by consultationRouter
+app.use("/consultations", consultationRouter);
 
 // start app and listen for incoming requests on port
 // app.listen(process.env.PORT || 3000, () => {

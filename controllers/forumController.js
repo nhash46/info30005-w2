@@ -94,7 +94,7 @@ const showForums = (req, res) => {
            }
         });
     } else {
-        // Get all campgrounds from DB
+        // Get all forums from DB
         Forum.find({}, function(err, allForums){
            if(err){
                console.log(err);
