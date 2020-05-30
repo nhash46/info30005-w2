@@ -31,7 +31,7 @@ const getAllConsultations = (req, res, next) => {
 
 // function that retrieves user appointments
 const getUserConsultations = async (req, res) => {
-    Consultation.find({$or: [ { student: req.user._id }, { counsellor: req.user._id } ]}, function(err, consultations){
+    Consultation.find({$or: [ { student: req.user.username }, { counsellor: req.user.username } ]}, function(err, consultations){
       if(err){
         console.log(err);
       } else {
