@@ -357,3 +357,11 @@ nav.navbar.navbar-inverse li a:hover {
   word-wrap: break-word;
   
 }
+
+.manage-consultation{
+  float: right;
+}
+
+.delete-consultation{
+  float: right;
+}

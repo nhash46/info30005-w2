@@ -1,7 +1,6 @@
 extends layout
 
 block content
-    .jumbotron.text-center
 
     .container 
         h1#forum-title My Consultations
@@ -10,8 +9,14 @@ block content
                 .card
                     .card-body
                         p #{consultation._id}
-                        p Counsellor: #{consultation.counsellor}
-                        p Date: #{consultation.date}
-                        p Time: #{consultation.time}
-                        p Venue: #{consultation.venue}
-        
+                        p #[strong Counsellor]: #{consultation.counsellor}
+                        p #[strong Date]: #{consultation.date}
+                        p #[strong Time]: #{consultation.time}
+                        p #[strong Venue]: #{consultation.venue}
+
+                        a.btn.btn-link.delete-consultation(type= 'button', consultation-id=consultation._id) cancel
+                        a.btn.btn-link.manage-consultation(href='/consultations/manage/'+consultation._id) edit
+
+                        br
+                        br
+                        

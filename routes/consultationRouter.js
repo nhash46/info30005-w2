@@ -18,4 +18,13 @@ consultationRouter.post('/new', consultationController.newConsultation);
 // route that retrieves all the consultations associated with the user
 consultationRouter.get('/manage', consultationController.getUserConsultations);
 
+// route that loads edit form for consultation
+consultationRouter.get('/manage/:_id', consultationController.loadEditConsultation);
+
+// route that updates existing consultation
+// consultationRouter.post('/manage/:_id', consultationController.loadEditConsultation);
+
+// route that deletes consultation
+consultationRouter.delete('/manage/:_id', consultationController.deleteConsultation);
+
 module.exports = consultationRouter;

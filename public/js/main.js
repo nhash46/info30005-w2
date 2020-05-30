@@ -37,24 +37,48 @@ $(document).ready(function(){
     });
 });
 
+// allows user to edit comment
 $(document).ready(function(){
     $(".edit-comment-form").hide();
     $('.edit-comment').on('click', function(e){
         e.stopPropagation();
-        /**
-        $target = $(e.target);
-        const comment_id = $target.attr('comment-id');
-        const comments = $target.attr('all-comments');
-        console.log(comments);
-        console.log(comment_id);
-        for (c in comments){
-            console.log(c);
-            if (c == comment_id){
-                console.log('found it');
-                $("#edit-comment-form").toggle('slow');
-            }
-        }
-         */
         $(this).siblings().toggle('slow');
+    });
+});
+
+// deletes consultation
+$(document).ready(function(){
+    $('.delete-consultation').on('click', function(e){
+        $target = $(e.target);
+        const _id = $target.attr('consultation-id');
+        $.ajax({
+            type: 'DELETE',
+            url: '/consultations/manage/'+_id,
+            success: function(response){
+                alert('Cancelling consultation');
+                window.location.href='/consultations/manage';
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    });
+});
+
+// loads edit form for consultationS
+$(document).ready(function(){
+    $('.manage-consultation').on('click', function(e){
+        $target = $(e.target);
+        const _id = $target.attr('consultation-id');
+        $.ajax({
+            type: 'GET',
+            url: '/consultations/manage/'+_id,
+            success: function(response){
+                window.location.href='/consultations/manage/:_id';
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
     });
 });

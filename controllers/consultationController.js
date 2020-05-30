@@ -93,10 +93,57 @@ const loadConsultationForm = (req, res) => {
   });
 }
 
+// Load Edit Form
+const loadEditConsultation = async (req, res) => {
+
+  console.log(req.params._id);
+
+  Consultation.findById(req.params._id, function(err, consultation){
+    console.log(consultation);
+    if(consultation.student != req.user.username){
+      req.flash('danger', 'Not authorised to manage this consultation');
+      res.redirect('/consultations');
+    }
+    else {
+      res.render('edit-consultation', {
+        title: 'Manage my consultation',
+        consultation: consultation
+      });
+    }
+  });
+}
+
+// function to handle request to delete consultation
+const deleteConsultation = (req, res) => {
+  // check if user is logged in
+  if(!req.user._id){
+    res.status(500).send();
+  }
+  let query = {_id:req.params._id}
+
+  // check if user is the author of post
+  Consultation.findById(query, function(err, consultation){
+    if(consultation.student != req.user.username){
+      res.status(500).send();
+    } 
+    else {
+      Consultation.remove(query, function(err){
+        if(err){
+          console.log(err);
+        }
+        req.flash('success','Consultation cancelled');
+        res.send('Success');
+      });
+    }
+  });
+}
+
 module.exports = {
     getAllConsultations,
     getUserConsultations,
     newConsultation,
     loadConsultationForm,
-    loadConsultationHome
+    loadConsultationHome,
+    loadEditConsultation,
+    deleteConsultation
 };
