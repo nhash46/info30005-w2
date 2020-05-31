@@ -22,7 +22,7 @@ consultationRouter.get('/manage', consultationController.getUserConsultations);
 consultationRouter.get('/manage/:_id', consultationController.loadEditConsultation);
 
 // route that updates existing consultation
-consultationRouter.post('/manage/:_id', consultationController.updateConsultation);
+consultationRouter.post('/manage/:_id', consultationValidator.newConsultation, consultationController.updateConsultation);
 
 // route that deletes consultation
 consultationRouter.delete('/manage/:_id', consultationController.deleteConsultation);
