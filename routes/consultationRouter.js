@@ -1,5 +1,5 @@
 const express = require("express");
-const ObjectID = require('mongodb').ObjectID;
+const consultationValidator = require("../validators/consultationValidator.js");
 
 // create router
 const consultationRouter = express.Router();
@@ -13,7 +13,7 @@ consultationRouter.get('/', consultationController.loadConsultationHome);
 consultationRouter.get('/new', consultationController.loadConsultationForm);
 
 // route that creates a new consultation
-consultationRouter.post('/new', consultationController.newConsultation);
+consultationRouter.post('/new', consultationValidator.newConsultation, consultationController.newConsultation);
 
 // route that retrieves all the consultations associated with the user
 consultationRouter.get('/manage', consultationController.getUserConsultations);

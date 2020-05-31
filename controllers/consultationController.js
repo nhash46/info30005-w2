@@ -57,7 +57,7 @@ const newConsultation = (req, res, next) => {
 
   if (!errors.isEmpty()) {
     console.log(errors);
-    res.render('consultations-form',
+    res.render('consultation-form',
     { 
       title: 'Book a consultation',
       errors: errors.mapped()
