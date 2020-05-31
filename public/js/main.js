@@ -74,7 +74,7 @@ $(document).ready(function(){
             type: 'GET',
             url: '/consultations/manage/'+_id,
             success: function(response){
-                window.location.href='/consultations/manage/:_id';
+                window.location.href='/consultations/manage/'+_id;
             },
             error: function(err){
                 console.log(err);

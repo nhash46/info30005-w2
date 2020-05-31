@@ -10,15 +10,15 @@ block content
                     form(method='POST', action='/consultations/manage/'+consultation._id)
                         .form-group
                             label Enter Date:
-                            input.form-control(name='date', type='date')
+                            input.form-control(name='date', type='date', value= consultation.date)
                         br
                         .form-group
                             label Enter Time:
-                            input.form-control(name='time', type = 'time')
+                            input.form-control(name='time', type = 'time', value= consultation.time)
                         br
                         .form-group
                             label Venue:
-                            select.form-control(name='venue')
+                            select.form-control(name='venue', value = consultation.time)
                                 option Online
                                 option On Campus
                         br
