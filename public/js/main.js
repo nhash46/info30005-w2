@@ -49,6 +49,9 @@ $(document).ready(function(){
 // deletes consultation
 $(document).ready(function(){
     $('.delete-consultation').on('click', function(e){
+        if (!confirm("Are you sure you want to cancel this consultation?")){
+            return false;
+        }
         $target = $(e.target);
         const _id = $target.attr('consultation-id');
         $.ajax({
