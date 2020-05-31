@@ -138,6 +138,30 @@ const deleteConsultation = (req, res) => {
   });
 }
 
+// function to handle request to edit consultation
+const updateConsultation = (req, res) => {
+  // extract info. from body
+
+  let consultation = {};
+
+  consultation.date = req.body.date;
+  consultation.time = req.body.time;
+  consultation.venue = req.body.venue;
+   
+  let query = {_id:req.params._id}
+ 
+   // add consultation into db
+  Consultation.updateOne(query, consultation, function (err) {
+    if (err){
+      console.log(err);
+    }
+    else{
+      req.flash('success','Your consultation has been successfully updated');
+      res.redirect('/consultations/manage');
+    } 
+  });
+}
+
 module.exports = {
     getAllConsultations,
     getUserConsultations,
@@ -145,5 +169,6 @@ module.exports = {
     loadConsultationForm,
     loadConsultationHome,
     loadEditConsultation,
-    deleteConsultation
+    deleteConsultation,
+    updateConsultation
 };
