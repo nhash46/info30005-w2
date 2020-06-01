@@ -2,10 +2,6 @@ extends layout
 
 block content
 
-    .jumbotron.text-center(href="https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer:ital@1&display=swap")
-        h1 #{title}
-        p It's OK to not be OK
-        a.btn.btn-primary(href= "/aboutus") Learn More
     #myCarousel.carousel.slide(data-ride='carousel')
         // Indicators
         ol.carousel-indicators
@@ -15,23 +11,20 @@ block content
         // Wrapper for slides
         .carousel-inner(role='listbox')
             .item.active
-                a(href='/forum-posts')
-                    img(src='https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1134502088%2F0x0.jpg' alt='Los Angeles')
+                a(href='/aboutus')
+                    img(src='../img/carousel1.jpg')
                     .carousel-caption
-                        h3 Internation Men's Day !
-                        p Even though the traffic was a mess, we had the best time.
+                        p click to learn about us
             .item
                 a(href='/forum-posts')
-                    img(src='https://cdn.psychologytoday.com/sites/default/files/styles/amp_metadata_content_image_min_1200px_wide/public/field_blog_entry_teaser_image/2018-01/sea-2915187_480-144x144-167_94-377_378.jpg?itok=tTJcGnJm' alt='New York')
+                    img(src='../img/carousel2.jpg')
                     .carousel-caption
-                        h3 New York
-                        p The atmosphere in New York is lorem ipsum.
+                        p click to join the discussion
             .item
-                a(href='/forum-posts')
-                    img(src='https://phenterminedoctors.com/wp-content/uploads/2019/04/fernando-cferdo-627207-unsplash-1200x800.jpg' alt='Chicago')
+                a(href='/consultations')
+                    img(src='../img/carousel3.jpg')
                     .carousel-caption
-                        h3 Chicago
-                        p Thank you, Chicago - A night we won&apos;t forget.            
+                        p click to learn more about consultations       
         // Left and right controls
         a.left.carousel-control(href='#myCarousel' role='button' data-slide='prev')
             span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
