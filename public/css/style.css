@@ -89,7 +89,6 @@ nav.navbar.navbar-inverse li a:hover {
     border-radius: 15px;
     padding: 20px;
     margin-top: 20px;
-    
 }
 
 #forum-card{
@@ -366,8 +365,79 @@ nav.navbar.navbar-inverse li a:hover {
   float: right;
 }
 
+
 .jumbotron{
   background-color:#3999f7;
   font-family: 'Open Sans', sans-serif;
   color: white;
+  border: 2px solid rgb(11, 69, 91);
 }
+
+/* card css  */
+.containerCard {
+  padding: 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+hr.card1 {
+  border: 2px solid rgb(11, 69, 91);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.buttonCard {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color:	rgb(255, 56, 0);
+  text-align: center;
+  cursor: pointer;
+  width: 45%;
+  padding: 20px;
+  border-radius: 20px;
+
+}
+.buttonCard:hover {
+  background-color: white;
+  color:rgb(255, 56, 0);
+  border: 2px solid rgb(255, 56, 0); /* Green */
+}
+.bold {
+  font-weight: bolder;
+  color:rgb(255, 56, 0);
+  font-size: large;
+}
+.indexTitle{
+  font-family: 'Open Sans', sans-serif;
+  color: rgb(177, 0, 80);
+  font-size: 70px;
+}
+.indexParagraph{
+  color: rgb(11, 69, 91);
+  font-size: 15px;
+  margin-top: 20px;
+  margin-left: 3%;
+  font-weight: 500;
+
+}
+li.indexParagraph {
+  margin-left: 6%;
+  width: 80.6%;
+
+}
+
+.columnIndex {
+
+  float: left;
+  margin-top: 20px;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  padding-bottom: 20px;
+  border: 2px solid rgb(11, 69, 91);
+}
+
+
+
+
