@@ -24,7 +24,7 @@ block content
                         .panel-body#forum-card
                             #forum-title
                                 h2 #{forum.title}
-                            h6 posted by #{forum.author}, #{forum.date.toDateString()}
+                            h6 posted by #{forum.author}, #{moment(forum.date).startOf('day').fromNow()}
                             p #{forum.body}
                         .panel-footer#forum-link
                             a(href='/forum-posts/'+forum._id)

@@ -9,8 +9,8 @@ block content
                 .card
                     .card-body
                         p #[strong Counsellor]: #{consultation.counsellor}
-                        p #[strong Date]: #{consultation.date}
-                        p #[strong Time]: #{consultation.time}
+                        p #[strong Date]: #{moment(consultation.date).format("LL")}
+                        p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
                         p #[strong Venue]: #{consultation.venue}
 
                         a.btn.btn-link.delete-consultation(type= 'button', consultation-id=consultation._id) cancel consultation

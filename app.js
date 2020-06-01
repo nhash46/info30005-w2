@@ -10,6 +10,7 @@ const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
+app.locals.moment = require('moment');
 
 const limiter = rateLimit({
   windowMs: 15*60*1000, // 15 minutes
@@ -80,6 +81,7 @@ app.get('*', function(req, res, next){
   res.locals.user = req.user || null;
   next();
 });
+
 
 // GET home page
 app.get("/", (req, res) => {

@@ -4,7 +4,7 @@ block content
     .container
         h5 Posted by 
             a(href = '/user/profile/'+forum.author) #{forum.author} 
-        h5 on #{forum.date.toDateString()}
+            span #[ #{moment(forum.date).startOf('day').fromNow()}]
         #forum-title
             h1= forum.title
         br
@@ -36,8 +36,7 @@ block content
                             
                         .panel-footer#comment-bottom
                             p #[a(href = '/user/profile/'+c.author) #[i.glyphicon.glyphicon-user] #{' ' + c.author} ]
-                                span #[ #{' | ' + c.date.toDateString()}]
-            
+                                span #[ #{' | ' + moment(c.date).startOf('day').fromNow()}]
                             
         script(src='https://kit.fontawesome.com/d7fc33007f.js', crossorigin='anonymous')
         
