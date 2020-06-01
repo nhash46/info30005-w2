@@ -32,7 +32,7 @@ const addUser = (req, res) => {
 
   if (!errors.isEmpty()) {
     console.log(errors);
-    res.render('signup',
+    res.render('signup-resubmit',
       { 
         newUser:newUser,
         errors: errors.mapped()
