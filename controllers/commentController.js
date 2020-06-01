@@ -128,32 +128,6 @@ const addComment = async (req, res) => {
     });
   }
   
-  
-  /**const updateComment = async (req, res) => {
-    // extract info. from body
-
-    let comment = {};
-
-    comment.content = req.body.content;
-    comment._id = req.params._id;
-  
-    try{
-        const filter = { _id: req.params._id};
-        const update = { "$push" : {"comments" : comment._id}};
-      let post = await Post.findOneAndUpdate(filter, update, {new : true});
-    } catch(err){
-        console.log(err);
-        res.status(400);
-        return res.send("Database query failed");
-    }
-
-    // add comment to database
-    foundComment.save(function (err) {
-    if (err) return console.error(err);
-    });
-    res.redirect('/forum-posts/'+req.params._id);
-  }
-    */
 
   // function to handle request to delete comment
 const deleteComment = (req, res) => {

@@ -196,66 +196,7 @@ const logIn = (req, res, next) => {
     failureFlash: true
   })(req, res, next);
 
-  /*
-  var username = req.body.username;
-  var password = req.body.password;
-
-  User.findOne({username: username, password: password}, function(err, user){
-    if(err){
-      console.log(err);
-      return res.status(500).send();
-    }
-    if(!user){
-      return res.status(404).send("username or password is incorrect");
-    }
-    if(user){
-      return res.status(200).send("Welcome back " + username);
-    }
-  })
-  */
 };
-
-  // function to create a new consultation
-const newConsultation = async (req, res) => {
-
-  var newConsultation = new Consultation ({
-    date: req.body.date,
-    time: req.body.time,
-  })
-  /**let errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    console.log(errors);
-    res.render('consultation-form',
-      { 
-        errors: errors.mapped()
-      });
-  } else {*/
-  newConsultation.isOnline = req.body.isOnline=='Online';
-    // add consultation to database
-    /**newConsultation.save(function (err, consultation) {
-      if (err) {
-        return console.error(err);
-      } 
-      else {
-        res.send("Consulation confirmed for " + newConsultation.date + " at " + newConsultation.time);
-      }
-    });*/
-  console.log(newConsultation)
-}
-
- // function that loads all consultations
- const getAllConsultations = async (req, res) => {  
-  try{
-  const all_consultations = await Consultation.find();
-  return res.send(all_consultations);
-  }
-  catch (err) {
-    res.status(400);
-    return res.send("Database query failed");
-  }
-};
-
- 
 
 // log out the current user
 const logOutUser = (req, res) => {
@@ -270,8 +211,6 @@ module.exports = {
   getUserProfile,
   getUserProfileByID,
   logIn,
-  newConsultation,
-  getAllConsultations,
   newUserForm,
   loginPage,
   logOutUser,

@@ -162,6 +162,16 @@ const updateConsultation = (req, res) => {
   });
 }
 
+// access control
+function ensureAuthenticated(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  } else {
+    req.flash('danger', 'Please login');
+    res.redirect('/user/login')
+  }
+}
+
 module.exports = {
     getAllConsultations,
     getUserConsultations,
@@ -170,5 +180,6 @@ module.exports = {
     loadConsultationHome,
     loadEditConsultation,
     deleteConsultation,
-    updateConsultation
+    updateConsultation,
+    ensureAuthenticated
 };

@@ -10,7 +10,7 @@ const consultationController = require("../controllers/consultationController.js
 consultationRouter.get('/', consultationController.loadConsultationHome);
 
 // route that loads new consultation form
-consultationRouter.get('/new', consultationController.loadConsultationForm);
+consultationRouter.get('/new', consultationController.ensureAuthenticated, consultationController.loadConsultationForm);
 
 // route that creates a new consultation
 consultationRouter.post('/new', consultationValidator.newConsultation, consultationController.newConsultation);
