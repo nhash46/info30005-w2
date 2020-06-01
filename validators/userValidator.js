@@ -19,13 +19,7 @@ exports.addUser =
     check('last_name').isLength({min:1}).trim().withMessage('Last name is required'),
     check('email').isLength({min:1}).trim().withMessage('Email required'),
     // validates email is valid
-    check('email').custom((value,{req, loc, path}) => {
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
-            return value;
-        } else {
-            throw new Error("Email not valid");
-        }
-    })
+    check('email').isEmail().trim().withMessage('Email is not valid')
 ];
 
 exports.changePassword =
