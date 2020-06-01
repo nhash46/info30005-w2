@@ -32,6 +32,7 @@
     "express-session": "^1.17.1",
     "express-validator": "^4.3.0",
     "locus": "^2.0.4",
+    "moment": "^2.26.0",
     "mongodb": "^3.5.8",
     "mongoose": "^5.9.10",
     "passport": "^0.4.1",
