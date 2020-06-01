@@ -22,9 +22,6 @@ userRouter.get("/login", userController.loginPage);
 // logging in
 userRouter.post("/login", userController.logIn);
 
-// creating a new consultation
-userRouter.post("/consultations", userController.newConsultation);
-
 // logging out
 userRouter.get("/logout", userController.logOutUser);
 

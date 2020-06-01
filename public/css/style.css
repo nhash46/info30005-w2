@@ -365,3 +365,9 @@ nav.navbar.navbar-inverse li a:hover {
 .delete-consultation{
   float: right;
 }
+
+.jumbotron{
+  background-color:#3999f7;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+}
