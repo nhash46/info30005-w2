@@ -89,7 +89,6 @@ nav.navbar.navbar-inverse li a:hover {
     border-radius: 15px;
     padding: 20px;
     margin-top: 20px;
-    
 }
 
 #forum-card{
@@ -365,6 +364,7 @@ nav.navbar.navbar-inverse li a:hover {
 .delete-consultation{
   float: right;
 }
+
 
 .jumbotron{
   background-color:#3999f7;
