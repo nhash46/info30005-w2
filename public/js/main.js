@@ -85,3 +85,8 @@ $(document).ready(function(){
         });
     });
 });
+
+// ensures that a date in the past cannot be selected
+$(function () {
+    $(".date").date({ minDate: 0 })
+});

@@ -97,9 +97,6 @@ const loadConsultationForm = (req, res) => {
 const loadEditConsultation = async (req, res) => {
 
   Consultation.findById(req.params._id, function(err, consultation){
-    console.log(req.params._id);
-    console.log(consultation);
-    console.log(req.user.username);
     if(consultation.student != req.user.username){
       req.flash('danger', 'Not authorised to manage this consultation');
       res.redirect('/consultations');
