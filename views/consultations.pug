@@ -5,7 +5,7 @@ block content
         h1 Book a Consultation today!
         if user
             if user.type == type
-                p #{type}
+                h2 HELLO #{type}
                 a.btn.btn-primary(href= "/consultations/new") Make a Booking
                 a.btn.btn-primary(href= "/consultations/manage") Manage Bookings
             if !(user.type == type)
