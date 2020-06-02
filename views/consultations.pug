@@ -10,8 +10,8 @@ block content
                 a.btn.btn-primary(href= "/consultations/manage") My Consultations
             if user.userType == 'counsellor'
                 p HELLO COUNSELLOR
-                a.btn.btn-primary(href= "/consultations/manage") Manage Student Consultations
-                a.btn.btn-primary(href= "/consultations/manage/requests") Consultation Requests
+                a.btn.btn-primary(href= "/consultations/confirmed") Manage Student Consultations
+                a.btn.btn-primary(href= "/consultations/requests") Consultation Requests
         if !user
             h3 Please sign in to book
             a.btn.btn-primary(href= "/user/login") Sign in

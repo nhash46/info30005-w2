@@ -86,19 +86,23 @@ $(document).ready(function(){
     });
 });
 
-// ensures that a date in the past cannot be selected
-$(function(){
-    var dtToday = new Date();
-    
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if(month < 10)
-        month = '0' + month.toString();
-    if(day < 10)
-        day = '0' + day.toString();
-    
-    var minDate= year + '-' + month + '-' + day;
-    
-    $('#txtDate').attr('min', minDate);
+// changes consultation status from pending to confirmed
+$(document).ready(function(){
+    $('.accept-request').on('click', function(e){
+        if (!confirm("Are you sure you want to accept this consultation?")){
+            return false;
+        }
+        $target = $(e.target);
+        const _id = $target.attr('consultation-id');
+        $.ajax({
+            type: 'POST',
+            url: '/consultations/requests/'+_id,
+            success: function(response){
+                window.location.href='/consultations/confirmed';
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    });
 });

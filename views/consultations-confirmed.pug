@@ -3,20 +3,17 @@ extends layout
 block content
 
     .container 
-        h1#forum-title My Consultations
+        h1#forum-title My Schedhuled Consultations
         if user
             each consultation, i in consultations
                 .card
                     .card-body
-                        if consultation.counsellor
-                            p #[strong Counsellor]: #{consultation.counsellor}
+                        p #[strong Student]: #{consultation.student}
                         p #[strong Date]: #{moment(consultation.date).format("LL")}
                         p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
                         p #[strong Venue]: #{consultation.venue}
-                        p #[strong Status]: #{consultation.status}
 
                         a.btn.btn-link.delete-consultation(type= 'button', consultation-id=consultation._id) cancel consultation
-                        a.btn.btn-link.manage-consultation(type= 'button', consultation-id=consultation._id) edit
 
                         br
                         br

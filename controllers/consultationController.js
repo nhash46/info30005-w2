@@ -31,7 +31,7 @@ const getAllConsultations = (req, res, next) => {
 
 // function that retrieves user appointments
 const getUserConsultations = async (req, res) => {
-    Consultation.find({$or: [ { student: req.user.username }, { counsellor: req.user.username } ]}, function(err, consultations){
+    Consultation.find({student: req.user.username }, function(err, consultations){
       if(err){
         console.log(err);
       } else {
@@ -56,6 +56,25 @@ const getPendingConsultations = async (req, res) => {
       } else {
         res.render("consultations-requests", {
           title: 'Requested Consultations',
+          consultations: consultations
+        });
+      }
+    }
+  });
+};
+
+// function that retrieves confirmed consultations
+const getConfirmedConsultations = async (req, res) => {
+  Consultation.find({status: 'confirmed', counsellor: req.user.username}, function(err, consultations){
+    if(req.user.userType != 'counsellor'){
+      req.flash('danger', 'Not authorised to view this page');
+      res.redirect('/consultations');
+    }
+    else {
+      if(err){
+        console.log(err);
+      } else {
+        res.render("consultations-confirmed", {
           consultations: consultations
         });
       }
@@ -117,8 +136,6 @@ const loadEditConsultation = async (req, res) => {
 
   Consultation.findById(req.params._id, function(err, consultation){
     if(consultation.student != req.user.username){
-      console.log(consultation.student);
-      console.log(req.user.username);
       req.flash('danger', 'Not authorised to manage this consultation');
       res.redirect('/consultations');
     }
@@ -129,6 +146,34 @@ const loadEditConsultation = async (req, res) => {
       });
     }
   });
+}
+
+// function that changes status of consultation from pending to confirmed
+const acceptRequest = async (req, res) => {
+
+    if(req.user.userType != 'counsellor'){
+      req.flash('danger', 'Not authorised to manage this consultation');
+      res.redirect('/consultations');
+    }
+    else {
+      let consultation = {};
+
+      consultation.status = 'confirmed';
+      consultation.counsellor = req.user.username;
+      
+      let query = {_id:req.params._id}
+    
+      // add consultation into db
+      Consultation.updateOne(query, consultation, function (err) {
+        if (err){
+          console.log(err);
+        }
+        else{
+          req.flash('success','You have successfully accepted this consultation request');
+          res.redirect('/consultations/manage');
+        } 
+      });
+    }
 }
 
 // function to handle request to delete consultation
@@ -200,5 +245,7 @@ module.exports = {
     deleteConsultation,
     updateConsultation,
     ensureAuthenticated,
-    getPendingConsultations
+    getPendingConsultations,
+    acceptRequest,
+    getConfirmedConsultations
 };

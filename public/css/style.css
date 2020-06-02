@@ -365,6 +365,9 @@ nav.navbar.navbar-inverse li a:hover {
   float: right;
 }
 
+.accept-request{
+  float: right;
+}
 
 .jumbotron{
   background-color:#3999f7;
