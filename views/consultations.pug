@@ -4,10 +4,10 @@ block content
     .jumbotron.text-center
         h1 Book a Consultation today!
         if user
-            if user.type === {type}
+            if user.type == {type}
                 a.btn.btn-primary(href= "/consultations/new") Make a Booking
                 a.btn.btn-primary(href= "/consultations/manage") Manage Bookings
-            if !(user.type === {type})
+            if !(user.type == {type})
                 p Counsellor
         if !user
             h3 Please sign in to book
