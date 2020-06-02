@@ -5,7 +5,7 @@ exports.addUser =
 [   
     // validates that fields arent left empty
     check('username').isLength({min:1}).trim().withMessage('Username required'),
-    check('password').isLength({min:1}).trim().withMessage('Password required'),
+    check('password').isLength({min:6}).trim().withMessage('Password must be longer than 5 characters'),
     // validates password are matching
     check('password2').custom((value,{req, loc, path}) => {
         if (value !== req.body.password) {
