@@ -24,7 +24,6 @@ const getAllConsultations = (req, res, next) => {
           res.render("consultations", {
             title: 'My Consultations',
             consultations: consultations,
-            type1: "student"
           });
         }
       });
@@ -47,7 +46,7 @@ const getUserConsultations = async (req, res) => {
 // function that loads the consultation home
 const loadConsultationHome = (req, res) => {
   res.render('consultations', {
-    title:'Book a consultation!',
+    title:'Book a consultation!'
   });
 }
 
