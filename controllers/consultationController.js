@@ -14,7 +14,7 @@ const User = mongoose.model("User");
 // import consulation model
 const Consultation = mongoose.model("Consultation");
 
-// function to retrieve all appointments
+// function to get consultation view
 const getAllConsultations = (req, res, next) => {
 
     Consultation.find({}, function(err, consultations){
@@ -23,7 +23,8 @@ const getAllConsultations = (req, res, next) => {
         } else {
           res.render("consultations", {
             title: 'My Consultations',
-            consultations: consultations
+            consultations: consultations,
+            type: "student"
           });
         }
       });
