@@ -6,11 +6,11 @@ block content
         if user
             if user.userType == 'student'
                 h2 HELLO STUDENT
-                a.btn.btn-primary(href= "/consultations/new") Make a Booking
-                a.btn.btn-primary(href= "/consultations/manage") Manage Bookings
+                a.btn.btn-primary(href= "/consultations/new") Request a Consultation
+                a.btn.btn-primary(href= "/consultations/manage") My Consultations
             if user.userType == 'counsellor'
                 p HELLO COUNSELLOR
-                a.btn.btn-primary(href= "/consultations/manage") Manage Bookings
+                a.btn.btn-primary(href= "/consultations/manage") Manage Student Consultations
         if !user
             h3 Please sign in to book
             a.btn.btn-primary(href= "/user/login") Sign in

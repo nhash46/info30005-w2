@@ -11,7 +11,12 @@ const consultationSchema = new mongoose.Schema({
   },
   date: Date,
   time: String,
-  venue: String
+  venue: String,
+  status: {
+    type: String,
+    enum: ['confirmed','pending','completed'],
+    default: 'pending'
+  }
 });
 
 const Consultation = mongoose.model("Consultation", consultationSchema, "consultations");
