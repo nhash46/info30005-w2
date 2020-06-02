@@ -24,7 +24,7 @@ const getAllConsultations = (req, res, next) => {
           res.render("consultations", {
             title: 'My Consultations',
             consultations: consultations,
-            type: "student"
+            type1: "student"
           });
         }
       });
