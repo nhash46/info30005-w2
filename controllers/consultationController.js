@@ -43,6 +43,26 @@ const getUserConsultations = async (req, res) => {
     });
   };
 
+// function that retrieves user appointments
+const getPendingConsultations = async (req, res) => {
+  Consultation.find({status: 'pending'}, function(err, consultations){
+    if(req.user.userType != 'counsellor'){
+      req.flash('danger', 'Not authorised to view this page');
+      res.redirect('/consultations');
+    }
+    else {
+      if(err){
+        console.log(err);
+      } else {
+        res.render("consultations-requests", {
+          title: 'Requested Consultations',
+          consultations: consultations
+        });
+      }
+    }
+  });
+};
+
 // function that loads the consultation home
 const loadConsultationHome = (req, res) => {
   res.render('consultations', {
@@ -66,7 +86,6 @@ const newConsultation = (req, res, next) => {
       // extract info. from body
     var newConsultation = new Consultation({
       student: req.user.username,
-      counsellor: 'UniMelbCounsellor',
       date: req.body.date,
       time: req.body.time,
       venue: req.body.venue
@@ -98,6 +117,8 @@ const loadEditConsultation = async (req, res) => {
 
   Consultation.findById(req.params._id, function(err, consultation){
     if(consultation.student != req.user.username){
+      console.log(consultation.student);
+      console.log(req.user.username);
       req.flash('danger', 'Not authorised to manage this consultation');
       res.redirect('/consultations');
     }
@@ -178,5 +199,6 @@ module.exports = {
     loadEditConsultation,
     deleteConsultation,
     updateConsultation,
-    ensureAuthenticated
+    ensureAuthenticated,
+    getPendingConsultations
 };

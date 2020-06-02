@@ -11,6 +11,7 @@ block content
             if user.userType == 'counsellor'
                 p HELLO COUNSELLOR
                 a.btn.btn-primary(href= "/consultations/manage") Manage Student Consultations
+                a.btn.btn-primary(href= "/consultations/manage/requests") Consultation Requests
         if !user
             h3 Please sign in to book
             a.btn.btn-primary(href= "/user/login") Sign in

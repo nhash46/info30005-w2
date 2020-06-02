@@ -6,8 +6,7 @@ const consultationSchema = new mongoose.Schema({
     required: true
   },
   counsellor: {
-    type: String, 
-    required: true
+    type: String
   },
   date: Date,
   time: String,
