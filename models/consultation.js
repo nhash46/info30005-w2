@@ -13,7 +13,7 @@ const consultationSchema = new mongoose.Schema({
   venue: String,
   status: {
     type: String,
-    enum: ['confirmed','pending','completed'],
+    enum: ['schedhuled','pending','completed'],
     default: 'pending'
   }
 });

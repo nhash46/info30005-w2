@@ -106,3 +106,24 @@ $(document).ready(function(){
         });
     });
 });
+
+// changes consultation status from schedhuled to 
+$(document).ready(function(){
+    $('.mark-as-complete').on('click', function(e){
+        if (!confirm("Are you sure you have completed this consultation?")){
+            return false;
+        }
+        $target = $(e.target);
+        const _id = $target.attr('consultation-id');
+        $.ajax({
+            type: 'POST',
+            url: '/consultations/requests/'+_id+'/complete',
+            success: function(response){
+                window.location.href='/consultations/confirmed';
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    });
+});

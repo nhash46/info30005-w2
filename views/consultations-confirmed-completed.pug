@@ -4,8 +4,8 @@ block content
 
     .container 
         h1#forum-title My Schedhuled Consultations
-        a.btn.btn-link.active(href= "/consultations/confirmed") upcoming
-        a.btn.btn-link(href= "/consultations/completed") completed
+        a.btn.btn-link(href= "/consultations/confirmed") upcoming
+        a.btn.btn-link.active(href= "/consultations/completed") completed
 
         if user
             each consultation, i in consultations
@@ -16,10 +16,6 @@ block content
                         p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
                         p #[strong Venue]: #{consultation.venue}
 
-                        a.btn.btn-link.delete-consultation(type= 'button', consultation-id=consultation._id) cancel consultation
-                        a.btn.btn-link.mark-as-complete(type= 'button', consultation-id=consultation._id) mark as completed
-
 
                         br
                         br
-                        

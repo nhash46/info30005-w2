@@ -30,10 +30,16 @@ consultationRouter.delete('/manage/:_id', consultationController.deleteConsultat
 // route that retrieves pending consultations for counsellors to accept
 consultationRouter.get('/requests', consultationController.getPendingConsultations);
 
-// route that changes status of consultation from pending to confirmed
+// route that changes status of consultation from pending to schedhuled
 consultationRouter.post('/requests/:_id', consultationController.acceptRequest);
 
-// route that shows confirmed consultations belonging to the user (given they are a counsellor)
-consultationRouter.get('/confirmed', consultationController.getConfirmedConsultations);
+// route that changes status of consultation from schedhuled to complete
+consultationRouter.post('/requests/:_id/complete', consultationController.markAsComplete);
+
+// route that shows schedhuled consultations belonging to the user (given they are a counsellor)
+consultationRouter.get('/confirmed', consultationController.getSchedhuledConsultations);
+
+// route that shows completed consultations belonging to the user (given they are a counsellor)
+consultationRouter.get('/completed', consultationController.getCompletedConsultations);
 
 module.exports = consultationRouter;

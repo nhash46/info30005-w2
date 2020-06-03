@@ -63,9 +63,9 @@ const getPendingConsultations = async (req, res) => {
   });
 };
 
-// function that retrieves confirmed consultations
-const getConfirmedConsultations = async (req, res) => {
-  Consultation.find({status: 'confirmed', counsellor: req.user.username}, function(err, consultations){
+// function that retrieves schedhuled consultations
+const getSchedhuledConsultations = async (req, res) => {
+  Consultation.find({status: 'schedhuled', counsellor: req.user.username}, function(err, consultations){
     if(req.user.userType != 'counsellor'){
       req.flash('danger', 'Not authorised to view this page');
       res.redirect('/consultations');
@@ -75,6 +75,25 @@ const getConfirmedConsultations = async (req, res) => {
         console.log(err);
       } else {
         res.render("consultations-confirmed", {
+          consultations: consultations
+        });
+      }
+    }
+  });
+};
+
+// function that retrieves completed consultations
+const getCompletedConsultations = async (req, res) => {
+  Consultation.find({status: 'completed', counsellor: req.user.username}, function(err, consultations){
+    if(req.user.userType != 'counsellor'){
+      req.flash('danger', 'Not authorised to view this page');
+      res.redirect('/consultations');
+    }
+    else {
+      if(err){
+        console.log(err);
+      } else {
+        res.render("consultations-confirmed-completed", {
           consultations: consultations
         });
       }
@@ -148,7 +167,7 @@ const loadEditConsultation = async (req, res) => {
   });
 }
 
-// function that changes status of consultation from pending to confirmed
+// function that changes status of consultation from pending to schedhuled
 const acceptRequest = async (req, res) => {
 
     if(req.user.userType != 'counsellor'){
@@ -158,7 +177,7 @@ const acceptRequest = async (req, res) => {
     else {
       let consultation = {};
 
-      consultation.status = 'confirmed';
+      consultation.status = 'schedhuled';
       consultation.counsellor = req.user.username;
       
       let query = {_id:req.params._id}
@@ -174,6 +193,34 @@ const acceptRequest = async (req, res) => {
         } 
       });
     }
+}
+
+// function that changes status of consultation from pending to schedhuled
+const markAsComplete = async (req, res) => {
+
+  if(req.user.userType != 'counsellor'){
+    req.flash('danger', 'Not authorised to manage this consultation');
+    res.redirect('/consultations');
+  }
+  else {
+    let consultation = {};
+
+    consultation.status = 'completed';
+    consultation.counsellor = req.user.username;
+    
+    let query = {_id:req.params._id}
+  
+    // add consultation into db
+    Consultation.updateOne(query, consultation, function (err) {
+      if (err){
+        console.log(err);
+      }
+      else{
+        req.flash('success','You have successfully accepted this consultation request');
+        res.redirect('/consultations/manage');
+      } 
+    });
+  }
 }
 
 // function to handle request to delete consultation
@@ -247,5 +294,7 @@ module.exports = {
     ensureAuthenticated,
     getPendingConsultations,
     acceptRequest,
-    getConfirmedConsultations
+    getSchedhuledConsultations,
+    markAsComplete,
+    getCompletedConsultations
 };
