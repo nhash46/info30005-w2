@@ -34,7 +34,7 @@ consultationRouter.get('/requests', consultationController.getPendingConsultatio
 consultationRouter.post('/requests/:_id', consultationController.acceptRequest);
 
 // route that changes status of consultation from schedhuled to complete
-consultationRouter.post('/requests/:_id/complete', consultationController.markAsComplete);
+consultationRouter.post('/requests/:_id/complete', consultationValidator.markAsComplete , consultationController.markAsComplete);
 
 // route that shows schedhuled consultations belonging to the user (given they are a counsellor)
 consultationRouter.get('/confirmed', consultationController.getSchedhuledConsultations);
