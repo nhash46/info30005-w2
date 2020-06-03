@@ -15,8 +15,9 @@ block content
                         p #[strong Venue]: #{consultation.venue}
                         p #[strong Status]: #{consultation.status}
 
-                        a.btn.btn-link.delete-consultation(type= 'button', consultation-id=consultation._id) cancel consultation
-                        a.btn.btn-link.manage-consultation(type= 'button', consultation-id=consultation._id) edit
+                        if consultation.status != 'completed'
+                            a.btn.btn-link.delete-consultation(type= 'button', consultation-id=consultation._id) cancel consultation
+                            a.btn.btn-link.manage-consultation(type= 'button', consultation-id=consultation._id) edit
 
                         br
                         br
