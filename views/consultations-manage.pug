@@ -1,23 +1,21 @@
 extends layout
 
 block content
+    #jumbotronConsultation
+        .container#containterManageConsultation
+                h1#forum-title My Consultations
+                if user
+                    .row
+                        each consultation, i in consultations
+                                .column
+                                    .card
+                                        .containerCard#manageConsultationCard
+                                            if consultation.counsellor
+                                                p #[strong Counsellor]: #{consultation.counsellor}
+                                            p #[strong Date]: #{moment(consultation.date).format("LL")}
+                                            p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
+                                            p #[strong Venue]: #{consultation.venue}
+                                            p #[strong Status]: #{consultation.status}
 
-    .container 
-        h1#forum-title My Consultations
-        if user
-            each consultation, i in consultations
-                .card
-                    .card-body
-                        if consultation.counsellor
-                            p #[strong Counsellor]: #{consultation.counsellor}
-                        p #[strong Date]: #{moment(consultation.date).format("LL")}
-                        p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
-                        p #[strong Venue]: #{consultation.venue}
-                        p #[strong Status]: #{consultation.status}
-
-                        a.btn.btn-link.delete-consultation(type= 'button', consultation-id=consultation._id) cancel consultation
-                        a.btn.btn-link.manage-consultation(type= 'button', consultation-id=consultation._id) edit
-
-                        br
-                        br
-                        
+                                            a.btn.btn-link(type= 'button', consultation-id=consultation._id).buttonManageConsultation Cancel 
+                                            a.btn.btn-link(type= 'button', consultation-id=consultation._id).buttonManageConsultation Edit
