@@ -10,6 +10,7 @@ const Forum = require('../models/forum');
 
 // function that loads form page for adding post
 const newUserForm = (req, res) => {
+    res.status(200).send(),
     res.render('signup', {
         title:'Sign Up'
     });
@@ -61,6 +62,7 @@ const addUser = (req, res) => {
 
 // Load Edit Form
 const editProfile = async (req, res) => {
+  res.status(200).send(),
   res.render('edit-profile', {
     title: 'Edit Profile',
   });
@@ -110,8 +112,9 @@ const getUserPosts = async (req, res) => {
   });
 };
 
-// function that loads form page for adding post
+// function that loads form page for logging in
 const loginPage = (req, res) => {
+    res.status(200).send(),
     res.render('signin', {
         title:'Sign In'
     });
