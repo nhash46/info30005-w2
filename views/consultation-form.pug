@@ -1,25 +1,27 @@
 extends layout
 block content
-    .main.container
-        .row.mt-5
-            .col-md-6.col-md-offset-3
-                .card.card-body#login
-                    h1.display-4.m-b-2#forum-title Request a consultation
-                    br
-                    form(method='POST', action='/consultations/new')
-                        .form-group
-                            label Enter Date:
-                            input.form-control.date#txt-date(name='date', type='date')
+    #jumbotronConsultation
+
+        .main.container
+            .row.mt-5
+                .col-md-6.col-md-offset-3
+                    .card.card-body#login
+                        h1.display-4.m-b-2#forum-title Request a consultation
                         br
-                        .form-group
-                            label Enter Time:
-                            input.form-control(name='time', type = 'time')
-                        br
-                        .form-group
-                            label Venue:
-                            select.form-control(name='venue')
-                                option Online
-                                option On Campus
-                        br
-                        br
-                        input.btn.btn-primary(type='submit', value='Submit')
+                        form(method='POST', action='/consultations/new')
+                            .form-group
+                                label Enter Date:
+                                input.form-control.date#txt-date(name='date', type='date')
+                            br
+                            .form-group
+                                label Enter Time:
+                                input.form-control(name='time', type = 'time')
+                            br
+                            .form-group
+                                label Venue:
+                                select.form-control(name='venue')
+                                    option Online
+                                    option On Campus
+                            br
+                            br
+                            input.btn.btn-primary(type='submit', value='Submit')
