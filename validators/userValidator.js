@@ -5,7 +5,9 @@ exports.addUser =
 [   
     // validates that fields arent left empty
     check('username').isLength({min:1}).trim().withMessage('Username required'),
-    check('password').isLength({min:6}).trim().withMessage('Password must be longer than 5 characters'),
+    check('password').isLength({min:6}).trim().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i").
+    withMessage('Password should be combination of one uppercase , ' +
+        'one lower case, one special char, one digit and min 8 , max 20 char long'),
     // validates password are matching
     check('password2').custom((value,{req, loc, path}) => {
         if (value !== req.body.password) {
