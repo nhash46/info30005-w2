@@ -205,7 +205,11 @@ nav.navbar.navbar-inverse li a:hover {
 
 
 #discussion-header{
+  
   font-family: "Arial Black", sans-serif;
+  background-color: transparent;
+  color: white;
+ 
 }
 
 
