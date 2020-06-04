@@ -87,8 +87,8 @@ describe('Front-end pages', function() {
       supertest(app)
       .get('/user/singup')
       .end(function(err, res) {
-        expect(res.status).to.equal(200);
-        expect(res.status).to.be.html;
+        res.should.have.status(200);
+        res.should.be.html;
         done();
       });
     });
@@ -97,8 +97,8 @@ describe('Front-end pages', function() {
       supertest(app)
       .get('/user/login')
       .end(function(err, res) {
-        expect(res.statusCode).to.equal(200);
-        expect(res.statusCode).to.be.html;
+        res.should.have.status(200);
+        res.should.be.html;
         done();
       });
     });
