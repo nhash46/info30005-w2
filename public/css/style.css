@@ -448,7 +448,7 @@ li.indexParagraph {
 /* ------------------------ CONSULTATION ---------------- */
 #jumbotronConsultation{
   background-image: url("../img/consultationBG.jpg");
-  min-height: 600px;
+  min-height: 500px;
   background-repeat: no-repeat;
   margin-bottom: -90px ;
   margin-top: -20px;
