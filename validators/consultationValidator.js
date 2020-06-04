@@ -21,4 +21,5 @@ exports.markAsComplete =
         throw new Error ('Error: the schedhuled appointment has not yet occurred.');
     }
     return true;
+
 })];
