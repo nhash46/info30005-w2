@@ -55,9 +55,10 @@ html
             if errors
                 each error, i in errors
                     div(class="alert alert-danger") #{error.msg}
-            block content
-            br
-            hr
+            #jumbotronConsultation        
+                block content
+                br
+                hr
 
         .footer
             h6 Talk it through with us, we'll point you in the right direction

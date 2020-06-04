@@ -449,13 +449,28 @@ li.indexParagraph {
 #jumbotronConsultation{
   background-image: url("../img/consultationBG.jpg");
   min-height: 600px;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   margin-bottom: -90px ;
   margin-top: -20px;
   margin-left: -20px;
   margin-right: -20px;
   top:50%;
   left: 50%;
+}
+
+#jumbotronForum{
+  background-image: url("../img/consultationBG.jpg");
+  min-height: 600px;
+  margin-bottom: -90px ;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-bottom: 70px;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #buttonConsultation {
   margin: 10px;
@@ -504,4 +519,16 @@ li.indexParagraph {
 .buttonManageConsultation :hover{
   border: 2px solid white; 
   color: white;
+}
+
+#whiteBG{
+  
+  background-color: white;
+  padding: 20px;
+  background-repeat: repeat-y;
+  
+}
+
+#extendBG {
+  margin-bottom: 0px;
 }
