@@ -117,3 +117,5 @@ app.use("/consultations", consultationRouter);
 app.listen(process.env.PORT || 3000, () => {
   console.log("The library app is running!");
 });
+
+module.exports = app;

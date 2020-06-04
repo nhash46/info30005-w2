@@ -5,9 +5,8 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
 // import user model
-const User = mongoose.model("User");
-const Forum = mongoose.model("Post")
-const Consultation = mongoose.model("Consultation");
+const User = require('../models/user');
+const Forum = require('../models/forum');
 
 // function that loads form page for adding post
 const newUserForm = (req, res) => {
@@ -91,75 +90,6 @@ const updateProfile = (req, res) => {
   });
 }
 
-// function to get change password pages
-const getChangePassword = (req, res) => {
-  res.render("change-password", {
-    title : "Change Password"
-  });
-}
-
-const changePassword = (req, res) => {
-
-  let user = {};
-
-  let errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    console.log(errors);
-    res.render('change-password',
-        {
-          user:user,
-          errors: errors.mapped()
-        });
-  }
-  // If the new passwords are valid, check if the old password is correct
-  else {
-    bcrypt.genSalt(10, function(err, salt){
-      bcrypt.hash(req.body.password, salt, function(err, hash){
-        if(err){
-          console.log(err);
-        }
-        // if the entered password matches the of the current password
-        if(locals.user.password === hash) {
-
-          // hash the new password
-          bcrypt.genSalt(10, function(err, new_salt) {
-            bcrypt.hash(req.body.password, new_salt, function (err, new_hash) {
-              if (err) {
-                console.log(err);
-              }
-              user.password = new_hash;
-
-              // update user
-              let query = {_id: req.params._id};
-
-              User.updateOne(query, user, function (err) {
-                if (err) {
-                  console.log(err);
-                } else {
-                  req.flash('success', 'Profile Updated');
-                  res.redirect('/user/profile');
-                }
-              });
-            });
-          });
-        }
-      });
-    });
-  }
-}
-
-// function to handle a request to get all users
-const getAllUsers = async (req, res) => {
-    
-    try {
-      const all_users = await User.find();
-      return res.send(all_users);
-    } catch (err) {
-      res.status(400);
-      return res.send("Database query failed");
-    }
-  };
-
 // function that renders the user profile
 const getUserProfile = async (req, res) => {
     res.render('profile', {
@@ -167,7 +97,7 @@ const getUserProfile = async (req, res) => {
 };
 
 // function that retrieves posts made by a specified user
-const getUserProfileByID = async (req, res) => {
+const getUserPosts = async (req, res) => {
   Forum.find({author:req.params.id}, function(err, forums){
     if(err){
       console.log(err);
@@ -207,15 +137,12 @@ const logOutUser = (req, res) => {
 
 module.exports = {
   addUser,
-  getAllUsers,
   getUserProfile,
-  getUserProfileByID,
+  getUserPosts,
   logIn,
   newUserForm,
   loginPage,
   logOutUser,
   updateProfile,
   editProfile,
-  getChangePassword,
-  changePassword
 };
