@@ -30,7 +30,7 @@ block content
                                 a(href='/forum-posts/'+forum._id)
                                     h4 click here to view
                         
-            .rightcolumn
+            .rightcolumn#forumPostsRight
                 .card#signin-createpost
                     if user
                         input.btn.btn-primary(type='submit', value='Create a post', onclick='createPost()')

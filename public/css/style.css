@@ -590,3 +590,6 @@ li.indexParagraph {
   box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
   
 }
+#forumPostsRight {
+  margin-bottom: 40px;
+}
