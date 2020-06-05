@@ -91,6 +91,12 @@ nav.navbar.navbar-inverse li a:hover {
     padding: 20px;
     margin-top: 20px;
 }
+.cardConfirmed {
+  border-radius: 15px;
+  padding: 50px;
+  margin-top: 20px;
+  background-color:rgb(11, 69, 91) ;
+}
 
 #forum-card{
   border-radius: 15px 15px 0px 0px ;
@@ -98,6 +104,11 @@ nav.navbar.navbar-inverse li a:hover {
   color: white;
 }
 
+#completed-card{
+  border-radius: 15px 15px 0px 0px ;
+  background-color: transparent;
+  color: white;
+}
 .panel{
   padding: 0px;
   background-color: transparent;
@@ -381,10 +392,60 @@ nav.navbar.navbar-inverse li a:hover {
 
 .manage-consultation{
   float: right;
+  margin: 10px;
 }
 
 .delete-consultation{
-  float: right;
+  border: none;
+  outline: 0;
+  display: inline-block;
+  color: white;
+  background-color:	rgb(255, 56, 0);
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  width: 40%;
+  padding: 7px;
+  margin: 10px;
+  border-radius: 20px;
+  
+}
+
+.delete-consultation:hover {
+  color: white;
+  background-color:rgb(11, 69, 91)  ;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+#delete-consultation :hover {
+  background-color: transparent;
+  border: 2px solid white; 
+  margin-left: 12px;
+  margin-right:12px;
+}
+
+.accept-request{
+  border: none;
+  outline: 0;
+  display: inline-block;
+  color: white;
+  background-color:	rgb(255, 56, 0);
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  width: 40%;
+  padding: 7px;
+  margin: 10px;
+  border-radius: 20px;
+  
+}
+
+.accept-request:hover {
+  color: white;
+  background-color:rgb(11, 69, 91)  ;
+  margin: 10px;
+  border-radius: 10px;
 }
 
 .accept-request{
@@ -395,6 +456,12 @@ nav.navbar.navbar-inverse li a:hover {
   background-color:#3999f7;
   font-family: 'Open Sans', sans-serif;
   color: white;
+}
+.jumbotronCompleted{
+  background-color:transparent;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  border: 2px solid white
 }
 
 /* card css  */
@@ -463,7 +530,24 @@ li.indexParagraph {
 }
 
 .mark-as-complete{
-  float: right;
+  border: none;
+  outline: 0;
+  display: inline-block;
+  color: white;
+  background-color:	rgb(255, 56, 0);
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  width: 40%;
+  padding: 7px;
+  margin: 10px;
+  border-radius: 20px;
+}
+.mark-as-complete:hover {
+  color: white;
+  background-color:rgb(11, 69, 91)  ;
+  margin: 10px;
+  border-radius: 10px;
 }
 
 /* ------------------------ CONSULTATION ---------------- */
@@ -517,8 +601,21 @@ li.indexParagraph {
   transition: 0.5s ease;
   cursor: pointer;
 }
+#manageConsultationCardWhite {
+  background-color:rgb(11, 69, 91);
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
 
 #manageConsultationCard:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+#manageConsultationCardWhite:hover {
   transform: scale(1.15);
   box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
 }
@@ -625,4 +722,54 @@ li.indexParagraph {
   right: 50%;
   top: 50%;
   bottom: 50%;
+}
+#containerConsultationConfirmedForum {
+  color: white;
+  background-color:transparent ;
+  padding-top: 20px;
+  border-radius: 20px;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
+
+}
+.btn-link{
+  color: white;
+  background-color:rgb(11, 69, 91)  ;
+  margin: 10px;
+  border-radius: 10px;
+}
+.btn-link:hover{
+  background-color: transparent;
+  border: 2px solid white; 
+  margin-left: 12px;
+  margin-right:12px;
+}
+}
+.btn-link1{
+  color: white;
+  background-color:rgb(255, 56, 0) ;
+  margin: 10px;
+  border-radius: 10px;
+}
+.btn-link1:hover{
+  background-color: transparent;
+  border: 2px solid white; 
+  margin-left: 12px;
+  margin-right:12px;
+  color: white;
+}
+
+
+.jumbotronCompletedCon{
+  background-color:transparent;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  border: 2px solid white;
+  padding:10px;
+}
+#confirmed {
+  background-color:  rgb(11, 69, 91);
+
 }
