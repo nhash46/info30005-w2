@@ -1,0 +1,20 @@
+extends layout
+
+block content
+
+    .container 
+        h1#forum-title Requested Consultations
+        if user
+            each consultation, i in consultations
+                .card
+                    .card-body
+                        p #[strong Student]: #{consultation.student}
+                        p #[strong Date]: #{moment(consultation.date).format("LL")}
+                        p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
+                        p #[strong Venue]: #{consultation.venue}
+
+                        a.btn.btn-link.accept-request(type= 'button', consultation-id=consultation._id) accept consultation
+
+                        br
+                        br
+                        

@@ -2,18 +2,19 @@ const mongoose = require("mongoose");
 
 const consultationSchema = new mongoose.Schema({
   student: {
-    type: mongoose.Types.ObjectId, 
-    ref: 'User'
+    type: String,
+    required: true
   },
   counsellor: {
-    type: mongoose.Types.ObjectId, 
-      ref: 'User'
+    type: String
   },
   date: Date,
   time: String,
-  isOnline: {
-      type: Boolean,
-      default: true
+  venue: String,
+  status: {
+    type: String,
+    enum: ['schedhuled','pending','completed'],
+    default: 'pending'
   }
 });
 
