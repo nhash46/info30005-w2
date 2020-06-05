@@ -560,6 +560,16 @@ li.indexParagraph {
   margin: 0px;
   
 }
+#whiteBGEditForum{
+  
+  background-color: white;
+  padding: 55px;
+  background-repeat: repeat-y;
+  height: 560px;
+  margin: 0px;
+  width: 100%;
+  
+}
 #whiteBGAddForum {
   background-color: white;
   padding: 55px;
@@ -603,6 +613,16 @@ li.indexParagraph {
   right: 50%;
   top: 50%;
   bottom: 50%;
+}
 
-
+#containerEditForum {
+  color: white;
+  background-color:rgb(11, 69, 91) ;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  padding-top: 20px;
+  border-radius: 20px;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
 }
