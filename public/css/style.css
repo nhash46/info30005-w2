@@ -97,6 +97,13 @@ nav.navbar.navbar-inverse li a:hover {
   color: white;
 }
 
+.panel{
+  padding: 0px;
+  background-color: transparent;
+}
+
+
+
 #forum-link{
   border-radius: 0px 0px 15px 15px;
   background-color: #C1C8E4;
@@ -321,8 +328,7 @@ nav.navbar.navbar-inverse li a:hover {
 
 .module-border-wrap {
   background: linear-gradient(to right, #55ACEE, purple, red, gold);
-  padding: 0.2px 0px 10px 0px;
-  
+  padding: 10px 0px 10px 0px;
 }
 
 .border-container{
@@ -538,9 +544,20 @@ li.indexParagraph {
   margin-bottom: 0px;
 }
 
-#login {
-  background-color: rgb(11, 69, 91);
+#transparentBG{
+  background-color: transparent;
+  border: 2px solid white;
+}
+
+
+#login{
   color: white;
-
-
+  background-color:rgb(11, 69, 91) ;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+#edit{
+  color: white;
+  background-color:rgb(11, 69, 91) ;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  
 }
