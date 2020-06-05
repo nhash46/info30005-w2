@@ -321,7 +321,8 @@ nav.navbar.navbar-inverse li a:hover {
 
 .module-border-wrap {
   background: linear-gradient(to right, #55ACEE, purple, red, gold);
-  padding: 10px 0px 10px 0px;
+  padding: 0.2px 0px 10px 0px;
+  
 }
 
 .border-container{
@@ -535,4 +536,11 @@ li.indexParagraph {
 
 #extendBG {
   margin-bottom: 0px;
+}
+
+#login {
+  background-color: rgb(11, 69, 91);
+  color: white;
+
+
 }
