@@ -758,7 +758,8 @@ li.indexParagraph {
   color: white;
   background-color:rgb(255, 56, 0) ;
   margin: 10px;
-  border-radius: 10px;
+  min-width: 100px;
+  border-radius: 12px;
 }
 .btn-link2:hover{
   background-color: transparent;
