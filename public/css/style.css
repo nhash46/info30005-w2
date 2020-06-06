@@ -76,6 +76,7 @@ nav.navbar.navbar-inverse li a:hover {
     float:left;
     width: 60%;
     padding-left: 20%;
+    padding-bottom: 20px;
 }
 
 .rightcolumn {
@@ -90,12 +91,30 @@ nav.navbar.navbar-inverse li a:hover {
     padding: 20px;
     margin-top: 20px;
 }
+.cardConfirmed {
+  border-radius: 15px;
+  padding: 50px;
+  margin-top: 20px;
+  background-color:rgb(11, 69, 91) ;
+}
 
 #forum-card{
   border-radius: 15px 15px 0px 0px ;
   background-color: #5680E9;
   color: white;
 }
+
+#completed-card{
+  border-radius: 15px 15px 0px 0px ;
+  background-color: transparent;
+  color: white;
+}
+.panel{
+  padding: 0px;
+  background-color: transparent;
+}
+
+
 
 #forum-link{
   border-radius: 0px 0px 15px 15px;
@@ -120,6 +139,11 @@ nav.navbar.navbar-inverse li a:hover {
   color: white;
   width: 100%;
   margin-top: 20px;
+
+}
+.border-container{
+  padding: 5px;
+  background: linear-gradient(to right, #55ACEE, purple, red, gold);
 }
 
 @media screen and (max-width: 800px) {
@@ -205,7 +229,11 @@ nav.navbar.navbar-inverse li a:hover {
 
 
 #discussion-header{
+  
   font-family: "Arial Black", sans-serif;
+  background-color: transparent;
+  color: white;
+ 
 }
 
 
@@ -317,11 +345,16 @@ nav.navbar.navbar-inverse li a:hover {
 
 .module-border-wrap {
   background: linear-gradient(to right, #55ACEE, purple, red, gold);
-  padding: 10px 0px 10px 0px;
+  
 }
+
+
 
 .border-container{
   padding: 5px;
+}
+.footer-container {
+  padding-top: 5px;
 }
 
 /* Carousel Image Size*/
@@ -359,10 +392,60 @@ nav.navbar.navbar-inverse li a:hover {
 
 .manage-consultation{
   float: right;
+  margin: 10px;
 }
 
 .delete-consultation{
-  float: right;
+  border: none;
+  outline: 0;
+  display: inline-block;
+  color: white;
+  background-color:	rgb(255, 56, 0);
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  width: 40%;
+  padding: 7px;
+  margin: 10px;
+  border-radius: 20px;
+  
+}
+
+.delete-consultation:hover {
+  color: white;
+  background-color:rgb(11, 69, 91)  ;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+#delete-consultation :hover {
+  background-color: transparent;
+  border: 2px solid white; 
+  margin-left: 12px;
+  margin-right:12px;
+}
+
+.accept-request{
+  border: none;
+  outline: 0;
+  display: inline-block;
+  color: white;
+  background-color:	rgb(255, 56, 0);
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  width: 40%;
+  padding: 7px;
+  margin: 10px;
+  border-radius: 20px;
+  
+}
+
+.accept-request:hover {
+  color: white;
+  background-color:rgb(11, 69, 91)  ;
+  margin: 10px;
+  border-radius: 10px;
 }
 
 .accept-request{
@@ -373,7 +456,12 @@ nav.navbar.navbar-inverse li a:hover {
   background-color:#3999f7;
   font-family: 'Open Sans', sans-serif;
   color: white;
-  border: 2px solid rgb(11, 69, 91);
+}
+.jumbotronCompleted{
+  background-color:transparent;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  border: 2px solid white
 }
 
 /* card css  */
@@ -404,7 +492,7 @@ hr.card1 {
 .buttonCard:hover {
   background-color: white;
   color:rgb(255, 56, 0);
-  border: 2px solid rgb(255, 56, 0); /* Green */
+  border: 2px solid rgb(255, 56, 0);
 }
 .bold {
   font-weight: bolder;
@@ -442,7 +530,246 @@ li.indexParagraph {
 }
 
 .mark-as-complete{
-  float: right;
+  border: none;
+  outline: 0;
+  display: inline-block;
+  color: white;
+  background-color:	rgb(255, 56, 0);
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  width: 40%;
+  padding: 7px;
+  margin: 10px;
+  border-radius: 20px;
+}
+.mark-as-complete:hover {
+  color: white;
+  background-color:rgb(11, 69, 91)  ;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+/* ------------------------ CONSULTATION ---------------- */
+#jumbotronConsultation{
+  background-image: url("../img/consultationBG.jpg");
+  min-height: 600px;
+  background-repeat: repeat-y;
+  margin-bottom: -90px ;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  top:50%;
+  left: 50%;
+}
+
+#jumbotronForum{
+  background-image: url("../img/consultationBG.jpg");
+  min-height: 600px;
+  margin-bottom: -90px ;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-bottom: 70px;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#buttonConsultation {
+  margin: 10px;
+}
+#buttonConsultation:hover {
+  background-color: transparent;
+  border: 2px solid white; 
+  margin-left: 12px;
+  margin-right:12px;
+}
+/************************** MANAGE CONSULTATIONS *******************/
+#containterManageConsultation {
+  color: white;
 }
 
 
+#manageConsultationCard {
+  background-color:rgb(11, 69, 91);
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 20px;
+
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+#manageConsultationCardWhite {
+  background-color:rgb(11, 69, 91);
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+#manageConsultationCard:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+#manageConsultationCardWhite:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+
+.buttonManageConsultation {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  color: white;
+  background-color:	rgb(255, 56, 0);
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  width: 40%;
+  padding: 7px;
+  margin: 10px;
+  border-radius: 20px;
+}
+.buttonManageConsultation :hover{
+  border: 2px solid white; 
+  color: white;
+}
+
+#whiteBG{
+  
+  background-color: white;
+  padding: 55px;
+  background-repeat: repeat-y;
+  height: inherit;
+  margin: 0px;
+  
+}
+#whiteBGEdit{
+  
+  background-color: white;
+  padding: 55px;
+  background-repeat: repeat-y;
+  height: 560px;
+  margin: 0px;
+  
+}
+#whiteBGEditForum{
+  
+  background-color: white;
+  padding: 55px;
+  background-repeat: repeat-y;
+  height: 560px;
+  margin: 0px;
+  width: 100%;
+  
+}
+#whiteBGAddForum {
+  background-color: white;
+  padding: 55px;
+  background-repeat: repeat-y;
+  height: 560px;
+  margin: 0px;
+
+}
+
+#extendBG {
+  margin-bottom: 0px;
+}
+
+#transparentBG{
+  background-color: transparent;
+  border: 2px solid white;
+}
+
+
+#login{
+  color: white;
+  background-color:rgb(11, 69, 91) ;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+#edit{
+  color: white;
+  background-color:rgb(11, 69, 91) ;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  
+}
+#forumPostsRight {
+  margin-bottom: 40px;
+}
+#changePasswordBG {
+  color: white;
+  background-color:rgb(11, 69, 91) ;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  padding-top: 20px;
+  border-radius: 20px;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
+}
+
+#containerEditForum {
+  color: white;
+  background-color:rgb(11, 69, 91) ;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  padding-top: 20px;
+  border-radius: 20px;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
+}
+#containerConsultationConfirmedForum {
+  color: white;
+  background-color:transparent ;
+  padding-top: 20px;
+  border-radius: 20px;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
+
+}
+.btn-link{
+  color: white;
+  background-color:rgb(11, 69, 91)  ;
+  margin: 10px;
+  border-radius: 10px;
+}
+.btn-link:hover{
+  background-color: transparent;
+  border: 2px solid white; 
+  margin-left: 12px;
+  margin-right:12px;
+}
+}
+.btn-link1{
+  color: white;
+  background-color:rgb(255, 56, 0) ;
+  margin: 10px;
+  border-radius: 10px;
+}
+.btn-link1:hover{
+  background-color: transparent;
+  border: 2px solid white; 
+  margin-left: 12px;
+  margin-right:12px;
+  color: white;
+}
+
+
+.jumbotronCompletedCon{
+  background-color:transparent;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  border: 2px solid white;
+  padding:10px;
+}
+#confirmed {
+  background-color:  rgb(11, 69, 91);
+
+}

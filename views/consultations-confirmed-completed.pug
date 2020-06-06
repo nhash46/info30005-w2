@@ -2,20 +2,25 @@ extends layout
 
 block content
 
-    .container 
-        h1#forum-title My Schedhuled Consultations
-        a.btn.btn-link(href= "/consultations/confirmed") upcoming
-        a.btn.btn-link.active(href= "/consultations/completed") completed
-
+    .container.text-center
+        .jumbotronCompletedCon 
+            h1#forum-title.text-centerMy Schedhuled Consultations
+            
+            a.btn.btn-link1(href= "/consultations/confirmed").buttonManageConsultation Upcoming
+            a.btn.btn-link1(href= "/consultations/completed").buttonManageConsultation Completed
+    
         if user
-            each consultation, i in consultations
-                .card
-                    .card-body
-                        p #[strong Student]: #{consultation.student}
-                        p #[strong Date]: #{moment(consultation.date).format("LL")}
-                        p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
-                        p #[strong Venue]: #{consultation.venue}
+            .row
+                each consultation, i in consultations
+                    
+                    .column 
+                        .card
+                            .ccontainerCard#manageConsultationCardWhite
+                                p #[strong Student]: #{consultation.student}
+                                p #[strong Date]: #{moment(consultation.date).format("LL")}
+                                p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
+                                p #[strong Venue]: #{consultation.venue}
 
 
-                        br
-                        br
+                                br
+                                br

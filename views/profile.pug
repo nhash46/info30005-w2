@@ -3,6 +3,6 @@ extends layout
 block content
 
     .container
-        .jumbotron
+        .jumbotron.text-center#transparentBG
             h2 Welcome #{user.first_name}
             a.btn.btn-primary.btn-sm(href='/user/profile/edit/'+user._id) Edit Profile

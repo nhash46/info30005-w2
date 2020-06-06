@@ -1,19 +1,21 @@
 extends layout
 
 block content
-    .jumbotron.text-center
-        h1 Book a Consultation today!
-        if user
-            if user.userType == 'student'
-                h2 HELLO STUDENT
-                a.btn.btn-primary(href= "/consultations/new") Request a Consultation
-                a.btn.btn-primary(href= "/consultations/manage") My Consultations
-            if user.userType == 'counsellor'
-                p HELLO COUNSELLOR
-                a.btn.btn-primary(href= "/consultations/confirmed") Manage Student Consultations
-                a.btn.btn-primary(href= "/consultations/requests") Consultation Requests
+    .jumbotron.text-center#jumbotronConsultation
+        #consultationText
+            h1 Book a Consultation today!
+            if user
+                if user.userType == 'student'
+                    h2 HELLO STUDENT
+                    a.btn.btn-primary#buttonConsultation(href= "/consultations/new") Request a Consultation
+                    a.btn.btn-primary#buttonConsultation(href= "/consultations/manage") My Consultations
+                if user.userType == 'counsellor'
+                    p HELLO COUNSELLOR
+                    a.btn.btn-primary#buttonConsultation(href= "/consultations/confirmed") Manage Student Consultations
+                    a.btn.btn-primary#buttonConsultation(href= "/consultations/requests") Consultation Requests
         if !user
             h3 Please sign in to book
-            a.btn.btn-primary(href= "/user/login") Sign in
+            a.btn.btn-primary#buttonConsultation(href= "/user/login") Sign in                 
+    
 
     

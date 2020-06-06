@@ -25,6 +25,25 @@ The user can create a post from the forum-posts page by pressing the “Create a
 NOTE: if the user is not logged in, this button will instead display a “Sign in to create a post” button. This will redirect them to the sign in page: /user/login/
 Users are able to edit or delete their own posts via the ‘edit’ and ‘delete’ buttons underneath the post
 To create a comment the user must navigate to the appropriate post and enter the comment in the form below the other comments and pressing “Post”
+### Functionality 3: Consultations
+The consultations  page (https://spatium-unimelb.herokuapp.com/consultations) can be accessed from the "Consultations" button on the navbar and the "Make a consultation" button on the home screen.
+The user will need to sign in to book a consultation and the consultations page should prompt them to do so.
+Once the user is signed in the page should offer buttons to view previously booked consultations and book new consultations.
+If the user is of the counsellor type, the buttons will instead be: "Manage Student Consultations" and "Consultation Requests".
+#### Request a Consultation
+Upon pressing the Request a consultation button the user will be shown a form in which to enter a date and time of the consultation as well as choose whether the consultation will be online or on campus.
+The validator for this form will check that the inputs have length>0 and that the date is in the future.
+Upon successful completion the user will be redirected to the My Consultations page.
+#### My Consultations
+The my consultations page displays each consultation with date, time and venueas booked and status of the consultation(pending, completed or scheduled).
+The status will show completed if the date of consultation has passed, pending by default and scheduled if a counsellor has accepted the consultation.
+The user can also cancel of edit their consultations using the "edit" and "cancel consultations" buttons.
+Editing will take the user back to the same form used to create and cancelling prompt the user to confirm before deleting the consultation.
+#### Counsellor
+The Manage Student Consultations will lead to the "My Scheduled Consultations" Page
+The Scheduled Consultations are divided into upcoming and complete consultations, selecting either will display consultation time, date, venue and the student's name.
+The Consultations Request button will lead to the Request Consultations page where the counsellor can view pending consultations and accept them based on venue, date, time and student name.
+Attempting to access either of these pages with a student user will display a message indicating lack of authorisation.
 ## Layout
 The folders are layed out as follows:
 ### Config
@@ -43,5 +62,3 @@ Houses some functions to confirm new entries to the databse are valid
 Contains pug view engine code to be rendered
 ### App.js
 The main directing code that passes URLs to routes
-## Future Components
-A consultation feature which allows student users to book meetings with counsellor users will be implented in the near future

@@ -1,25 +1,25 @@
 extends layout
 
 block content
+    br
+    br
 
-    .container 
+    .container.jumbotronCompleted.text-center
         h1#forum-title My Schedhuled Consultations
-        a.btn.btn-link.active(href= "/consultations/confirmed") upcoming
-        a.btn.btn-link(href= "/consultations/completed") completed
+        a.btn.btn-link1.active(href= "/consultations/confirmed").buttonManageConsultation Upcoming
+        a.btn.btn-link1(href= "/consultations/completed").buttonManageConsultation Completed
 
         if user
-            each consultation, i in consultations
-                .card
-                    .card-body
-                        p #[strong Student]: #{consultation.student}
-                        p #[strong Date]: #{moment(consultation.date).format("LL")}
-                        p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
-                        p #[strong Venue]: #{consultation.venue}
+            .row
+                each consultation, i in consultations
+                    .column
+                        .card
+                            .containerCard#manageConsultationCard
+                                p #[strong Student]: #{consultation.student}
+                                p #[strong Date]: #{moment(consultation.date).format("LL")}
+                                p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
+                                p #[strong Venue]: #{consultation.venue}
 
-                        a.btn.btn-link.delete-consultation(type= 'button', consultation-id=consultation._id) cancel consultation
-                        a.btn.btn-link.mark-as-complete(type= 'button', consultation-id=consultation._id) mark as completed
-
-
-                        br
-                        br
-                        
+                                a.btn.btn-link1.delete-consultation(type= 'button', consultation-id=consultation._id).buttonManageConsultation Cancel 
+                                a.btn.btn-link1.mark-as-complete(type= 'button', consultation-id=consultation._id).buttonManageConsultation Completed
+                            

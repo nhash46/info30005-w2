@@ -1,75 +1,74 @@
 extends layout
 
 block content
+    #jumbotronForum
+        .header#discussion-header
+            if !searchQuery
+                h1 #{title}
+            if searchQuery
+                .search-header
+                    if searchQuery
+                        h4 showing search results for: 
+                        #discussion-header    
+                            h1 '#{searchQuery}'
+        
+        .row
+            .leftcolumn
+                if noMatch
+                    .card#noMatch
+                        h5 Sorry, there were no community results for "#{searchQuery}". Try search again!
+                        
+                if !noMatch
+                    each  forum, i in forums
+                        .panel
+                            .panel-body#forum-card
+                                #forum-title
+                                    h2 #{forum.title}
+                                h6 posted by #{forum.author}, #{moment(forum.date).startOf('day').fromNow()}
+                                p #{forum.body}
+                            .panel-footer#forum-link
+                                a(href='/forum-posts/'+forum._id)
+                                    h4 click here to view
+                        
+            .rightcolumn#forumPostsRight
+                .card#signin-createpost
+                    if user
+                        input.btn.btn-primary(type='submit', value='Create a post', onclick='createPost()')
+                    if !user
+                            input.btn.btn-primary(type='submit', value='Sign in to create a post!', onclick='signIn()')
 
-    .header#discussion-header
-        if !searchQuery
-            h1 #{title}
-        if searchQuery
-            .search-header
-                if searchQuery
-                    h4 showing search results for: 
-                    #discussion-header    
-                        h1 '#{searchQuery}'
-    
-    .row
-        .leftcolumn
-            if noMatch
-                .card#noMatch
-                    h5 Sorry, there were no community results for "#{searchQuery}". Try search again!
-                    
-            if !noMatch
-                each  forum, i in forums
-                    .panel
-                        .panel-body#forum-card
-                            #forum-title
-                                h2 #{forum.title}
-                            h6 posted by #{forum.author}, #{moment(forum.date).startOf('day').fromNow()}
-                            p #{forum.body}
-                        .panel-footer#forum-link
-                            a(href='/forum-posts/'+forum._id)
-                                h4 click here to view
-                    
-        .rightcolumn
-            .card#signin-createpost
-                if user
-                    input.btn.btn-primary(type='submit', value='Create a post', onclick='createPost()')
-                if !user
-                        input.btn.btn-primary(type='submit', value='Sign in to create a post!', onclick='signIn()')
+                .card#search
+                    form.form-inlne(action="/forum-posts" method="GET")
+                        div.form-group
+                            input.form-control#normalfont(name='search', type='text', placeholder= 'Forum search...' class='form-control')
+                            input.btn.btn-primary(type='submit', value='Search')
 
-            .card#search
-                form.form-inlne(action="/forum-posts" method="GET")
-                    div.form-group
-                        input.form-control#normalfont(name='search', type='text', placeholder= 'Forum search...' class='form-control')
-                        input.btn.btn-primary(type='submit', value='Search')
+                    script.
+                        function createPost() {
+                            window.location.href = '/forum-posts/submit'
+                        }
+                        function signIn() {
+                            window.location.href = '/user/login'
+                        }
+                .card#about-us
+                    .text-secondary
+                        #heading-font    
+                            h2 About Us
+                        .fakeimg(style='height:100px;') Image
+                        p.
+                            We have identified two major barriers detering men from seeking help, 
+                            namely; social stigmas attached with mental health, and perhaps as an extension 
+                            of these stigmas, anxiety relating to having a face-to-face consultation with a mental health expert. 
+                .card#popular
+                    #heading-font
+                        h3 Popular Post
+                    .fakeimg Image
+                    br
+                    .fakeimg Image
+                    br
+                    .fakeimg Image
 
-                script.
-                    function createPost() {
-                        window.location.href = '/forum-posts/submit'
-                    }
-                    function signIn() {
-                        window.location.href = '/user/login'
-                    }
-            .card#about-us
-                .text-secondary
-                    #heading-font    
-                        h2 About Us
-                    .fakeimg(style='height:100px;') Image
-                    p.
-                        We have identified two major barriers detering men from seeking help, 
-                        namely; social stigmas attached with mental health, and perhaps as an extension 
-                        of these stigmas, anxiety relating to having a face-to-face consultation with a mental health expert. 
-            .card#popular
-                #heading-font
-                    h3 Popular Post
-                .fakeimg Image
-                br
-                .fakeimg Image
-                br
-                .fakeimg Image
-
-    script.
-        function move() {
-        window.location.href = '/forum-posts/submit'
-     }            
-    
+        script.
+            function move() {
+            window.location.href = '/forum-posts/submit'
+            }            
