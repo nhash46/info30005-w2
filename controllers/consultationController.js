@@ -65,7 +65,7 @@ const getPendingConsultations = async (req, res) => {
 
 // function that retrieves schedhuled consultations
 const getSchedhuledConsultations = async (req, res) => {
-  Consultation.find({status: 'schedhuled', counsellor: req.user.username}, function(err, consultations){
+  Consultation.find({status: 'scheduled', counsellor: req.user.username}, function(err, consultations){
     if(req.user.userType != 'counsellor'){
       req.flash('danger', 'Not authorised to view this page');
       res.redirect('/consultations');

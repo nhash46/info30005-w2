@@ -18,7 +18,7 @@ check('venue').isLength({min:1}).trim().withMessage('Venue required')];
 exports.markAsComplete = 
 [check('date').custom((value, {req, loc, path}) => {
     if(new Date(value) > Date.now()) {
-        throw new Error ('Error: the schedhuled appointment has not yet occurred.');
+        throw new Error ('Error: the scheduled appointment has not yet occurred.');
     }
     return true;
 
