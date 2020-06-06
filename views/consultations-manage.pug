@@ -20,5 +20,6 @@ block content
                                             p #[strong Status]: #{consultation.status}
                                             
 
-                                            a.btn.btn-link2(type= 'button', consultation-id=consultation._id) Cancel 
-                                            a.btn.btn-link2(type= 'button', consultation-id=consultation._id) Edit
+                                            if consultation.status != 'completed'
+                                                a.btn.btn-link2(type= 'button', consultation-id=consultation._id) Cancel 
+                                                a.btn.btn-link2(type= 'button', consultation-id=consultation._id) Edit
