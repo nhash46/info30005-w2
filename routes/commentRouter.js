@@ -9,7 +9,7 @@ const commentController = require("../controllers/commentController.js");
 commentRouter.post('/:_id', commentController.addComment);
 
 // get all comments
-//commentRouter.get('/', commentController.getAllComments);
+commentRouter.get('/', commentController.getAllComments);
 
 // find comment to edit
 commentRouter.get('/:_id/edit', commentController.ensureAuthenticated, commentController.editComment);
