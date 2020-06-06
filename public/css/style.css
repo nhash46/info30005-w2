@@ -740,8 +740,7 @@ li.indexParagraph {
 .btn-link:hover{
   background-color: transparent;
   border: 1px solid white; 
-  margin-left: 12px;
-  margin-right:12px;
+  
 }
 .btn-link1{
   color: white;
@@ -792,4 +791,8 @@ li.indexParagraph {
 #confirmed {
   background-color:  rgb(11, 69, 91);
 
+}
+#whiteText {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
 }
