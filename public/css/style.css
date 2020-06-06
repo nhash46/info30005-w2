@@ -36,10 +36,6 @@ nav.navbar.navbar-inverse li a:hover {
   color: grey;
 }
 
-#forum-title{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-weight: bold;
-}
 
 .pagecontent{
     font-family: Arial;
@@ -64,8 +60,27 @@ nav.navbar.navbar-inverse li a:hover {
     border-color: #d6e9c6;
 }
 
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #0A455C;
+  color: white;
+  width: 100%;
+  margin-top: 20px;
 
-/*forum-posts*/
+}
+.border-container{
+  padding: 5px;
+  background: linear-gradient(to right, #55ACEE, purple, red, gold);
+}
+
+
+/************************** forum-posts *******************/
+#forum-title{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+}
+
 .row:after {
     content: "";
     display: table;
@@ -103,8 +118,6 @@ nav.navbar.navbar-inverse li a:hover {
   background-color: transparent;
 }
 
-
-
 #forum-link{
   border-radius: 0px 0px 15px 15px;
   background-color: #C1C8E4;
@@ -121,19 +134,7 @@ nav.navbar.navbar-inverse li a:hover {
     text-align: center;
     background: white;
 }
-.footer {
-  padding: 20px;
-  text-align: center;
-  background: #0A455C;
-  color: white;
-  width: 100%;
-  margin-top: 20px;
 
-}
-.border-container{
-  padding: 5px;
-  background: linear-gradient(to right, #55ACEE, purple, red, gold);
-}
 
 @media screen and (max-width: 800px) {
     .leftcolumn, .rightcolumn {
@@ -142,19 +143,59 @@ nav.navbar.navbar-inverse li a:hover {
     }
 }
 
-/* add_forum view */
+/************************** add_forum *******************/
 
 .forumcontainer{
     padding-left: 20%;
     padding-right: 20%;
 }
+#whiteBGAddForum {
+  background-color: white;
+  padding: 55px;
+  background-repeat: repeat-y;
+  height: 560px;
+  margin: 0px;
+
+}
 
 .active-cyan-2 input.form-control[type=text]:focus:not([readonly]) {
     border-bottom: 1px solid #4dd0e1;
     box-shadow: 0 1px 0 0 #4dd0e1;
-  }
-
+}
+#discussion-header{
   
+  font-family: "Arial Black", sans-serif;
+  background-color: transparent;
+  color: white;
+ 
+}
+
+#search{
+  background-color: #84CEEB;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#about-us{
+  background-color: #5AB9EA;
+  color: white;
+}
+
+#popular{
+  background-color: #FFB829;
+  color: white;
+}
+
+#comment-top{
+  border-radius: 15px 15px 0px 0px ;
+}
+
+#comment-bottom{
+  border-radius: 0px 0px 15px 15px ;
+}
+
+/************************** index *******************/
+
 /* Meet the team cards */
 /* Three columns side by side */
 .column {
@@ -164,7 +205,9 @@ nav.navbar.navbar-inverse li a:hover {
   padding: 0 8px;
 }
 
-/* Display the columns below each other instead of side by side on small screens */
+/* Display the columns below each 
+other instead of side by side on 
+small screens */
 @media screen and (max-width: 650px) {
   .column {
     width: 100%;
@@ -172,13 +215,14 @@ nav.navbar.navbar-inverse li a:hover {
   }
 }
 
-/* Add some shadows to create a card effect */
+/* Add some shadows to create a 
+card effect */
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
 }
 
-/* Some left and right padding inside the container */
+/* Some left and right padding inside 
+the container */
 .container {
   padding: 20px;
 }
@@ -205,7 +249,6 @@ nav.navbar.navbar-inverse li a:hover {
   cursor: pointer;
   width: 45%;
   padding: 20px;
-
 }
 
 .button:hover {
@@ -216,40 +259,19 @@ nav.navbar.navbar-inverse li a:hover {
     font-size: medium;
 }
 
+/* Carousel Image Size*/
+.carousel{
+  width:100%;
+  height: 350px;
+}
 
-#discussion-header{
-  
-  font-family: "Arial Black", sans-serif;
-  background-color: transparent;
-  color: white;
- 
+.item img{
+  object-fit:cover;
+  height:350px !important;
+  width:100%;
 }
 
 
-
-#search{
-  background-color: #84CEEB;
-  color: white;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-#about-us{
-  background-color: #5AB9EA;
-  color: white;
-}
-
-#popular{
-  background-color: #FFB829;
-  color: white;
-}
-
-#comment-top{
-  border-radius: 15px 15px 0px 0px ;
-}
-
-#comment-bottom{
-  border-radius: 0px 0px 15px 15px ;
-}
 /* FOOOTER BUTTONS AND ICONS */
 .fa {
   padding: 20px;
@@ -344,17 +366,6 @@ nav.navbar.navbar-inverse li a:hover {
 }
 .footer-container {
   padding-top: 5px;
-}
-
-/* Carousel Image Size*/
-.carousel{
-  width:100%;
-  height: 350px;
-}
-.item img{
-  object-fit:cover;
-  height:350px !important;
-  width:100%;
 }
 
 #edit-comment-form{
@@ -560,13 +571,23 @@ li.indexParagraph {
   margin: 0px;
   
 }
+<<<<<<< Updated upstream
 #whiteBGAddForum {
+=======
+#whiteBGEditForum{
+  
+>>>>>>> Stashed changes
   background-color: white;
   padding: 55px;
   background-repeat: repeat-y;
   height: 560px;
   margin: 0px;
+<<<<<<< Updated upstream
 
+=======
+  width: 100%;
+  
+>>>>>>> Stashed changes
 }
 
 #extendBG {
