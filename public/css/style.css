@@ -740,6 +740,8 @@ li.indexParagraph {
 .btn-link:hover{
   background-color: transparent;
   border: 1px solid white; 
+  margin-left: 12px;
+  margin-right: 12px;
   
 }
 .btn-link1{
