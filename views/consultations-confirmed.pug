@@ -19,7 +19,8 @@ block content
                                 p #[strong Date]: #{moment(consultation.date).format("LL")}
                                 p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
                                 p #[strong Venue]: #{consultation.venue}
+                                P
 
-                                a.btn.btn-link1.delete-consultation(type= 'button', consultation-id=consultation._id).buttonManageConsultation Cancel 
-                                a.btn.btn-link1.mark-as-complete(type= 'button', consultation-id=consultation._id).buttonManageConsultation Completed
+                                a.btn.btn-link3.delete-consultation(type= 'button', consultation-id=consultation._id) Cancel 
+                                a.btn.btn-link3.mark-as-complete(type= 'button', consultation-id=consultation._id) Completed
                             

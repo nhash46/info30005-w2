@@ -12,10 +12,13 @@ block content
                                         .containerCard#manageConsultationCard
                                             if consultation.counsellor
                                                 p #[strong Counsellor]: #{consultation.counsellor}
+                                            else 
+                                                p #[strong Counsellor]: Pending Assignment
                                             p #[strong Date]: #{moment(consultation.date).format("LL")}
                                             p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
                                             p #[strong Venue]: #{consultation.venue}
                                             p #[strong Status]: #{consultation.status}
+                                            
 
                                             a.btn.btn-link2(type= 'button', consultation-id=consultation._id) Cancel 
                                             a.btn.btn-link2(type= 'button', consultation-id=consultation._id) Edit
