@@ -13,8 +13,8 @@ const cors = require('cors');
 app.locals.moment = require('moment');
 
 const limiter = rateLimit({
-  windowMs: 15*60*1000, // 15 minutes
-  max: 1000 // limit each IP to 100 requests per windowMs
+  windowMs: 15*60*1000, // 30 minutes
+  max: 3600 // limit each IP to 1000 requests per windowMs i.e. user is allowed to make 120 requests per minute
 });
 
 // load view engine
@@ -38,7 +38,7 @@ app.use(session({
 }));
 
 // apply limiter to all requests
-// app.use(limiter);
+app.use(limiter);
 
 // Express Messages Middleware
 app.use(require('connect-flash')());
