@@ -16,6 +16,7 @@ block content
                                             p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
                                             p #[strong Venue]: #{consultation.venue}
                                             p #[strong Status]: #{consultation.status}
-
-                                            a.btn.btn-link(type= 'button', consultation-id=consultation._id).buttonManageConsultation Cancel 
-                                            a.btn.btn-link(type= 'button', consultation-id=consultation._id).buttonManageConsultation Edit
+                                        
+                                            if consultation.status != 'completed'
+                                                a.btn.btn-link(type= 'button', consultation-id=consultation._id).buttonManageConsultation Cancel 
+                                                a.btn.btn-link(type= 'button', consultation-id=consultation._id).buttonManageConsultation Edit
