@@ -597,7 +597,6 @@ li.indexParagraph {
   border: 2px solid white;
   border-radius: 15px;
   padding: 20px;
-
   transition: 0.5s ease;
   cursor: pointer;
 }
@@ -742,10 +741,9 @@ li.indexParagraph {
 }
 .btn-link:hover{
   background-color: transparent;
-  border: 2px solid white; 
+  border: 1px solid white; 
   margin-left: 12px;
   margin-right:12px;
-}
 }
 .btn-link1{
   color: white;
@@ -755,11 +753,24 @@ li.indexParagraph {
 }
 .btn-link1:hover{
   background-color: transparent;
-  border: 2px solid white; 
+  border: 1px solid white; 
   margin-left: 12px;
   margin-right:12px;
   color: white;
 }
+.btn-link2{
+  color: white;
+  background-color:rgb(255, 56, 0) ;
+  margin: 10px;
+  border-radius: 10px;
+}
+.btn-link2:hover{
+  background-color: transparent;
+  border: 1px solid white; 
+
+  color: white;
+}
+
 
 
 .jumbotronCompletedCon{
