@@ -6,21 +6,21 @@ block content
 
     .container.jumbotronCompleted.text-center
         h1#forum-title My Scheduled Consultations
-        a.btn.btn-link1.active(href= "/consultations/confirmed").buttonManageConsultation Upcoming
-        a.btn.btn-link1(href= "/consultations/completed").buttonManageConsultation Completed
-    .container#whiteText
+        a.btn.btn-link4.active(href= "/consultations/confirmed").buttonManageRequest Upcoming
+        a.btn.btn-link4(href= "/consultations/completed").buttonManageRequest Completed
+    .container
         if user
             .row
                 each consultation, i in consultations
                     .column
                         .card
-                            .containerCard#manageConsultationCard
+                            .containerCard#manageConsultationCardWhite
                                 p #[strong Student]: #{consultation.student}
                                 p #[strong Date]: #{moment(consultation.date).format("LL")}
                                 p #[strong Time]: #{moment(consultation.time, ["HH.mm"]).format("hh:mm a")}
                                 p #[strong Venue]: #{consultation.venue}
-                                P
 
-                                a.btn.btn-link3.delete-consultation(type= 'button', consultation-id=consultation._id) Cancel 
-                                a.btn.btn-link3.mark-as-complete(type= 'button', consultation-id=consultation._id) Completed
+                                a.btn.delete-consultation(type= 'button', consultation-id=consultation._id) Cancel 
+                                a.btn.mark-as-complete(type= 'button', consultation-id=consultation._id) Completed
+                                
                             

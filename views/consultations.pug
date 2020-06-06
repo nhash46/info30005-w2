@@ -7,12 +7,12 @@ block content
             if user
                 if user.userType == 'student'
                     h2 HELLO STUDENT
-                    a.btn.btn-primary#buttonConsultation(href= "/consultations/new") Request a Consultation
-                    a.btn.btn-primary#buttonConsultation(href= "/consultations/manage") My Consultations
+                    a.btn.btn-link5(href= "/consultations/new") Request a Consultation
+                    a.btn.btn-link5(href= "/consultations/manage") My Consultations
                 if user.userType == 'counsellor'
                     p HELLO COUNSELLOR
-                    a.btn.btn-primary#buttonConsultation(href= "/consultations/confirmed") Manage Student Consultations
-                    a.btn.btn-primary#buttonConsultation(href= "/consultations/requests") Consultation Requests
+                    a.btn.btn-link5(href= "/consultations/confirmed") Manage Student Consultations
+                    a.btn.btn-link5(href= "/consultations/requests") Consultation Requests
         if !user
             h3 Please sign in to book
             a.btn.btn-primary#buttonConsultation(href= "/user/login") Sign in                 

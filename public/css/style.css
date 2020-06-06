@@ -405,7 +405,7 @@ nav.navbar.navbar-inverse li a:hover {
   font-size: small;
   cursor: pointer;
   width: 40%;
-  padding: 7px;
+  padding: 5px;
   margin: 10px;
   border-radius: 20px;
   
@@ -414,14 +414,12 @@ nav.navbar.navbar-inverse li a:hover {
 .delete-consultation:hover {
   color: white;
   background-color:rgb(11, 69, 91)  ;
-  border-radius: 10px;
+  padding: 4px;
+  border: 1px solid white;
+  border-radius: 12px;
 }
 
-#delete-consultation :hover {
-  background-color: transparent;
-  border: 1px solid white; 
-  
-}
+
 
 .accept-request{
   border: none;
@@ -537,15 +535,16 @@ li.indexParagraph {
   font-size: small;
   cursor: pointer;
   width: 40%;
-  padding: 7px;
+  padding: 5px;
   margin: 10px;
   border-radius: 20px;
 }
 .mark-as-complete:hover {
   color: white;
   background-color:rgb(11, 69, 91)  ;
-  margin: 10px;
-  border-radius: 10px;
+  padding: 4px;
+  border: 1px solid white;
+  border-radius: 12px;
 }
 
 /* ------------------------ CONSULTATION ---------------- */
@@ -577,12 +576,13 @@ li.indexParagraph {
 }
 #buttonConsultation {
   margin: 10px;
+  padding: 11px;
 }
 #buttonConsultation:hover {
   background-color: transparent;
-  border: 2px solid white; 
-  margin-left: 12px;
-  margin-right:12px;
+  border: 1px solid white; 
+  padding: 10px;
+  margin: 10px;
 }
 /************************** MANAGE CONSULTATIONS *******************/
 #containterManageConsultation {
@@ -606,6 +606,7 @@ li.indexParagraph {
   color: white;
   transition: 0.5s ease;
   cursor: pointer;
+  margin: 10px;
 }
 
 #manageConsultationCard:hover {
@@ -634,6 +635,25 @@ li.indexParagraph {
 .buttonManageConsultation :hover{
   border: 2px solid white; 
   color: white;
+}
+.buttonManageRequest {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  color: white;
+  background-color:	rgb(255, 56, 0);
+  text-align: center;
+  font-size: small;
+  cursor: pointer;
+  width: 40%;
+  padding: 7px;
+  margin: 10px;
+  border-radius: 20px;
+}
+.buttonManageRequest :hover{
+  border: 1px solid white; 
+  color: white;
+  padding: 2px;
 }
 
 #whiteBG{
@@ -760,13 +780,12 @@ li.indexParagraph {
   background-color:rgb(255, 56, 0) ;
   margin: 10px;
   min-width: 100px;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 .btn-link2:hover{
   background-color: transparent;
   border: 1px solid white; 
   color: white;
-
 }
 .btn-link3{
   color: white;
@@ -779,6 +798,30 @@ li.indexParagraph {
   border: 1px solid white; 
   color: white;
   margin: 0px;
+}
+.btn-link4{
+  color: white;
+  background-color:rgb(255, 56, 0) ;
+  margin: 10px;
+  min-width: 100px;
+  border-radius: 10px;
+}
+.btn-link4:hover{
+  background-color: transparent;
+  border: 1px solid white; 
+  color: white;
+  padding:6px;
+}
+.btn-link5{
+  color: white;
+  background-color:rgb(35, 123, 183) ;
+  margin: 10px;
+  border-radius: 10px;
+}
+.btn-link5:hover{
+  background-color: transparent;
+  border: 1px solid white; 
+  color: white;
 }
 
 
