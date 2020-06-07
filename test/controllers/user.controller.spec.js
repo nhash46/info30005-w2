@@ -19,7 +19,7 @@ describe('userController', function () {
 
     // By using mongoose.connect
     before(async () => {
-        await mongoose.connect(MONGO_URL || config.database, {
+        mongoose.connect(MONGO_URL || config.database, {
             useNewUrlParser: true,
             useCreateIndex: true,
             useUnifiedTopology: true,
