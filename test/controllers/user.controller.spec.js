@@ -87,7 +87,8 @@ describe('Front-end pages', function() {
       supertest(app)
       .get('/user/singup')
       .end(function(err, res) {
-        res.should.have.status(200);
+        expect(res).to.have.status(200);
+        expect(res).to.satisfyApiSpec;
         res.should.be.html;
         done();
       });
@@ -97,7 +98,8 @@ describe('Front-end pages', function() {
       supertest(app)
       .get('/user/login')
       .end(function(err, res) {
-        res.should.have.status(200);
+        expect(res).to.have.status(200);
+        expect(res).to.satisfyApiSpec;
         res.should.be.html;
         done();
       });

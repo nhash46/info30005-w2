@@ -5,9 +5,8 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
 // import user model
-const User = mongoose.model("User");
-const Forum = mongoose.model("Post")
-const Consultation = mongoose.model("Consultation");
+const User = require('../models/user');
+const Forum = require('../models/forum');
 
 // function that loads form page for adding post
 const newUserForm = (req, res) => {
