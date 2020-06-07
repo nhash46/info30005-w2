@@ -62,3 +62,5 @@ Houses some functions to confirm new entries to the databse are valid
 Contains pug view engine code to be rendered
 ### App.js
 The main directing code that passes URLs to routes
+### Testing
+To run test, run npm test in terminal. Note, testing is not conclusive...

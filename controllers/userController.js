@@ -30,7 +30,7 @@ const addUser = (req, res) => {
   let errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    console.log(errors);
+    req.flash(errors);
     res.render('signup-resubmit',
       { 
         newUser:newUser,
