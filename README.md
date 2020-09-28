@@ -64,3 +64,9 @@ Contains pug view engine code to be rendered
 The main directing code that passes URLs to routes
 ### Testing
 To run test, run npm test in terminal. Note, testing is not conclusive...
+
+## Contributors
+- [Jones Valayath](https://github.com/JVALAYATH)
+- [Jared Mason](https://github.com/JaredM-Unimelb)
+- [Daniel Coleman](https://github.com/dccol)
+- [Nazir Hashem](https://github.com/nhash46)
